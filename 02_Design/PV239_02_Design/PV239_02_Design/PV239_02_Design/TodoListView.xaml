@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resources="clr-namespace:PV239_02_Design.Resources;assembly=PV239_02_Design"
+             x:Class="PV239_02_Design.TodoListView"
+             NavigationPage.HasNavigationBar="False"
+             Style="{StaticResource PrimaryPageStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label HorizontalOptions="Fill"
+               Text="{x:Static resources:Texts.TodoListPage_Title}"
+               Style="{StaticResource PageTitleLabelStyle}"/>
+
+        <StackLayout Grid.Row="1" Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Switch Grid.Column="0"
+                        Style="{StaticResource TodoListItemSwitchStyle}"
+                        IsToggled="True"/>
+                <Label Grid.Column="1"
+                       Text="Přijít na cvičení"
+                       Style="{StaticResource TodoListItemCompletedLabelStyle}"/>
+                <Button Grid.Column="2"
+                        HorizontalOptions="End"
+                        Style="{StaticResource DeleteButtonStyle}"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Switch Grid.Column="0"
+                        Style="{StaticResource TodoListItemSwitchStyle}"
+                        IsToggled="False"/>
+                <Label Grid.Column="1"
+                       Text="Dokončit cvičení"
+                       Style="{StaticResource TodoListItemUncompletedLabelStyle}"/>
+                <Button Grid.Column="2"
+                        HorizontalOptions="End"
+                        Style="{StaticResource DeleteButtonStyle}"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Switch Grid.Column="0"
+                        Style="{StaticResource TodoListItemSwitchStyle}"
+                        IsToggled="False"/>
+                <Label Grid.Column="1"
+                       Text="Koupit čokoládu"
+                       Style="{StaticResource TodoListItemUncompletedLabelStyle}"/>
+                <Button Grid.Column="2"
+                        Style="{StaticResource DeleteButtonStyle}"
+                        HorizontalOptions="End"/>
+            </Grid>
+        </StackLayout>
+        <Button Grid.Row="2"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static resources:Texts.TodoList_AddItemButton_Text}"
+                Clicked="NewItemClicked"/>
+    </Grid>
+</ContentPage>
