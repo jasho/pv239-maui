@@ -98,9 +98,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PV239_03_MVVM\PV239_03_MVVM.csproj">
-      <Project>{CF99EA15-01E4-46BD-8BEC-ADBF10E443C3}</Project>
-      <Name>PV239_03_MVVM</Name>
+    <ProjectReference Include="..\PV239_03_MVVM.Forms\PV239_03_MVVM.Forms.csproj">
+      <Project>{06bff89f-aa0d-4699-97b6-109a8121a999}</Project>
+      <Name>PV239_03_MVVM.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

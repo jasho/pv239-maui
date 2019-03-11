@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using PV239_03_MVVM.Forms;
 
 namespace PV239_03_MVVM.Droid
 {

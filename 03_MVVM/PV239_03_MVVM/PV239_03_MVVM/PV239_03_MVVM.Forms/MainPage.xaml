@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PV239_03_MVVM"
-             x:Class="PV239_03_MVVM.MainPage">
+             x:Class="PV239_03_MVVM.Forms.MainPage">
 
     <StackLayout>
         <!-- Place new controls here -->
