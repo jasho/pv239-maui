@@ -9,49 +9,60 @@
                 x:Class="PV239_05_Storage.Forms.Views.TodoListView"
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:TodoListViewModel}"
-                x:Name="Root">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Label HorizontalOptions="Fill"
+                x:Name="Root"
+                Title="{x:Static resources:Texts.TodoListPage_Title}"
+                NavigationPage.HasNavigationBar="True">
+    <views:ViewBase.ToolbarItems>
+        <ToolbarItem Order="Secondary"
+                     Text="{x:Static resources:Texts.TodoListPage_ToolbarItem_Settings_Text}"
+                     Priority="0"
+                     Command="{Binding NavigateToSettingsCommand}"/>
+    </views:ViewBase.ToolbarItems>
+
+    <views:ViewBase.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label HorizontalOptions="Fill"
                Text="{x:Static resources:Texts.TodoListPage_Title}"
                Style="{StaticResource PageTitleLabelStyle}"/>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding TodoItems}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Switch Grid.Column="0"
+            <ListView Grid.Row="1" ItemsSource="{Binding TodoItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Switch Grid.Column="0"
                                     Style="{StaticResource TodoListItemSwitchStyle}"
                                     IsToggled="{Binding IsCompleted}"/>
-                            <Label Grid.Column="1"
+                                <Label Grid.Column="1"
                                    Text="{Binding Title}"
                                    Style="{StaticResource TodoListItemCompletedLabelStyle}"/>
-                            <Button Grid.Column="2"
+                                <Button Grid.Column="2"
                                     HorizontalOptions="End"
                                     Style="{StaticResource DeleteButtonStyle}"
                                     Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteItemCommand}"
                                     CommandParameter="{Binding}"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-        <Button Grid.Row="2"
+            <Button Grid.Row="2"
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{x:Static resources:Texts.TodoList_AddItemButton_Text}"
                 Command="{Binding AddItemCommand}"/>
-    </Grid>
+        </Grid>
+    </views:ViewBase.Content>
 </views:ViewBase>

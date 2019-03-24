@@ -12,20 +12,31 @@ namespace PV239_05_Storage.Core.ViewModels
     {
         private ICommandFactory commandFactory;
         private readonly IPreferencesService preferencesService;
+        private readonly INavigationService navigationService;
 
         public ICommand AddItemCommand { get; set; }
         public ICommand DeleteItemCommand { get; set; }
+        public ICommand NavigateToSettingsCommand { get; set; }
 
         public ObservableCollection<TodoItemModel> TodoItems { get; set; } = new ObservableCollection<TodoItemModel>();
 
         public TodoListViewModel(
             ICommandFactory commandFactory,
-            IPreferencesService preferencesService)
+            IPreferencesService preferencesService,
+            INavigationService navigationService)
         {
             this.commandFactory = commandFactory;
             this.preferencesService = preferencesService;
+            this.navigationService = navigationService;
+
             AddItemCommand = commandFactory.CreateCommand(AddNewItem);
             DeleteItemCommand = commandFactory.CreateCommand<TodoItemModel>(DeleteItem);
+            NavigateToSettingsCommand = commandFactory.CreateCommand(NavigateToSettings);
+        }
+
+        private async void NavigateToSettings()
+        {
+            await navigationService.PushAsync<SettingsViewModel>();
         }
 
         public override async Task OnAppearing()

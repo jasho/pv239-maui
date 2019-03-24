@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using PV239_05_Storage.Core.Services.Interfaces;
+using PV239_05_Storage.Core.ViewModels.Base;
 
 namespace PV239_05_Storage.Core.Services
 {
@@ -15,6 +17,9 @@ namespace PV239_05_Storage.Core.Services
             var containerBuilder = new ContainerBuilder();
             containerBuilder.Populate(serviceCollection);
             container = containerBuilder.Build();
+
+            var types = container.ComponentRegistry.Registrations.Where(r => typeof(IViewModel).IsAssignableFrom(r.Activator.LimitType))
+                .Select(r => r.Activator.LimitType);
         }
 
         public TService Resolve<TService>()

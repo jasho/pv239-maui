@@ -19,7 +19,7 @@ namespace PV239_05_Storage.Forms.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await this.viewModel.OnAppearing();
+            await viewModel?.OnAppearing();
         }
     }
 }

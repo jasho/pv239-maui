@@ -141,6 +141,9 @@
   <data name="TodoListPage_Title" xml:space="preserve">
     <value>Seznam úkolů</value>
   </data>
+  <data name="TodoListPage_ToolbarItem_Settings_Text" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
   <data name="TodoList_AddItemButton_Text" xml:space="preserve">
     <value>Přidat nový prvek</value>
   </data>

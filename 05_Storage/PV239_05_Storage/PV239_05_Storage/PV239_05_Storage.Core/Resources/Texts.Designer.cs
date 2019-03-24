@@ -140,5 +140,14 @@ namespace PV239_05_Storage.Core.Resources {
                 return ResourceManager.GetString("TodoListPage_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nastavení.
+        /// </summary>
+        public static string TodoListPage_ToolbarItem_Settings_Text {
+            get {
+                return ResourceManager.GetString("TodoListPage_ToolbarItem_Settings_Text", resourceCulture);
+            }
+        }
     }
 }
