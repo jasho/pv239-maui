@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -7,6 +9,7 @@ namespace PV239_05_Storage.Core.Config
     public class AppConfig : IAppConfig
     {
         public JsonSerializerSettings JsonSerializerSettings { get; }
+        public string DatabasePath { get; }
 
         public AppConfig()
         {
@@ -18,6 +21,8 @@ namespace PV239_05_Storage.Core.Config
                     new StringEnumConverter (true)
                 }
             };
+
+            DatabasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "database.db3");
         }
     }
 }

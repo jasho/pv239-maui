@@ -13,6 +13,7 @@ namespace PV239_05_Storage.Core.ViewModels
         private ICommandFactory commandFactory;
         private readonly IPreferencesService preferencesService;
         private readonly INavigationService navigationService;
+        private readonly IDatabaseService databaseService;
 
         public ICommand AddItemCommand { get; set; }
         public ICommand DeleteItemCommand { get; set; }
@@ -23,11 +24,13 @@ namespace PV239_05_Storage.Core.ViewModels
         public TodoListViewModel(
             ICommandFactory commandFactory,
             IPreferencesService preferencesService,
-            INavigationService navigationService)
+            INavigationService navigationService,
+            IDatabaseService databaseService)
         {
             this.commandFactory = commandFactory;
             this.preferencesService = preferencesService;
             this.navigationService = navigationService;
+            this.databaseService = databaseService;
 
             AddItemCommand = commandFactory.CreateCommand(AddNewItem);
             DeleteItemCommand = commandFactory.CreateCommand<TodoItemModel>(DeleteItem);
@@ -42,8 +45,16 @@ namespace PV239_05_Storage.Core.ViewModels
         public override async Task OnAppearing()
         {
             await base.OnAppearing();
-
             TodoItems = preferencesService.Get<ObservableCollection<TodoItemModel>>("TodoItems");
+
+            //await databaseService.CreateTable<TodoItemModel>();
+            //TodoItems = new ObservableCollection<TodoItemModel>();
+            //var todoItemModels = await databaseService.GetAll<TodoItemModel>();
+
+            //foreach (var todoItemModel in todoItemModels)
+            //{
+            //    TodoItems.Add(todoItemModel);
+            //}
         }
 
         private void DeleteItem(TodoItemModel todoItem)
@@ -54,6 +65,10 @@ namespace PV239_05_Storage.Core.ViewModels
         private void AddNewItem()
         {
             TodoItems.Add(new TodoItemModel { Title = "Nový úkol", IsCompleted = false });
+            //foreach (var todoItem in TodoItems)
+            //{
+            //    databaseService.Set(todoItem);
+            //}
         }
     }
 }
