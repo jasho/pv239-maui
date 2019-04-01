@@ -1,0 +1,1 @@
+autorest --csharp --fluent --namespace="PV239_05_Storage.Core.Api" --override-client-name="ApiClient" --sync-methods="all" --client-side-validation="true" --input-file="http://localhost:5000/swagger/v1/swagger.json" --output-folder="./PV239_05_Storage/PV239_05_Storage/PV239_05_Storage.Core/Api"

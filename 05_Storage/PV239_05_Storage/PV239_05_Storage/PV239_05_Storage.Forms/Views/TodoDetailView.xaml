@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:viewModels="clr-namespace:PV239_05_Storage.Core.ViewModels;assembly=PV239_05_Storage.Core"
+                xmlns:views="clr-namespace:PV239_05_Storage.Forms.Views"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                mc:Ignorable="d"
+                x:Class="PV239_05_Storage.Forms.Views.TodoDetailView"
+                d:DataContext="{d:DesignInstance viewModels:TodoDetailViewModel}">
+    <TableView>
+        <TableSection>
+            <EntryCell Text="{Binding TodoItem.Title}" />
+            <SwitchCell On="{Binding TodoItem.IsCompleted}"/>
+            <ViewCell>
+                <Button Text="" />
+            </ViewCell>
+        </TableSection>
+    </TableView>
+</views:ViewBase>

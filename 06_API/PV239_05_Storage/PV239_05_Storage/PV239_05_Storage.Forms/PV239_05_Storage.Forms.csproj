@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Behaviors.Forms" Version="1.4.0" />
     <PackageReference Include="Fody" Version="4.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,6 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Behaviors">
+      <HintPath>C:\Users\Roman\.nuget\packages\behaviors.forms\1.4.0\lib\netstandard1.0\Behaviors.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\SettingsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -38,6 +45,9 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Views\SettingsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\TodoDetailView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Views\TodoListView.xaml">
