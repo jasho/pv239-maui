@@ -8,7 +8,7 @@
         <Color x:Key="PrimaryBackgroundColor">#FFFFFFFF</Color>
         <Color x:Key="TodoItemCompletedColor">#FF606060</Color>
         <Color x:Key="TodoItemUncompledColor">#0F0F77</Color>
-        <Color x:Key="DeleteColor">#FFFF0000</Color>
+        <Color x:Key="ErrorColor">#FFFF0000</Color>
 
         <x:Int32 x:Key="ButtonCornerRadius">0</x:Int32>
         <x:Int32 x:Key="ButtonBorderWidth">2</x:Int32>
@@ -47,8 +47,13 @@
             <Setter Property="TextColor" Value="{StaticResource PrimaryBackgroundColor}"/>
             <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
         </Style>
-        <Style x:Key="DeleteButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
-            <Setter Property="BackgroundColor" Value="{StaticResource DeleteColor}"/>
+        <Style x:Key="ErrorButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonBaseStyle}">
+            <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}"/>
+        </Style>
+        <Style x:Key="CancelButtonStyle" TargetType="Button" BasedOn="{StaticResource ErrorButtonStyle}">
+            <Setter Property="TextColor" Value="{StaticResource PrimaryBackgroundColor}"/>
+        </Style>
+        <Style x:Key="DeleteButtonStyle" TargetType="Button" BasedOn="{StaticResource ErrorButtonStyle}">
             <Setter Property="Text" Value="✗"/>
         </Style>
         <!-- Buttons End -->

@@ -2,19 +2,51 @@
 <views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:resources="clr-namespace:PV239_05_Storage.Core.Resources;assembly=PV239_05_Storage.Core"
                 xmlns:viewModels="clr-namespace:PV239_05_Storage.Core.ViewModels;assembly=PV239_05_Storage.Core"
                 xmlns:views="clr-namespace:PV239_05_Storage.Forms.Views"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 mc:Ignorable="d"
                 x:Class="PV239_05_Storage.Forms.Views.TodoDetailView"
-                d:DataContext="{d:DesignInstance viewModels:TodoDetailViewModel}">
-    <TableView>
-        <TableSection>
-            <EntryCell Text="{Binding TodoItem.Title}" />
-            <SwitchCell On="{Binding TodoItem.IsCompleted}"/>
-            <ViewCell>
-                <Button Text="" />
-            </ViewCell>
-        </TableSection>
-    </TableView>
+                d:DataContext="{d:DesignInstance viewModels:TodoDetailViewModel}"
+                Title="{x:Static resources:TodoDetailViewResources.Page_Title}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Text="{x:Static resources:TodoDetailViewResources.Title_Label_Text}"/>
+        <Entry Grid.Row="0"
+               Grid.Column="1"
+               Text="{Binding TodoItem.Title}"/>
+
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Text="{x:Static resources:TodoDetailViewResources.IsCompleted_Label_Text}"/>
+        <Switch Grid.Row="1"
+                Grid.Column="1"
+                IsToggled="{Binding TodoItem.IsCompleted}"/>
+
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                Text="{x:Static resources:SettingsViewResources.Cancel_Button_Text}"
+                Style="{StaticResource CancelButtonStyle}"/>
+
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="End"
+                Text="{x:Static resources:SettingsViewResources.Save_Button_Text}"
+                Style="{StaticResource PrimaryButtonStyle}"/>
+    </Grid>
 </views:ViewBase>

@@ -11,5 +11,7 @@ namespace PV239_05_Storage.Forms.Views
         {
             InitializeComponent();
         }
+
+
     }
 }

@@ -22,14 +22,14 @@ namespace PV239_05_Storage.Core.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Texts {
+    public class SettingsViewResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Texts() {
+        internal SettingsViewResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PV239_05_Storage.Core.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PV239_05_Storage.Core.Resources.Texts", typeof(Texts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PV239_05_Storage.Core.Resources.SettingsViewResources", typeof(SettingsViewResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,92 +61,47 @@ namespace PV239_05_Storage.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to +.
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        public static string Calculator_ButtonAdd_Text {
+        public static string Cancel_Button_Text {
             get {
-                return ResourceManager.GetString("Calculator_ButtonAdd_Text", resourceCulture);
+                return ResourceManager.GetString("Cancel_Button_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operand 1:.
+        ///   Looks up a localized string similar to Language.
         /// </summary>
-        public static string Calculator_Operand1_Label {
+        public static string Language_Label_Text {
             get {
-                return ResourceManager.GetString("Calculator_Operand1_Label", resourceCulture);
+                return ResourceManager.GetString("Language_Label_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operand 2:.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
-        public static string Calculator_Operand2_Label {
+        public static string Page_Title {
             get {
-                return ResourceManager.GetString("Calculator_Operand2_Label", resourceCulture);
+                return ResourceManager.GetString("Page_Title", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hotovo.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
-        public static string TodoItem_Completed_Label {
+        public static string Save_Button_Text {
             get {
-                return ResourceManager.GetString("TodoItem_Completed_Label", resourceCulture);
+                return ResourceManager.GetString("Save_Button_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Název.
+        ///   Looks up a localized string similar to Username.
         /// </summary>
-        public static string TodoItem_Name_Label {
+        public static string Username_Label_Text {
             get {
-                return ResourceManager.GetString("TodoItem_Name_Label", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Poznámka.
-        /// </summary>
-        public static string TodoItem_Notes_Label {
-            get {
-                return ResourceManager.GetString("TodoItem_Notes_Label", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Detail úkolu.
-        /// </summary>
-        public static string TodoItemPage_Title {
-            get {
-                return ResourceManager.GetString("TodoItemPage_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Přidat nový prvek.
-        /// </summary>
-        public static string TodoList_AddItemButton_Text {
-            get {
-                return ResourceManager.GetString("TodoList_AddItemButton_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Seznam úkolů.
-        /// </summary>
-        public static string TodoListPage_Title {
-            get {
-                return ResourceManager.GetString("TodoListPage_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nastavení.
-        /// </summary>
-        public static string TodoListPage_ToolbarItem_Settings_Text {
-            get {
-                return ResourceManager.GetString("TodoListPage_ToolbarItem_Settings_Text", resourceCulture);
+                return ResourceManager.GetString("Username_Label_Text", resourceCulture);
             }
         }
     }

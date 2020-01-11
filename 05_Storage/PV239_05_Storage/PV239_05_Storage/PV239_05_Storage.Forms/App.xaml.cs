@@ -4,6 +4,8 @@ using PV239_05_Storage.Core.Services;
 using PV239_05_Storage.Core.Services.Interfaces;
 using PV239_05_Storage.Core.ViewModels;
 using PV239_05_Storage.Forms.Installers;
+using System.Globalization;
+using System.Threading;
 using Xamarin.Forms;
 
 namespace PV239_05_Storage.Forms
@@ -14,15 +16,27 @@ namespace PV239_05_Storage.Forms
         public App()
         {
             InitializeComponent();
-
             DependencyInjectionService = new DependencyInjectionService();
-            var navigationPage = new NavigationPage();
 
+            var navigationPage = new NavigationPage();
             RegisterDependencies(DependencyInjectionService, navigationPage.Navigation);
+            ApplySettings(DependencyInjectionService);
+
             var navigationService = DependencyInjectionService.Resolve<INavigationService>();
             navigationService.PushAsync<TodoListViewModel>();
-
             MainPage = navigationPage;
+        }
+
+        protected override async void OnStart()
+        {
+        }
+
+        protected override void OnSleep()
+        {
+        }
+
+        protected override async void OnResume()
+        {
         }
 
         private void RegisterDependencies(IDependencyInjectionService dependencyInjectionService, INavigation navigation)
@@ -37,19 +51,15 @@ namespace PV239_05_Storage.Forms
             dependencyInjectionService.Build(serviceCollection);
         }
 
-        protected override void OnStart()
+        private void ApplySettings(IDependencyInjectionService dependencyInjectionService)
         {
-            // Handle when your app starts
-        }
-
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
+            var secureStorageService = dependencyInjectionService.Resolve<ISecureStorageService>();
+            var language = secureStorageService.GetAsync("Language").GetAwaiter().GetResult();
+            if (language != null)
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+            }
         }
     }
 }

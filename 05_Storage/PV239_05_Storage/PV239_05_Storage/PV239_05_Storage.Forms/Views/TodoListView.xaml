@@ -2,6 +2,7 @@
 <views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:models="clr-namespace:PV239_05_Storage.Core.Models;assembly=PV239_05_Storage.Core"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:views="clr-namespace:PV239_05_Storage.Forms.Views"
                 xmlns:resources="clr-namespace:PV239_05_Storage.Core.Resources;assembly=PV239_05_Storage.Core"
@@ -10,11 +11,11 @@
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:TodoListViewModel}"
                 x:Name="Root"
-                Title="{x:Static resources:Texts.TodoListPage_Title}"
+                Title="{x:Static resources:TodoListViewResources.Page_Title}"
                 NavigationPage.HasNavigationBar="True">
     <views:ViewBase.ToolbarItems>
         <ToolbarItem Order="Secondary"
-                     Text="{x:Static resources:Texts.TodoListPage_ToolbarItem_Settings_Text}"
+                     Text="{x:Static resources:TodoListViewResources.Settings_ToolbarItem_Text}"
                      Priority="0"
                      Command="{Binding NavigateToSettingsCommand}"/>
     </views:ViewBase.ToolbarItems>
@@ -22,46 +23,39 @@
     <views:ViewBase.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label HorizontalOptions="Fill"
-               Text="{x:Static resources:Texts.TodoListPage_Title}"
-               Style="{StaticResource PageTitleLabelStyle}"/>
-
-            <ListView Grid.Row="1" ItemsSource="{Binding TodoItems}">
-                <ListView.ItemTemplate>
+            <CollectionView Grid.Row="0" ItemsSource="{Binding TodoItems}">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Switch Grid.Column="0"
+                        <Grid d:DataContext="{d:DesignInstance models:TodoItemModel}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Switch Grid.Column="0"
                                     Style="{StaticResource TodoListItemSwitchStyle}"
                                     IsToggled="{Binding IsCompleted}"/>
-                                <Label Grid.Column="1"
+                            <Label Grid.Column="1"
                                    Text="{Binding Title}"
                                    Style="{StaticResource TodoListItemCompletedLabelStyle}"/>
-                                <Button Grid.Column="2"
+                            <Button Grid.Column="2"
                                     HorizontalOptions="End"
                                     Style="{StaticResource DeleteButtonStyle}"
                                     Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteItemCommand}"
                                     CommandParameter="{Binding}"/>
-                            </Grid>
-                        </ViewCell>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
-            <Button Grid.Row="2"
+            <Button Grid.Row="1"
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static resources:Texts.TodoList_AddItemButton_Text}"
+                Text="{x:Static resources:TodoListViewResources.AddItem_Button_Text}"
                 Command="{Binding AddItemCommand}"/>
         </Grid>
     </views:ViewBase.Content>
