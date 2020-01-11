@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using PV239_05_Storage.Core.Config;
+﻿using PV239_05_Storage.Core.Config;
 using PV239_05_Storage.Core.Models;
 using PV239_05_Storage.Core.Services.Interfaces;
 using SQLite;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PV239_05_Storage.Core.Services
 {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using PV239_05_Storage.Core.Factories.Interfaces;
+﻿using PV239_05_Storage.Core.Factories.Interfaces;
 using PV239_05_Storage.Core.Services.Interfaces;
 using PV239_05_Storage.Core.ViewModels.Base;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PV239_05_Storage.Core.ViewModels
 {

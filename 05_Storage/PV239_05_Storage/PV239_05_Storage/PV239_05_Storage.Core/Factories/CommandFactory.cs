@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PV239_05_Storage.Core.Commands;
+using PV239_05_Storage.Core.Factories.Interfaces;
+using System;
 using System.Linq.Expressions;
 using System.Windows.Input;
-using PV239_05_Storage.Core.Commands;
-using PV239_05_Storage.Core.Factories.Interfaces;
 
 namespace PV239_05_Storage.Core.Factories
 {

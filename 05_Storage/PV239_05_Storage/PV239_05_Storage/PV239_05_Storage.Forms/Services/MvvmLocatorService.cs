@@ -1,7 +1,7 @@
-﻿using System;
-using PV239_05_Storage.Core.Services.Interfaces;
+﻿using PV239_05_Storage.Core.Services.Interfaces;
 using PV239_05_Storage.Forms.Services.Interfaces;
 using PV239_05_Storage.Forms.Views;
+using System;
 using Xamarin.Forms;
 
 namespace PV239_05_Storage.Forms.Services

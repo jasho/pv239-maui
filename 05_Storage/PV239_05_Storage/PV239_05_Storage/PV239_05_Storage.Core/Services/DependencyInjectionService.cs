@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using PV239_05_Storage.Core.Services.Interfaces;
 using PV239_05_Storage.Core.ViewModels.Base;
+using System;
+using System.Linq;
 
 namespace PV239_05_Storage.Core.Services
 {

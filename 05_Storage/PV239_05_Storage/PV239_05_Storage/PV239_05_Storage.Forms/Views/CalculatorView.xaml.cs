@@ -1,5 +1,4 @@
 ﻿using PV239_05_Storage.Core.ViewModels;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace PV239_05_Storage.Forms.Views

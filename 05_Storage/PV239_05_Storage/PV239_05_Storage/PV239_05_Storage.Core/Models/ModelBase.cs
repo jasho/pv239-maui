@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+﻿using SQLite;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using SQLite;
 
 namespace PV239_05_Storage.Core.Models
 {

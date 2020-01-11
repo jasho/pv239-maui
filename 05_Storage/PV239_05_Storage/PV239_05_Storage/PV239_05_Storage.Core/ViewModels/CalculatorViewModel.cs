@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Input;
-using PV239_05_Storage.Core.Commands;
+﻿using PV239_05_Storage.Core.Commands;
 using PV239_05_Storage.Core.Models;
 using PV239_05_Storage.Core.ViewModels.Base;
+using System;
+using System.Windows.Input;
 
 namespace PV239_05_Storage.Core.ViewModels
 {
