@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resources="clr-namespace:PV239_02_Design.Resources;assembly=PV239_02_Design"
              x:Class="PV239_02_Design.TodoListView"
-             NavigationPage.HasNavigationBar="False"
              Style="{StaticResource PrimaryPageStyle}">
     <Grid>
         <Grid.RowDefinitions>

@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace PV239_02_Design
 {
@@ -10,23 +8,19 @@ namespace PV239_02_Design
         {
             InitializeComponent();
 
-            //MainPage = new MainPage();
             MainPage = new NavigationPage(new TodoListView());
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
         }
     }
 }

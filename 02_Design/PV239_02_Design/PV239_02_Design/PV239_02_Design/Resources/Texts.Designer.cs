@@ -22,7 +22,7 @@ namespace PV239_02_Design.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Texts {
+    internal class Texts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace PV239_02_Design.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PV239_02_Design.Resources.Texts", typeof(Texts).Assembly);
@@ -51,7 +51,7 @@ namespace PV239_02_Design.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace PV239_02_Design.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Hotovo.
         /// </summary>
-        public static string TodoItem_Completed_Label {
+        internal static string TodoItem_Completed_Label {
             get {
                 return ResourceManager.GetString("TodoItem_Completed_Label", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace PV239_02_Design.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Název.
         /// </summary>
-        public static string TodoItem_Name_Label {
+        internal static string TodoItem_Name_Label {
             get {
                 return ResourceManager.GetString("TodoItem_Name_Label", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace PV239_02_Design.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Poznámka.
         /// </summary>
-        public static string TodoItem_Notes_Label {
+        internal static string TodoItem_Notes_Label {
             get {
                 return ResourceManager.GetString("TodoItem_Notes_Label", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace PV239_02_Design.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Detail úkolu.
         /// </summary>
-        public static string TodoItemPage_Title {
+        internal static string TodoItemPage_Title {
             get {
                 return ResourceManager.GetString("TodoItemPage_Title", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace PV239_02_Design.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Přidat nový prvek.
         /// </summary>
-        public static string TodoList_AddItemButton_Text {
+        internal static string TodoList_AddItemButton_Text {
             get {
                 return ResourceManager.GetString("TodoList_AddItemButton_Text", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace PV239_02_Design.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Seznam úkolů.
         /// </summary>
-        public static string TodoListPage_Title {
+        internal static string TodoListPage_Title {
             get {
                 return ResourceManager.GetString("TodoListPage_Title", resourceCulture);
             }
