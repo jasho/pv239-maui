@@ -1,7 +1,7 @@
 ﻿using PV239_03_MVVM.Core.Services.Interfaces;
+using PV239_03_MVVM.Forms.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
-using PV239_03_MVVM.Forms.Services.Interfaces;
 using Xamarin.Forms;
 
 namespace PV239_03_MVVM.Forms.Services

@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:PV239_03_MVVM.Core.ViewModels;assembly=PV239_03_MVVM.Core"
              x:Class="PV239_03_MVVM.Forms.Views.CalculatorView"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:PV239_03_MVVM.Forms.Views;assembly=PV239_03_MVVM.Forms"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:CalculatorViewModel}">
     <StackLayout>
@@ -23,4 +24,4 @@
         <Button Text="+"
                 Command="{Binding AddCommand}"/>
     </StackLayout>
-</ContentPage>
+</views:ViewBase>

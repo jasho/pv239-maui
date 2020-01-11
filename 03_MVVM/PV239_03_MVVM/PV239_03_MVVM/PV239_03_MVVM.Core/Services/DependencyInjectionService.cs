@@ -1,8 +1,8 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using PV239_03_MVVM.Core.Services.Interfaces;
+using System;
 
 namespace PV239_03_MVVM.Core.Services
 {

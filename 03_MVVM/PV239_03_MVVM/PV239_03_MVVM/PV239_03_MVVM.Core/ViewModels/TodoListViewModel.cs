@@ -1,8 +1,8 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
-using PV239_03_MVVM.Core.Factories.Interfaces;
+﻿using PV239_03_MVVM.Core.Factories.Interfaces;
 using PV239_03_MVVM.Core.Models;
 using PV239_03_MVVM.Core.ViewModels.Base;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace PV239_03_MVVM.Core.ViewModels
 {

@@ -1,19 +1,17 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using PV239_03_MVVM.Core.Installers;
 using PV239_03_MVVM.Core.Services;
 using PV239_03_MVVM.Core.Services.Interfaces;
 using PV239_03_MVVM.Core.ViewModels;
 using PV239_03_MVVM.Forms.Installers;
-using PV239_03_MVVM.Forms.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace PV239_03_MVVM.Forms
 {
     public partial class App : Application
     {
         public IDependencyInjectionService DependencyInjectionService { get; }
+
         public App()
         {
             InitializeComponent();
@@ -25,8 +23,7 @@ namespace PV239_03_MVVM.Forms
             var navigationService = DependencyInjectionService.Resolve<INavigationService>();
             navigationService.PushAsync<TodoListViewModel>();
 
-            MainPage = new CalculatorView();
-            //MainPage = navigationPage;
+            MainPage = navigationPage;
         }
 
         private void RegisterDependencies(IDependencyInjectionService dependencyInjectionService, INavigation navigation)
@@ -43,17 +40,14 @@ namespace PV239_03_MVVM.Forms
 
         protected override void OnStart()
         {
-            // Handle when your app starts
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
         }
     }
 }

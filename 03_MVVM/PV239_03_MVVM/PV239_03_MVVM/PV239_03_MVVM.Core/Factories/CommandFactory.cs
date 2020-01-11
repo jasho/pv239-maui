@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PV239_03_MVVM.Core.Commands;
+using PV239_03_MVVM.Core.Factories.Interfaces;
+using System;
 using System.Linq.Expressions;
 using System.Windows.Input;
-using PV239_03_MVVM.Core.Commands;
-using PV239_03_MVVM.Core.Factories.Interfaces;
 
 namespace PV239_03_MVVM.Core.Factories
 {

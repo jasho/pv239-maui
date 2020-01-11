@@ -1,7 +1,6 @@
-﻿using System;
-using System.Windows.Input;
-using PV239_03_MVVM.Core.Commands;
+﻿using PV239_03_MVVM.Core.Commands;
 using PV239_03_MVVM.Core.Models;
+using System.Windows.Input;
 
 namespace PV239_03_MVVM.Core.ViewModels
 {
