@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:resources="clr-namespace:PV239_06_API.Core.Resources;assembly=PV239_06_API.Core"
+                xmlns:viewModels="clr-namespace:PV239_06_API.Core.ViewModels;assembly=PV239_06_API.Core"
+                xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+                xmlns:views="clr-namespace:PV239_06_API.Forms.Views;assembly=PV239_06_API.Forms"
+                xmlns:models="clr-namespace:PV239_06_API.Core.Models;assembly=PV239_06_API.Core"
+                x:Class="PV239_06_API.Forms.Views.TodoListView"
+                mc:Ignorable="d"
+                d:DataContext="{d:DesignInstance viewModels:TodoListViewModel}"
+                x:Name="Root"
+                Title="{x:Static resources:TodoListViewResources.Page_Title}"
+                NavigationPage.HasNavigationBar="True">
+    <views:ViewBase.ToolbarItems>
+        <ToolbarItem Order="Secondary"
+                     Text="{x:Static resources:TodoListViewResources.Settings_ToolbarItem_Text}"
+                     Priority="0"
+                     Command="{Binding NavigateToSettingsCommand}"/>
+    </views:ViewBase.ToolbarItems>
+
+    <views:ViewBase.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <CollectionView Grid.Row="0" ItemsSource="{Binding TodoItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid d:DataContext="{d:DesignInstance models:TodoItemModel}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.NavigateToDetailCommand}"
+                                                      CommandParameter="{Binding Id}"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Switch Grid.Column="0"
+                                    Style="{StaticResource TodoListItemSwitchStyle}"
+                                    IsToggled="{Binding IsCompleted}"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding Title}"
+                                   Style="{StaticResource TodoListItemCompletedLabelStyle}"/>
+                            <Button Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteItemCommand}"
+                                    CommandParameter="{Binding}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Grid.Row="1"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static resources:TodoListViewResources.AddItem_Button_Text}"
+                Command="{Binding AddItemCommand}"/>
+        </Grid>
+    </views:ViewBase.Content>
+</views:ViewBase>
