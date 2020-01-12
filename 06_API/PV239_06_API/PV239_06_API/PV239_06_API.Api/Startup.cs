@@ -27,9 +27,7 @@ namespace PV239_06_API.Api
                     Title = "PV239_06 API",
                     Version = "v1",
                 });
-                //options.EnableAnnotations();
-
-                //options.DescribeAllEnumsAsStrings();
+                options.EnableAnnotations();
             });
 
             services.ConfigureSwaggerGen(options =>
