@@ -2,9 +2,9 @@
 using PV239_06_API.Core.Api;
 using PV239_06_API.Core.Config;
 using PV239_06_API.Core.Factories.Interfaces;
-using PV239_06_API.Core.Mappings;
 using PV239_06_API.Core.Services.Interfaces;
 using PV239_06_API.Core.ViewModels.Base;
+using System.Net.Http;
 
 namespace PV239_06_API.Core.Installers
 {
@@ -13,7 +13,7 @@ namespace PV239_06_API.Core.Installers
         public void Install(IServiceCollection serviceCollection, IDependencyInjectionService dependencyInjectionService)
         {
             serviceCollection.AddSingleton<IDependencyInjectionService>(dependencyInjectionService);
-            serviceCollection.AddSingleton<IApiClient, ApiClient>();
+            serviceCollection.AddTransient<ITodoClient, TodoClient>(factory => new TodoClient(factory.GetService<HttpClient>()) { BaseUrl = "https://10.0.2.2:5001" });
 
             serviceCollection.Scan(scan => scan
                 .FromAssemblyOf<CoreInstaller>()
@@ -32,9 +32,6 @@ namespace PV239_06_API.Core.Installers
                 .AddClasses(classes => classes.AssignableTo<IViewModel>())
                     .AsSelfWithInterfaces()
                     .WithTransientLifetime()
-                .AddClasses(classes => classes.AssignableTo<IMapping>())
-                    .AsSelfWithInterfaces()
-                    .WithSingletonLifetime()
             );
         }
     }

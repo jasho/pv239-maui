@@ -1,13 +1,12 @@
-﻿using System.Globalization;
-using System.Threading;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using PV239_06_API.Core.Installers;
-using PV239_06_API.Core.Mappings;
 using PV239_06_API.Core.Services;
 using PV239_06_API.Core.Services.Interfaces;
 using PV239_06_API.Core.ViewModels;
 using PV239_06_API.Forms.Installers;
-using PV239_06_API.Forms.Views;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using Xamarin.Forms;
 
 namespace PV239_06_API.Forms
@@ -15,15 +14,14 @@ namespace PV239_06_API.Forms
     public partial class App : Application
     {
         public IDependencyInjectionService DependencyInjectionService { get; }
-        public App()
+        public App(IEnumerable<IInstaller> installers = null)
         {
             InitializeComponent();
 
             DependencyInjectionService = new DependencyInjectionService();
             var navigationPage = new NavigationPage();
 
-            RegisterDependencies(DependencyInjectionService, navigationPage.Navigation);
-            InitializeAutoMapper(DependencyInjectionService);
+            RegisterDependencies(DependencyInjectionService, navigationPage.Navigation, installers);
             ApplySettings(DependencyInjectionService);
 
             var navigationService = DependencyInjectionService.Resolve<INavigationService>();
@@ -47,7 +45,7 @@ namespace PV239_06_API.Forms
             // Handle when your app resumes
         }
 
-        private void RegisterDependencies(IDependencyInjectionService dependencyInjectionService, INavigation navigation)
+        private void RegisterDependencies(IDependencyInjectionService dependencyInjectionService, INavigation navigation, IEnumerable<IInstaller> installers = null)
         {
             var serviceCollection = new ServiceCollection();
             var coreInstaller = new CoreInstaller();
@@ -56,14 +54,15 @@ namespace PV239_06_API.Forms
             var formsInstaller = new FormsInstaller();
             formsInstaller.Install(serviceCollection, navigation);
 
-            dependencyInjectionService.Build(serviceCollection);
-        }
+            if (installers != null)
+            {
+                foreach (var installer in installers)
+                {
+                    installer.Install(serviceCollection);
+                }
+            }
 
-        private void InitializeAutoMapper(IDependencyInjectionService dependencyInjectionService)
-        {
-            var mapperService = dependencyInjectionService.Resolve<IMapperService>();
-            var mappings = dependencyInjectionService.ResolveAll<IMapping>();
-            mapperService.Initialize(mappings);
+            dependencyInjectionService.Build(serviceCollection);
         }
 
         private void ApplySettings(IDependencyInjectionService dependencyInjectionService)

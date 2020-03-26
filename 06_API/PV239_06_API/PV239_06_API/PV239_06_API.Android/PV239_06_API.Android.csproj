@@ -57,6 +57,9 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IgnoreSslClientHandler.cs" />
+    <Compile Include="IgnoreSSLHostnameVerifier.cs" />
+    <Compile Include="Installers\AndroidInstaller.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +91,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PV239_06_API.Core\PV239_06_API.Core.csproj">
+      <Project>{12E01993-54AB-4613-AC26-907E1B4C0075}</Project>
+      <Name>PV239_06_API.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PV239_06_API.Forms\PV239_06_API.Forms.csproj">
       <Project>{763bfbaa-b977-4e30-917d-ac52b4d0aa67}</Project>
       <Name>PV239_06_API.Forms</Name>

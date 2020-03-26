@@ -1,21 +1,18 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using PV239_06_API.Core.Api;
-using PV239_06_API.Core.Api.Models;
+﻿using PV239_06_API.Core.Api;
 using PV239_06_API.Core.Factories.Interfaces;
-using PV239_06_API.Core.Models;
 using PV239_06_API.Core.Services.Interfaces;
 using PV239_06_API.Core.ViewModels.Base;
+using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PV239_06_API.Core.ViewModels
 {
     public class TodoDetailViewModel : ViewModelBase<Guid?>
     {
-        private readonly IApiClient apiClient;
-        private readonly IMapperService mapperService;
         private readonly INavigationService navigationService;
-        public TodoItemModel TodoItem { get; set; }
+        private readonly ITodoClient todoClient;
+        public TodoItemDto TodoItem { get; set; }
 
         public ICommand SaveCommand { get; set; }
         public ICommand CancelCommand { get; set; }
@@ -23,14 +20,12 @@ namespace PV239_06_API.Core.ViewModels
         public TodoDetailViewModel(
             Guid? viewModelParameter,
             ICommandFactory commandFactory,
-            IApiClient apiClient,
-            IMapperService mapperService,
-            INavigationService navigationService)
+            INavigationService navigationService,
+            ITodoClient todoClient)
             : base(viewModelParameter)
         {
-            this.apiClient = apiClient;
-            this.mapperService = mapperService;
             this.navigationService = navigationService;
+            this.todoClient = todoClient;
 
             SaveCommand = commandFactory.CreateCommand(Save, () => true);
             CancelCommand = commandFactory.CreateCommand(Cancel, () => true);
@@ -43,7 +38,7 @@ namespace PV239_06_API.Core.ViewModels
 
         private async void Save()
         {
-            await apiClient.TodoInsertOrUpdateItemAsync(mapperService.Map<TodoItemDtoInner>(TodoItem));
+            await todoClient.TodoInsertOrUpdateItemAsync(TodoItem);
             await navigationService.PopAsync();
         }
 
@@ -53,12 +48,11 @@ namespace PV239_06_API.Core.ViewModels
 
             if (viewModelParameter != null)
             {
-                var todoItemDto = await apiClient.TodoGetItemAsync(viewModelParameter.Value);
-                TodoItem = mapperService.Map<TodoItemModel>(todoItemDto);
+                TodoItem = await todoClient.TodoGetItemAsync(viewModelParameter.Value);
             }
             else
             {
-                TodoItem = new TodoItemModel
+                TodoItem = new TodoItemDto
                 {
                     Title = string.Empty,
                     IsCompleted = false

@@ -53,5 +53,14 @@ namespace PV239_06_API.Api.Storage
             TodoItems.RemoveAt(existingTodoItemIndex);
             TodoItems.Insert(existingTodoItemIndex, todoItem);
         }
+
+        public static void RemoveItem(Guid id)
+        {
+            var itemToRemove = TodoItems.FirstOrDefault(item => item.Id == id);
+            if (itemToRemove != null)
+            {
+                TodoItems.Remove(itemToRemove);
+            }
+        }
     }
 }

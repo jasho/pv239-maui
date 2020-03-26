@@ -1,48 +1,47 @@
-﻿using System;
+﻿using PV239_06_API.Core.Api;
+using PV239_06_API.Core.Factories.Interfaces;
+using PV239_06_API.Core.Services.Interfaces;
+using PV239_06_API.Core.ViewModels.Base;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using PV239_06_API.Core.Api;
-using PV239_06_API.Core.Factories.Interfaces;
-using PV239_06_API.Core.Models;
-using PV239_06_API.Core.Services.Interfaces;
-using PV239_06_API.Core.ViewModels.Base;
 
 namespace PV239_06_API.Core.ViewModels
 {
     public class TodoListViewModel : ViewModelBase
     {
         private ICommandFactory commandFactory;
-        private readonly IPreferencesService preferencesService;
         private readonly INavigationService navigationService;
-        private readonly IDatabaseService databaseService;
-        private readonly IApiClient apiClient;
+        private readonly ITodoClient todoClient;
 
         public ICommand AddItemCommand { get; set; }
-        public ICommand DeleteItemCommand { get; set; }
         public ICommand NavigateToSettingsCommand { get; set; }
 
-        public ObservableCollection<TodoItemModel> TodoItems { get; set; } = new ObservableCollection<TodoItemModel>();
+        public ObservableCollection<TodoItemDto> TodoItems { get; set; } = new ObservableCollection<TodoItemDto>();
 
         public ICommand NavigateToDetailCommand { get; set; }
+        public ICommand RemoveCommand { get; set; }
 
         public TodoListViewModel(
             ICommandFactory commandFactory,
-            IPreferencesService preferencesService,
             INavigationService navigationService,
-            IDatabaseService databaseService,
-            IApiClient apiClient)
+            ITodoClient todoClient)
         {
             this.commandFactory = commandFactory;
-            this.preferencesService = preferencesService;
             this.navigationService = navigationService;
-            this.databaseService = databaseService;
-            this.apiClient = apiClient;
+            this.todoClient = todoClient;
 
             AddItemCommand = commandFactory.CreateCommand(AddNewItem);
-            DeleteItemCommand = commandFactory.CreateCommand<TodoItemModel>(DeleteItem);
             NavigateToSettingsCommand = commandFactory.CreateCommand(NavigateToSettings);
             NavigateToDetailCommand = commandFactory.CreateCommand<Guid>(NavigateToDetail);
+            RemoveCommand = commandFactory.CreateCommand<Guid>(Remove);
+        }
+
+        private async void Remove(Guid id)
+        {
+            await todoClient.TodoRemoveItemAsync(id);
+            await OnAppearing();
         }
 
         private async void NavigateToDetail(Guid id)
@@ -57,60 +56,26 @@ namespace PV239_06_API.Core.ViewModels
             try
             {
                 TodoItems.Clear();
-                var todoItemDtos = await apiClient.TodoGetAllItemsAsync();
-                foreach (var todoItemDto in todoItemDtos)
+                var todoItems = await todoClient.TodoGetAllItemsAsync();
+                foreach (var todoItem in todoItems)
                 {
-                    TodoItems.Add(new TodoItemModel
-                    {
-                        Id = todoItemDto.Id ?? Guid.Empty,
-                        IsCompleted = todoItemDto.IsCompleted ?? false,
-                        Title = todoItemDto.Title
-                    });
+                    TodoItems.Add(todoItem);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-
-            //TodoItems = preferencesService.Get<ObservableCollection<TodoItemModel>>("TodoItems");
-
-            //await databaseService.CreateTable<TodoItemModel>();
-            //TodoItems = new ObservableCollection<TodoItemModel>();
-            //var todoItemModels = await databaseService.GetAll<TodoItemModel>();
-
-            //foreach (var todoItemModel in todoItemModels)
-            //{
-            //    TodoItems.Add(todoItemModel);
-            //}
         }
-
-        //private async void NavigateToDetail(TodoItemModel todoItem)
-        //{
-        //    var itemFromApi = await apiClient.TodoGetItemAsync(todoItem.Id);
-        //    await navigationService.PushAsync<TodoDetailViewModel, Guid?>(todoItem.Id);
-        //}
 
         private async void NavigateToSettings()
         {
             await navigationService.PushAsync<SettingsViewModel>();
         }
 
-
-        private void DeleteItem(TodoItemModel todoItem)
-        {
-            TodoItems.Remove(todoItem);
-        }
-
         private async void AddNewItem()
         {
             await navigationService.PushAsync<TodoDetailViewModel, Guid?>(null);
-            //TodoItems.Add(new TodoItemModel { Title = "Nový úkol", IsCompleted = false });
-            //preferencesService.Set("TodoItems", TodoItems);
-            //foreach (var todoItem in TodoItems)
-            //{
-            //    databaseService.Set(todoItem);
-            //}
         }
     }
 }

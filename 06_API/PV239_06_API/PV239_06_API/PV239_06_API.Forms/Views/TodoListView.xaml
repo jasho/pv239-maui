@@ -8,6 +8,7 @@
                 xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
                 xmlns:views="clr-namespace:PV239_06_API.Forms.Views;assembly=PV239_06_API.Forms"
                 xmlns:models="clr-namespace:PV239_06_API.Core.Models;assembly=PV239_06_API.Core"
+                xmlns:api="clr-namespace:PV239_06_API.Core.Api;assembly=PV239_06_API.Core"
                 x:Class="PV239_06_API.Forms.Views.TodoListView"
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:TodoListViewModel}"
@@ -30,7 +31,7 @@
             <CollectionView Grid.Row="0" ItemsSource="{Binding TodoItems}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid d:DataContext="{d:DesignInstance models:TodoItemModel}">
+                        <Grid d:DataContext="{d:DesignInstance api:TodoItemDto}">
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.NavigateToDetailCommand}"
                                                       CommandParameter="{Binding Id}"/>
@@ -38,6 +39,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Switch Grid.Column="0"
@@ -48,9 +50,15 @@
                                    Style="{StaticResource TodoListItemCompletedLabelStyle}"/>
                             <Button Grid.Column="2"
                                     HorizontalOptions="End"
+                                    Text="Edit"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Command="{Binding Source={x:Reference Root}, Path=BindingContext.NavigateToDetailCommand}"
+                                    CommandParameter="{Binding Id}"/>
+                            <Button Grid.Column="3"
+                                    HorizontalOptions="End"
                                     Style="{StaticResource DeleteButtonStyle}"
-                                    Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteItemCommand}"
-                                    CommandParameter="{Binding}"/>
+                                    Command="{Binding Source={x:Reference Root}, Path=BindingContext.RemoveCommand}"
+                                    CommandParameter="{Binding Id}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

@@ -6,7 +6,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using PV239_06_API.Core.Installers;
+using PV239_06_API.Droid.Installers;
 using PV239_06_API.Forms;
+using System.Collections.Generic;
+using System.Net.Http;
 
 namespace PV239_06_API.Droid
 {
@@ -22,7 +26,7 @@ namespace PV239_06_API.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+            LoadApplication(new App(new List<IInstaller> { new AndroidInstaller() }));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

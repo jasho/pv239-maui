@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PV239_05_Storage.Forms.Resources.ColorResources">
+    <Color x:Key="PrimaryColor">#0F0F77</Color>
+    <Color x:Key="PrimaryBackgroundColor">#FFFFFFFF</Color>
+    <Color x:Key="TodoItemCompletedColor">#FF606060</Color>
+    <Color x:Key="TodoItemUncompledColor">#0F0F77</Color>
+    <Color x:Key="ErrorColor">#FFFF0000</Color>
+</ResourceDictionary>
