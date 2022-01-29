@@ -2,7 +2,9 @@
 <views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
-                       x:Class="CookBook.Mobile.Views.ErrorView">
+                       xmlns:viewModels="clr-namespace:CookBook.Mobile.Core.ViewModels;assembly=CookBook.Mobile.Core"
+                       x:Class="CookBook.Mobile.Views.ErrorView"
+                       x:DataType="viewModels:ErrorViewModel">
     <Label Text="Something went wrong!"
            HorizontalOptions="Center"
            VerticalOptions="Center"/>

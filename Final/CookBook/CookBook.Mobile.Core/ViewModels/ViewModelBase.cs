@@ -8,7 +8,7 @@ namespace CookBook.Mobile.Core.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         
-        public Task OnAppearingAsync()
+        public virtual Task OnAppearingAsync()
         {
             return Task.CompletedTask;
         }

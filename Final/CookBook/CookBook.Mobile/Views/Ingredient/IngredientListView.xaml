@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
+                       xmlns:ingredient="clr-namespace:CookBook.Mobile.Core.ViewModels.Ingredient;assembly=CookBook.Mobile.Core"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common.Models"
+                       x:Class="CookBook.Mobile.Views.Ingredient.IngredientListView"
+                       x:DataType="ingredient:IngredientListViewModel">
+    <CollectionView ItemsSource="{Binding Items}"
+                    Margin="10">
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical"
+                             Span="2"
+                             VerticalItemSpacing="20" HorizontalItemSpacing="20" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:IngredientListModel">
+                <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
+                      HeightRequest="200">
+                    <Image Source="{Binding ImageUrl}"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFill" />
+                    <BoxView Grid.Row="0"
+                             BackgroundColor="Black"
+                             Opacity="0.2"/>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Title"
+                           Text="{Binding Name}"/>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</views:ContentPageBase>
