@@ -1,4 +1,6 @@
-$projectpath = $PSScriptRoot
+$projectpath = Join-Path -Path $PSScriptRoot -ChildPath ..\src -Resolve
+
+Write-Output $projectpath
 
 Write-Host "Deleting obj folders in " + $projectpath -ForegroundColor Green
 Get-ChildItem -Directory -Recurse -Path $projectpath |  where {$_.Name -eq "obj" } | Get-ChildItem | Remove-Item -Recurse
