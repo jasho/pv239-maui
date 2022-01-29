@@ -1,9 +1,11 @@
-﻿using CookBook.Mobile.Core.Factories;
+﻿using CookBook.Mobile.Core.Api;
+using CookBook.Mobile.Core.Factories;
 using CookBook.Mobile.Core.Services.Interfaces;
 using CookBook.Mobile.Core.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 
 namespace CookBook.Mobile.Core.Installers
@@ -16,6 +18,7 @@ namespace CookBook.Mobile.Core.Installers
 
             InstallFactories(serviceCollection);
             InstallServices(serviceCollection);
+            InstallApiClients(serviceCollection);
 
             serviceCollection.Scan(selector => selector
                 .FromAssemblyOf<CoreInstaller>()
@@ -40,7 +43,14 @@ namespace CookBook.Mobile.Core.Installers
 
         private void InstallServices(IServiceCollection serviceCollection)
         {
+        }
 
+        private void InstallApiClients(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddHttpClient<IApiClient, ApiClient>(client =>
+            {
+                client.BaseAddress = new Uri("https://app-pv239-api.azurewebsites.net/");
+            });
         }
     }
 }
