@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32113.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Mobile.Android", "CookBook.Mobile\CookBook.Mobile.Android\CookBook.Mobile.Android.csproj", "{58756194-D17B-422E-BFA4-4FE0730F94D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Mobile.Android", "CookBook.Mobile.Android\CookBook.Mobile.Android.csproj", "{58756194-D17B-422E-BFA4-4FE0730F94D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Mobile.iOS", "CookBook.Mobile\CookBook.Mobile.iOS\CookBook.Mobile.iOS.csproj", "{8336269E-03C1-46D8-B93F-B3CD1C55B50C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Mobile.iOS", "CookBook.Mobile.iOS\CookBook.Mobile.iOS.csproj", "{8336269E-03C1-46D8-B93F-B3CD1C55B50C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Mobile", "CookBook.Mobile\CookBook.Mobile\CookBook.Mobile.csproj", "{FEFE3607-3947-4B05-BC9A-7A147684216C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Mobile", "CookBook.Mobile\CookBook.Mobile.csproj", "{FEFE3607-3947-4B05-BC9A-7A147684216C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{12670151-15D9-40FD-9740-E4347FF6CC72}"
 EndProject

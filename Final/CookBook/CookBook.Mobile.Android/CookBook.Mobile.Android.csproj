@@ -58,6 +58,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Installers\AndroidInstaller.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +88,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CookBook.Mobile.Core\CookBook.Mobile.Core.csproj">
+      <Project>{F7153773-819B-4BA0-B7D3-A422B857B55F}</Project>
+      <Name>CookBook.Mobile.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CookBook.Mobile\CookBook.Mobile.csproj">
       <Project>{99EAD99D-C5BE-4A34-A0AA-BE4F1C8B5ED9}</Project>
       <Name>CookBook.Mobile</Name>

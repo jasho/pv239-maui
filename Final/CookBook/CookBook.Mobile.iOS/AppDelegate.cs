@@ -1,4 +1,7 @@
-﻿using Foundation;
+﻿using System.Collections.Generic;
+using CookBook.Mobile.Core.Installers;
+using CookBook.Mobile.iOS.Installers;
+using Foundation;
 using UIKit;
 
 namespace CookBook.Mobile.iOS
@@ -19,7 +22,12 @@ namespace CookBook.Mobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+
+            var installers = new List<IInstaller>
+            {
+                new IosInstaller()
+            };
+            LoadApplication(new App(installers));
 
             return base.FinishedLaunching(app, options);
         }

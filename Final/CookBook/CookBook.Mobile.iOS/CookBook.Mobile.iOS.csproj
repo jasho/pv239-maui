@@ -63,6 +63,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Installers\IosInstaller.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -128,9 +129,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\CookBook.Mobile.Core\CookBook.Mobile.Core.csproj">
+      <Project>{F7153773-819B-4BA0-B7D3-A422B857B55F}</Project>
+      <Name>CookBook.Mobile.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CookBook.Mobile\CookBook.Mobile.csproj">
       <Project>{99EAD99D-C5BE-4A34-A0AA-BE4F1C8B5ED9}</Project>
       <Name>CookBook.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
 </Project>
