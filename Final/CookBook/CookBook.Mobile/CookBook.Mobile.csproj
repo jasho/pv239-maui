@@ -28,8 +28,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\Styles\ButtonStyle.xaml.cs">
+      <DependentUpon>ButtonStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Styles\NavigationPageStyle.xaml.cs">
+      <DependentUpon>NavigationPageStyle.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Styles\Colors.xaml.cs">
+      <DependentUpon>Colors.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ErrorView.xaml.cs">
       <DependentUpon>ErrorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Ingredient\IngredientEditView.xaml.cs">
+      <DependentUpon>IngredientEditView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
       <DependentUpon>IngredientDetailView.xaml</DependentUpon>

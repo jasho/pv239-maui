@@ -7,23 +7,21 @@ using System.Windows.Input;
 
 namespace CookBook.Mobile.Core.ViewModels.Ingredient
 {
-    public class IngredientDetailViewModel : ViewModelBase<Guid>
+    public class IngredientEditViewModel : ViewModelBase<Guid>
     {
         private readonly INavigationService navigationService;
 
         public IngredientDetailModel Item { get; set; }
 
-        public ICommand NavigateToEditViewCommand { get; set; }
-        public ICommand DeleteCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
 
-        public IngredientDetailViewModel(
+        public IngredientEditViewModel(
             INavigationService navigationService,
             ICommandFactory commandFactory)
         {
             this.navigationService = navigationService;
 
-            NavigateToEditViewCommand = commandFactory.CreateCommand(NavigateToEditViewAsync);
-            DeleteCommand = commandFactory.CreateCommand(DeleteAsync);
+            SaveCommand = commandFactory.CreateCommand(SaveAsync);
         }
 
         public override async Task OnAppearingAsync()
@@ -33,12 +31,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
             Item = new IngredientDetailModel(ViewModelParameter, "Vejce", "Prostě vejce", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg");
         }
 
-        private async Task NavigateToEditViewAsync()
-        {
-            await navigationService.PushAsync<IngredientEditViewModel, Guid>(ViewModelParameter);
-        }
-
-        private async Task DeleteAsync()
+        private async Task SaveAsync()
         {
             await navigationService.PopAsync();
         }

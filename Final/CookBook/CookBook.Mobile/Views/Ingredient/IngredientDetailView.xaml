@@ -5,19 +5,32 @@
                        xmlns:ingredient="clr-namespace:CookBook.Mobile.Core.ViewModels.Ingredient;assembly=CookBook.Mobile.Core"
                        x:Class="CookBook.Mobile.Views.Ingredient.IngredientDetailView"
                        x:DataType="ingredient:IngredientDetailViewModel"
-                       Title="{Binding Detail.Name}">
+                       Title="{Binding Item.Name}">
     <Grid RowDefinitions="300, *, 80">
         <Image Grid.Row="0"
                Aspect="AspectFill"
-               Source="{Binding Detail.ImageUrl}"/>
-
-        <BoxView Grid.Row="1"
-                 BackgroundColor="White"/>
+               Source="{Binding Item.ImageUrl}" />
 
         <ScrollView Grid.Row="1">
             <Label HorizontalOptions="Start" VerticalOptions="Start"
                    FontSize="Body"
-                   Text="{Binding Detail.Description}"/>
+                   Text="{Binding Item.Description}"
+                   BackgroundColor="Transparent" />
         </ScrollView>
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*, *"
+              Padding="10"
+              ColumnSpacing="10">
+            <Button Grid.Column="0"
+                    Text="Delete"
+                    Command="{Binding DeleteCommand}"
+                    Style="{StaticResource ErrorButtonStyle}" />
+
+            <Button Grid.Column="1"
+                    Text="Edit"
+                    Command="{Binding NavigateToEditViewCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}" />
+        </Grid>
     </Grid>
 </views:ContentPageBase>

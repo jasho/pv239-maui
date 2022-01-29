@@ -10,7 +10,8 @@
                  Spacing="10"
                  HorizontalOptions="Center" VerticalOptions="Center">
         <Button Text="Ingredients"
-                Command="{Binding NavigateToIngredientListViewCommand}"/>
+                Command="{Binding NavigateToIngredientListViewCommand}"
+                Style="{StaticResource PrimaryButtonStyle}" />
     </StackLayout>
     
 </views:ContentPageBase>
