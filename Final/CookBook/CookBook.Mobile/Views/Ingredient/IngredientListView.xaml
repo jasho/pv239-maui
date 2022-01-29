@@ -5,7 +5,8 @@
                        xmlns:ingredient="clr-namespace:CookBook.Mobile.Core.ViewModels.Ingredient;assembly=CookBook.Mobile.Core"
                        xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common.Models"
                        x:Class="CookBook.Mobile.Views.Ingredient.IngredientListView"
-                       x:DataType="ingredient:IngredientListViewModel">
+                       x:DataType="ingredient:IngredientListViewModel"
+                       x:Name="Root">
     <CollectionView ItemsSource="{Binding Items}"
                     Margin="10">
         <CollectionView.ItemsLayout>
@@ -17,12 +18,19 @@
             <DataTemplate x:DataType="models:IngredientListModel">
                 <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
                       HeightRequest="200">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.NavigateToDetailViewCommand}"
+                                              CommandParameter="{Binding Id}"/>
+                    </Grid.GestureRecognizers>
+
                     <Image Source="{Binding ImageUrl}"
                            HorizontalOptions="Center"
                            Aspect="AspectFill" />
+
                     <BoxView Grid.Row="0"
                              BackgroundColor="Black"
                              Opacity="0.2"/>
+
                     <Label HorizontalOptions="Center" VerticalOptions="Center"
                            HorizontalTextAlignment="Center"
                            FontSize="Title"

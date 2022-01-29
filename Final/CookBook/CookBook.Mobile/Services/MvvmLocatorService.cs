@@ -1,9 +1,9 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using CookBook.Mobile.Core.Services.Interfaces;
 using CookBook.Mobile.Core.ViewModels;
 using CookBook.Mobile.Exceptions;
 using CookBook.Mobile.Views;
+using System;
 using Xamarin.Forms;
 
 namespace CookBook.Mobile.Services
@@ -17,17 +17,17 @@ namespace CookBook.Mobile.Services
             this.dependencyInjectionService = dependencyInjectionService;
         }
 
-        public Page? ResolveView<TViewModel>(TViewModel? viewModel)
+        public Page? ResolveView<TViewModel>()
             where TViewModel : class, IViewModel
         {
-            return ResolveGenericView<Page, TViewModel>(viewModel);
+            var viewType = GetViewType<TViewModel>();
+            return GetView<TViewModel, Page>(viewType);
         }
 
-        public Page? ResolveView<TViewModel, TViewModelParameter>(TViewModel? viewModel,
-            TViewModelParameter? viewModelParameter = default)
+        public Page? ResolveView<TViewModel, TViewModelParameter>(TViewModelParameter? viewModelParameter = default)
             where TViewModel : class, IViewModel<TViewModelParameter>
         {
-            var viewModelInstance = viewModel ?? dependencyInjectionService.Resolve<TViewModel>(new TypedParameter(typeof(TViewModelParameter), viewModelParameter));
+            var viewModelInstance = dependencyInjectionService.Resolve<TViewModel>(new TypedParameter(typeof(TViewModelParameter), viewModelParameter));
             viewModelInstance.SetViewModelParameter(viewModelParameter);
             var viewType = GetViewType(viewModelInstance);
             return GetView<TViewModel, Page>(viewType, viewModelInstance);
@@ -47,7 +47,7 @@ namespace CookBook.Mobile.Services
             return GetView<TViewModel, TView>(viewType, viewModel);
         }
 
-        public Type GetViewType<TViewModel>(TViewModel? viewModel)
+        public Type GetViewType<TViewModel>(TViewModel? viewModel = null)
             where TViewModel : class
         {
             var viewModelType = viewModel?.GetType() ?? typeof(TViewModel);

@@ -1,9 +1,8 @@
 ﻿using CookBook.Mobile.Core.Services.Interfaces;
 using CookBook.Mobile.Core.ViewModels;
-using System;
+using CookBook.Mobile.Exceptions;
 using System.Linq;
 using System.Threading.Tasks;
-using CookBook.Mobile.Exceptions;
 using Xamarin.Forms;
 
 namespace CookBook.Mobile.Services
@@ -28,23 +27,11 @@ namespace CookBook.Mobile.Services
         {
             await navigation.PopToRootAsync(animated);
         }
-        public async Task PushAsync(Type viewModelType, bool animated, bool clearHistory)
-        {
-            var view = ResolveView(viewModelType);
-            if (clearHistory)
-            {
-                await ReplaceRootAsync(view, animated);
-            }
-            else
-            {
-                await navigation.PushAsync(view, animated);
-            }
-        }
 
-        public async Task PushAsync<TViewModel>(TViewModel? viewModel, bool animated, bool clearHistory)
+        public async Task PushAsync<TViewModel>(bool animated, bool clearHistory)
             where TViewModel : class, IViewModel
         {
-            var view = ResolveView(viewModel);
+            var view = ResolveView<TViewModel>();
             if (clearHistory)
             {
                 await ReplaceRootAsync(view, animated);
@@ -55,11 +42,10 @@ namespace CookBook.Mobile.Services
             }
         }
 
-        public async Task PushAsync<TViewModel, TViewModelParameter>(TViewModel? viewModel,
-            TViewModelParameter? viewModelParameter, bool animated, bool clearHistory)
+        public async Task PushAsync<TViewModel, TViewModelParameter>(TViewModelParameter? viewModelParameter, bool animated, bool clearHistory)
             where TViewModel : class, IViewModel<TViewModelParameter>
         {
-            var view = ResolveView(viewModel, viewModelParameter);
+            var view = ResolveView<TViewModel, TViewModelParameter>(viewModelParameter);
             if (clearHistory)
             {
                 await ReplaceRootAsync(view, animated);
@@ -84,29 +70,13 @@ namespace CookBook.Mobile.Services
             }
         }
 
-        private Page ResolveView(Type viewModelType)
-        {
-            Page view;
-            try
-            {
-                view = mvvmLocatorService.ResolveView(viewModelType)!;
-                return view;
-            }
-            catch (ViewNotLocatedException)
-            {
-                view = mvvmLocatorService.ResolveView<ErrorViewModel>()!;
-            }
-
-            return view;
-        }
-
-        private Page ResolveView<TViewModel>(TViewModel? viewModel)
+        private Page ResolveView<TViewModel>()
             where TViewModel : class, IViewModel
         {
             Page view;
             try
             {
-                view = mvvmLocatorService.ResolveView(viewModel)!;
+                view = mvvmLocatorService.ResolveView<TViewModel>()!;
                 return view;
             }
             catch (ViewNotLocatedException)
@@ -117,13 +87,13 @@ namespace CookBook.Mobile.Services
             return view;
         }
 
-        private Page ResolveView<TViewModel, TViewModelParameter>(TViewModel? viewModel, TViewModelParameter? viewModelParameter)
+        private Page ResolveView<TViewModel, TViewModelParameter>(TViewModelParameter? viewModelParameter)
             where TViewModel : class, IViewModel<TViewModelParameter>
         {
             Page view;
             try
             {
-                view = mvvmLocatorService.ResolveView(viewModel, viewModelParameter)!;
+                view = mvvmLocatorService.ResolveView<TViewModel, TViewModelParameter>(viewModelParameter)!;
                 return view;
             }
             catch (ViewNotLocatedException)

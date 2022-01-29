@@ -1,16 +1,15 @@
-﻿using System;
-using CookBook.Mobile.Core.ViewModels;
+﻿using CookBook.Mobile.Core.ViewModels;
+using System;
 using Xamarin.Forms;
 
 namespace CookBook.Mobile.Services
 {
     public interface IMvvmLocatorService
     {
-        Page? ResolveView<TViewModel>(TViewModel? viewModel = null)
+        Page? ResolveView<TViewModel>()
             where TViewModel : class, IViewModel;
 
-        Page? ResolveView<TViewModel, TViewModelParameter>(TViewModel? viewModel = null,
-            TViewModelParameter? viewModelParameter = default)
+        Page? ResolveView<TViewModel, TViewModelParameter>(TViewModelParameter? viewModelParameter = default)
             where TViewModel : class, IViewModel<TViewModelParameter>;
 
         Page? ResolveView(Type viewModelType);
