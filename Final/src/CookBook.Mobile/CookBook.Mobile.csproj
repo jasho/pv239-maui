@@ -21,11 +21,6 @@
     <ProjectReference Include="..\CookBook.Mobile.Core\CookBook.Mobile.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Installers\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Services\Interfaces\" />
-  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Resources\Styles\ButtonStyle.xaml.cs">
@@ -45,6 +40,9 @@
     </Compile>
     <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
       <DependentUpon>IngredientDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Recipe\RecipeEditView.xaml.cs">
+      <DependentUpon>RecipeEditView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Recipe\RecipeDetailView.xaml.cs">
       <DependentUpon>RecipeDetailView.xaml</DependentUpon>

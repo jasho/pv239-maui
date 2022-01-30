@@ -92,4 +92,25 @@ app.MapGet("/api/recipes/{id:guid}", (Guid id) =>
     .WithTags(RecipesTag)
     .WithName($"Get{RecipeBaseName}ById");
 
+app.MapPost("/api/recipes", (RecipeDetailModel recipe) =>
+    {
+        return Guid.NewGuid();
+    })
+    .WithTags(RecipesTag)
+    .WithName($"Create{RecipeBaseName}");
+
+app.MapPut("/api/recipes", (RecipeDetailModel recipe) =>
+    {
+        return Results.Ok();
+    })
+    .WithTags(RecipesTag)
+    .WithName($"Update{RecipeBaseName}");
+
+app.MapDelete("/api/recipes/{id:guid}", (Guid id) =>
+    {
+        return Results.Ok();
+    })
+    .WithTags(RecipesTag)
+    .WithName($"Delete{RecipeBaseName}");
+
 app.Run();

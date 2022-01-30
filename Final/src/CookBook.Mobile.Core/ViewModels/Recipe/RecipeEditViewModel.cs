@@ -8,17 +8,16 @@ using System.Windows.Input;
 
 namespace CookBook.Mobile.Core.ViewModels.Recipe
 {
-    public class RecipeDetailViewModel : ViewModelBase<Guid>
+    public class RecipeEditViewModel : ViewModelBase<Guid>
     {
         private readonly INavigationService navigationService;
         private readonly IRecipesClient recipesClient;
 
         public RecipeDetailModel Item { get; set; }
 
-        public ICommand NavigateToEditViewCommand { get; set; }
-        public ICommand DeleteCommand { get; set; }
+        public ICommand SaveCommand { get; set; }
 
-        public RecipeDetailViewModel(
+        public RecipeEditViewModel(
             INavigationService navigationService,
             ICommandFactory commandFactory,
             IRecipesClient recipesClient)
@@ -26,8 +25,7 @@ namespace CookBook.Mobile.Core.ViewModels.Recipe
             this.navigationService = navigationService;
             this.recipesClient = recipesClient;
 
-            NavigateToEditViewCommand = commandFactory.CreateCommand(NavigateToEditViewAsync);
-            DeleteCommand = commandFactory.CreateCommand(DeleteAsync);
+            SaveCommand = commandFactory.CreateCommand(SaveAsync);
         }
 
         public override async Task OnAppearingAsync()
@@ -37,14 +35,9 @@ namespace CookBook.Mobile.Core.ViewModels.Recipe
             Item = await recipesClient.GetRecipeByIdAsync(ViewModelParameter);
         }
 
-        private async Task NavigateToEditViewAsync()
+        private async Task SaveAsync()
         {
-            await navigationService.PushAsync<RecipeEditViewModel, Guid>(ViewModelParameter);
-        }
-
-        private async Task DeleteAsync()
-        {
-            await recipesClient.DeleteRecipeAsync(ViewModelParameter);
+            await recipesClient.UpdateRecipeAsync(Item);
             await navigationService.PopAsync();
         }
     }
