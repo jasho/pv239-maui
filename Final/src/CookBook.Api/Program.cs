@@ -79,4 +79,17 @@ app.MapGet("/api/recipes", () =>
     .WithTags(RecipesTag)
     .WithName($"Get{RecipeBaseName}sAll");
 
+app.MapGet("/api/recipes/{id:guid}", (Guid id) =>
+    {
+        return new RecipeDetailModel(id, "Míchaná vajíčka", "Prostě míchaná vajíčka.", new TimeSpan(0, 30, 0), FoodType.MainDish,
+            new List<RecipeDetailIngredientModel>
+            {
+                new (Guid.NewGuid(), 5, Unit.Pieces, new(Guid.NewGuid(), "Vejce",
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"))
+            },
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Scrambled_eggs-01.jpg/320px-Scrambled_eggs-01.jpg");
+    })
+    .WithTags(RecipesTag)
+    .WithName($"Get{RecipeBaseName}ById");
+
 app.Run();

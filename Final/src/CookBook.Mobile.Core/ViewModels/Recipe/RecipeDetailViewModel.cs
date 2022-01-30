@@ -3,23 +3,22 @@ using CookBook.Mobile.Core.Api;
 using CookBook.Mobile.Core.Factories;
 using CookBook.Mobile.Core.Services.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CookBook.Mobile.Core.ViewModels.Recipe
 {
-    public class RecipeListViewModel : ViewModelBase
+    public class RecipeDetailViewModel : ViewModelBase<Guid>
     {
         private readonly INavigationService navigationService;
         private readonly IRecipesClient recipesClient;
 
-        public ICollection<RecipeListModel> Items { get; set; }
+        public RecipeDetailModel Item { get; set; }
 
-        public ICommand NavigateToDetailViewCommand { get; set; }
+        public ICommand NavigateToEditViewCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
 
-
-        public RecipeListViewModel(
+        public RecipeDetailViewModel(
             INavigationService navigationService,
             ICommandFactory commandFactory,
             IRecipesClient recipesClient)
@@ -27,19 +26,23 @@ namespace CookBook.Mobile.Core.ViewModels.Recipe
             this.navigationService = navigationService;
             this.recipesClient = recipesClient;
 
-            NavigateToDetailViewCommand = commandFactory.CreateCommand<Guid>(NavigateToDetailViewAsync);
+            NavigateToEditViewCommand = commandFactory.CreateCommand(NavigateToEditViewAsync);
+            DeleteCommand = commandFactory.CreateCommand(DeleteAsync);
         }
 
         public override async Task OnAppearingAsync()
         {
             await base.OnAppearingAsync();
 
-            Items = await recipesClient.GetRecipesAllAsync();
+            Item = await recipesClient.GetRecipeByIdAsync(ViewModelParameter);
         }
 
-        private async Task NavigateToDetailViewAsync(Guid id)
+        private async Task NavigateToEditViewAsync()
         {
-            await navigationService.PushAsync<RecipeDetailViewModel, Guid>(id);
+        }
+
+        private async Task DeleteAsync()
+        {
         }
     }
 }

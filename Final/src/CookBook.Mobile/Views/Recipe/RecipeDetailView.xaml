@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
+                       xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common.Models"
+                       xmlns:recipe="clr-namespace:CookBook.Mobile.Core.ViewModels.Recipe;assembly=CookBook.Mobile.Core"
+                       x:Class="CookBook.Mobile.Views.Recipe.RecipeDetailView"
+                       x:DataType="recipe:RecipeDetailViewModel"
+                       x:Name="Root"
+                       Title="{Binding Item.Name}">
+    <Grid RowDefinitions="300, *, 80">
+        <Image Grid.Row="0"
+               Aspect="AspectFill"
+               Source="{Binding Item.ImageUrl}"/>
+
+        <BoxView Grid.Row="1"
+                 BackgroundColor="White"/>
+        <ScrollView Grid.Row="1">
+            <StackLayout Spacing="10">
+                <Label Text="Food Type:"
+                       FontSize="Title"/>
+                <Label Text="{Binding Item.FoodType}"/>
+
+                <Label Text="Duration:"
+                       FontSize="Title"/>
+                <Label Text="{Binding Item.Duration}"/>
+
+                <Label Text="Description:"
+                       FontSize="Title"/>
+                <Label HorizontalOptions="Start" VerticalOptions="Start"
+                       FontSize="Body"
+                       Text="{Binding Item.Description}"/>
+
+                <Label Text="Ingredients:"
+                       FontSize="Title"/>
+                <CollectionView ItemsSource="{Binding Item.IngredientAmounts}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:RecipeDetailIngredientModel">
+                            <Grid ColumnDefinitions="Auto, Auto, *"
+                                  ColumnSpacing="5">
+                                <Label Grid.Column="0"
+                                       Text="{Binding Amount}"/>
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding Unit}"/>
+
+                                <Label Grid.Column="2"
+                                       Text="{Binding Ingredient.Name}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*, *"
+              Padding="10">
+            <Button Grid.Column="0"
+                    Text="Delete"
+                    Command="{Binding DeleteCommand}"
+                    Style="{StaticResource ErrorButtonStyle}" />
+            <Button Grid.Column="1"
+                    Text="Edit"
+                    Command="{Binding NavigateToEditViewCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}" />
+        </Grid>
+    </Grid>
+</views:ContentPageBase>
