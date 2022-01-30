@@ -32,7 +32,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         {
             await base.OnAppearingAsync();
 
-            Items = await ingredientsClient.GetAllAsync();
+            Items = await ingredientsClient.GetIngredientsAllAsync();
         }
 
         private async Task NavigateToDetailViewAsync(Guid id)

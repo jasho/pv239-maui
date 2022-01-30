@@ -34,7 +34,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         {
             await base.OnAppearingAsync();
 
-            Item = await ingredientsClient.GetByIdAsync(ViewModelParameter);
+            Item = await ingredientsClient.GetIngredientByIdAsync(ViewModelParameter);
         }
 
         private async Task NavigateToEditViewAsync()
@@ -44,7 +44,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
 
         private async Task DeleteAsync()
         {
-            await ingredientsClient.DeleteAsync(ViewModelParameter);
+            await ingredientsClient.DeleteIngredientAsync(ViewModelParameter);
             await navigationService.PopAsync();
         }
     }

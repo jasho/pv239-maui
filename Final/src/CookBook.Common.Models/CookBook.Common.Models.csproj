@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Ingredient\" />
+    <Folder Include="Recipe\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CookBook.Common\CookBook.Common.csproj" />
   </ItemGroup>
 
 </Project>
