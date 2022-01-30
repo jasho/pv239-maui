@@ -8,34 +8,43 @@
                        x:DataType="recipe:RecipeListViewModel"
                        x:Name="Root"
                        Title="Recipes">
-    <CollectionView ItemsSource="{Binding Items}">
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout Orientation="Vertical"
-                             Span="2"
-                             VerticalItemSpacing="20" HorizontalItemSpacing="20" />
-        </CollectionView.ItemsLayout>
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="models:RecipeListModel">
-                <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
-                      HeightRequest="200">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.NavigateToDetailViewCommand}"
-                                              CommandParameter="{Binding Id}" />
-                    </Grid.GestureRecognizers>
+    <Grid RowDefinitions="*, 80">
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 VerticalItemSpacing="20" HorizontalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:RecipeListModel">
+                    <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
+                          HeightRequest="200">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.NavigateToDetailViewCommand}"
+                                                  CommandParameter="{Binding Id}" />
+                        </Grid.GestureRecognizers>
 
-                    <Image Source="{Binding ImageUrl}"
-                           HorizontalOptions="Center"
-                           Aspect="AspectFill" />
+                        <Image Source="{Binding ImageUrl}"
+                               HorizontalOptions="Center"
+                               Aspect="AspectFill" />
 
-                    <BoxView BackgroundColor="Black"
-                             Opacity="0.5" />
+                        <BoxView BackgroundColor="Black"
+                                 Opacity="0.5" />
 
-                    <Label HorizontalOptions="Center" VerticalOptions="Center"
-                           HorizontalTextAlignment="Center"
-                           FontSize="Title"
-                           Text="{Binding Name}" />
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+                        <Label HorizontalOptions="Center" VerticalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               FontSize="Title"
+                               Text="{Binding Name}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="1"
+                Text="Add New"
+                Margin="10"
+                Command="{Binding NavigateToCreateViewCommand}"
+                Style="{StaticResource PrimaryButtonStyle}" />
+    </Grid>
+    
 </views:ContentPageBase>

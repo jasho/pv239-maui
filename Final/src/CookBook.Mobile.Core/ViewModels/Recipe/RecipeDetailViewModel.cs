@@ -39,7 +39,7 @@ namespace CookBook.Mobile.Core.ViewModels.Recipe
 
         private async Task NavigateToEditViewAsync()
         {
-            await navigationService.PushAsync<RecipeEditViewModel, Guid>(ViewModelParameter);
+            await navigationService.PushAsync<RecipeEditViewModel, Guid?>(ViewModelParameter);
         }
 
         private async Task DeleteAsync()

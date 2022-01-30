@@ -1,14 +1,16 @@
-﻿using CookBook.Common.Models;
+﻿using CookBook.Common.Enums;
+using CookBook.Common.Models;
 using CookBook.Mobile.Core.Api;
 using CookBook.Mobile.Core.Factories;
 using CookBook.Mobile.Core.Services.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CookBook.Mobile.Core.ViewModels.Recipe
 {
-    public class RecipeEditViewModel : ViewModelBase<Guid>
+    public class RecipeEditViewModel : ViewModelBase<Guid?>
     {
         private readonly INavigationService navigationService;
         private readonly IRecipesClient recipesClient;
@@ -32,13 +34,31 @@ namespace CookBook.Mobile.Core.ViewModels.Recipe
         {
             await base.OnAppearingAsync();
 
-            Item = await recipesClient.GetRecipeByIdAsync(ViewModelParameter);
+            Item = ViewModelParameter is null
+                ? new RecipeDetailModel(null, string.Empty, string.Empty, TimeSpan.Zero, FoodType.Unknown, new List<RecipeDetailIngredientModel>(), null)
+                : await recipesClient.GetRecipeByIdAsync(ViewModelParameter.Value);
         }
 
         private async Task SaveAsync()
         {
-            await recipesClient.UpdateRecipeAsync(Item);
-            await navigationService.PopAsync();
+            try
+            {
+                if (ViewModelParameter is null)
+                {
+                    await recipesClient.CreateRecipeAsync(Item);
+                }
+                else
+                {
+                    await recipesClient.UpdateRecipeAsync(Item);
+                }
+
+                await navigationService.PopAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
