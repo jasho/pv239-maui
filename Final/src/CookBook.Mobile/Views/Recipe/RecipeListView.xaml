@@ -2,34 +2,32 @@
 <views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
-                       xmlns:ingredient="clr-namespace:CookBook.Mobile.Core.ViewModels.Ingredient;assembly=CookBook.Mobile.Core"
                        xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common.Models"
-                       x:Class="CookBook.Mobile.Views.Ingredient.IngredientListView"
-                       x:DataType="ingredient:IngredientListViewModel"
+                       xmlns:recipe="clr-namespace:CookBook.Mobile.Core.ViewModels.Recipe;assembly=CookBook.Mobile.Core"
+                       x:Class="CookBook.Mobile.Views.Recipe.RecipeListView"
+                       x:DataType="recipe:RecipeListViewModel"
                        x:Name="Root"
-                       Title="Ingredients">
-    <CollectionView ItemsSource="{Binding Items}"
-                    Margin="10">
+                       Title="Recipes">
+    <CollectionView ItemsSource="{Binding Items}">
         <CollectionView.ItemsLayout>
             <GridItemsLayout Orientation="Vertical"
                              Span="2"
                              VerticalItemSpacing="20" HorizontalItemSpacing="20" />
         </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="models:IngredientListModel">
+            <DataTemplate x:DataType="models:RecipeListModel">
                 <Grid HorizontalOptions="Fill" VerticalOptions="Fill"
                       HeightRequest="200">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.NavigateToDetailViewCommand}"
-                                              CommandParameter="{Binding Id}"/>
+                                              CommandParameter="{Binding Id}" />
                     </Grid.GestureRecognizers>
 
                     <Image Source="{Binding ImageUrl}"
                            HorizontalOptions="Center"
                            Aspect="AspectFill" />
 
-                    <BoxView Grid.Row="0"
-                             BackgroundColor="Black"
+                    <BoxView BackgroundColor="Black"
                              Opacity="0.5" />
 
                     <Label HorizontalOptions="Center" VerticalOptions="Center"

@@ -47,9 +47,16 @@ namespace CookBook.Mobile.Core.Installers
 
         private void InstallApiClients(IServiceCollection serviceCollection)
         {
+            var apiBaseUri = new Uri("https://app-pv239-api.azurewebsites.net/");
+
             serviceCollection.AddHttpClient<IIngredientsClient, IngredientsClient>(client =>
             {
-                client.BaseAddress = new Uri("https://app-pv239-api.azurewebsites.net/");
+                client.BaseAddress = apiBaseUri;
+            });
+
+            serviceCollection.AddHttpClient<IRecipesClient, RecipesClient>(client =>
+            {
+                client.BaseAddress = apiBaseUri;
             });
         }
     }

@@ -1,8 +1,9 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using CookBook.Mobile.Core.Factories;
+﻿using CookBook.Mobile.Core.Factories;
 using CookBook.Mobile.Core.Services.Interfaces;
 using CookBook.Mobile.Core.ViewModels.Ingredient;
+using CookBook.Mobile.Core.ViewModels.Recipe;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CookBook.Mobile.Core.ViewModels
 {
@@ -11,6 +12,7 @@ namespace CookBook.Mobile.Core.ViewModels
         private readonly INavigationService navigationService;
 
         public ICommand NavigateToIngredientListViewCommand { get; set; }
+        public ICommand NavigateToRecipeListViewCommand { get; set; }
 
         public MainViewModel(
             INavigationService navigationService,
@@ -19,11 +21,17 @@ namespace CookBook.Mobile.Core.ViewModels
             this.navigationService = navigationService;
 
             NavigateToIngredientListViewCommand = commandFactory.CreateCommand(NavigateToIngredientListAsync);
+            NavigateToRecipeListViewCommand = commandFactory.CreateCommand(NavigateToRecipeListViewAsync);
         }
 
         private async Task NavigateToIngredientListAsync()
         {
             await navigationService.PushAsync<IngredientListViewModel>();
+        }
+
+        private async Task NavigateToRecipeListViewAsync()
+        {
+            await navigationService.PushAsync<RecipeListViewModel>();
         }
     }
 }

@@ -4,13 +4,18 @@
                        xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.Core.ViewModels;assembly=CookBook.Mobile.Core"
                        x:Class="CookBook.Mobile.Views.MainView"
-                       x:DataType="viewModels:MainViewModel">
+                       x:DataType="viewModels:MainViewModel"
+                       Title="CookBook">
 
     <StackLayout Margin="10"
                  Spacing="10"
                  HorizontalOptions="Center" VerticalOptions="Center">
         <Button Text="Ingredients"
                 Command="{Binding NavigateToIngredientListViewCommand}"
+                Style="{StaticResource PrimaryButtonStyle}" />
+
+        <Button Text="Recipes"
+                Command="{Binding NavigateToRecipeListViewCommand}"
                 Style="{StaticResource PrimaryButtonStyle}" />
     </StackLayout>
     

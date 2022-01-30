@@ -46,6 +46,9 @@
     <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
       <DependentUpon>IngredientDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Recipe\RecipeListView.xaml.cs">
+      <DependentUpon>RecipeListView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Ingredient\IngredientListView.xaml.cs">
       <DependentUpon>IngredientListView.xaml</DependentUpon>
     </Compile>
