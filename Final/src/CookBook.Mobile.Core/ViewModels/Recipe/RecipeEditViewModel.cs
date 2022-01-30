@@ -41,24 +41,16 @@ namespace CookBook.Mobile.Core.ViewModels.Recipe
 
         private async Task SaveAsync()
         {
-            try
+            if (ViewModelParameter is null)
             {
-                if (ViewModelParameter is null)
-                {
-                    await recipesClient.CreateRecipeAsync(Item);
-                }
-                else
-                {
-                    await recipesClient.UpdateRecipeAsync(Item);
-                }
+                await recipesClient.CreateRecipeAsync(Item);
+            }
+            else
+            {
+                await recipesClient.UpdateRecipeAsync(Item);
+            }
 
-                await navigationService.PopAsync();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            await navigationService.PopAsync();
         }
     }
 }
