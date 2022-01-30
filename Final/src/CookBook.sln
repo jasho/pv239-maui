@@ -17,13 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBook.Mobile.Core", "Coo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4E607FE3-D6F1-46F9-B916-9E6877BFF0E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Common.Models", "CookBook.Common.Models\CookBook.Common.Models.csproj", "{E53A2F86-6DB1-492A-AB73-3DC8E95D3E08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBook.Common.Models", "CookBook.Common.Models\CookBook.Common.Models.csproj", "{E53A2F86-6DB1-492A-AB73-3DC8E95D3E08}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{A0EC16D6-D398-4A6C-AFD8-8F086B767E7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Common", "CookBook.Common\CookBook.Common.csproj", "{5A4830C5-424D-400C-A327-D279BC066E69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBook.Common", "CookBook.Common\CookBook.Common.csproj", "{5A4830C5-424D-400C-A327-D279BC066E69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Api", "CookBook.Api\CookBook.Api.csproj", "{ED05DF5A-D73A-4B16-9826-046860352500}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookBook.Api", "CookBook.Api\CookBook.Api.csproj", "{ED05DF5A-D73A-4B16-9826-046860352500}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,12 +4,14 @@ using CookBook.Mobile.Core.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CookBook.Mobile.Core.Api;
 
 namespace CookBook.Mobile.Core.ViewModels.Ingredient
 {
     public class IngredientDetailViewModel : ViewModelBase<Guid>
     {
         private readonly INavigationService navigationService;
+        private readonly IIngredientsClient ingredientsClient;
 
         public IngredientDetailModel Item { get; set; }
 
@@ -18,9 +20,11 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
 
         public IngredientDetailViewModel(
             INavigationService navigationService,
-            ICommandFactory commandFactory)
+            ICommandFactory commandFactory,
+            IIngredientsClient ingredientsClient)
         {
             this.navigationService = navigationService;
+            this.ingredientsClient = ingredientsClient;
 
             NavigateToEditViewCommand = commandFactory.CreateCommand(NavigateToEditViewAsync);
             DeleteCommand = commandFactory.CreateCommand(DeleteAsync);
@@ -30,7 +34,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         {
             await base.OnAppearingAsync();
 
-            Item = new IngredientDetailModel(ViewModelParameter, "Vejce", "Prostě vejce", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg");
+            Item = await ingredientsClient.GetByIdAsync(ViewModelParameter);
         }
 
         private async Task NavigateToEditViewAsync()
@@ -40,6 +44,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
 
         private async Task DeleteAsync()
         {
+            await ingredientsClient.DeleteAsync(ViewModelParameter);
             await navigationService.PopAsync();
         }
     }

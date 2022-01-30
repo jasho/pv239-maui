@@ -1,20 +1,26 @@
-using CookBook.Common.Models;
+﻿using CookBook.Common.Models;
+using NSwag.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApiDocument(document =>
+{
+    document.Title = "CookBook API";
+    document.DocumentName = "cookbook-api";
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseOpenApi();
+app.UseSwaggerUi3(settings =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+    settings.DocumentTitle = "CookBook Swagger UI";
+    settings.SwaggerRoutes.Add(new SwaggerUi3Route("CookBook API", "/swagger/cookbook-api/swagger.json"));
+});
 app.UseHttpsRedirection();
+
+const string IngredientsGroupName = "Ingredients";
 
 app.MapGet("/api/ingredients", () =>
 {
@@ -26,6 +32,35 @@ app.MapGet("/api/ingredients", () =>
             "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
     };
 })
-    .WithName("IngredientsGetAll");
+    .WithTags(IngredientsGroupName)
+    .WithName("GetAll");
+
+app.MapGet("/api/ingredients/{id:guid}", (Guid id) =>
+{
+    return new IngredientDetailModel(id, "Vejce", "Prostě vejce", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg");
+})
+    .WithTags(IngredientsGroupName)
+    .WithName("GetById");
+
+app.MapPost("/api/ingredients", (IngredientDetailModel ingredient) =>
+{
+    return Guid.NewGuid();
+})
+    .WithTags(IngredientsGroupName)
+    .WithName("Create");
+
+app.MapPut("/api/ingredients", (IngredientDetailModel ingredient) =>
+    {
+        return Results.Ok();
+    })
+    .WithTags(IngredientsGroupName)
+    .WithName("Update");
+
+app.MapDelete("/api/ingredients/{id:guid}", (Guid id) =>
+    {
+        return Results.Ok();
+    })
+    .WithTags(IngredientsGroupName)
+    .WithName("Delete");
 
 app.Run();

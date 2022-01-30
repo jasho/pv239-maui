@@ -12,7 +12,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
     public class IngredientListViewModel : ViewModelBase
     {
         private readonly INavigationService navigationService;
-        private readonly IApiClient apiClient;
+        private readonly IIngredientsClient ingredientsClient;
         public ICollection<IngredientListModel> Items { get; set; }
 
         public ICommand NavigateToDetailViewCommand { get; set; }
@@ -20,10 +20,10 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         public IngredientListViewModel(
             INavigationService navigationService,
             ICommandFactory commandFactory,
-            IApiClient apiClient)
+            IIngredientsClient ingredientsClient)
         {
             this.navigationService = navigationService;
-            this.apiClient = apiClient;
+            this.ingredientsClient = ingredientsClient;
 
             NavigateToDetailViewCommand = commandFactory.CreateCommand<Guid>(NavigateToDetailViewAsync);
         }
@@ -32,7 +32,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         {
             await base.OnAppearingAsync();
 
-            Items = await apiClient.IngredientsAsync();
+            Items = await ingredientsClient.GetAllAsync();
         }
 
         private async Task NavigateToDetailViewAsync(Guid id)
