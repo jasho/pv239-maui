@@ -13,7 +13,7 @@ namespace CookBook.Mobile.Core.ViewModels.Recipe
         private readonly INavigationService navigationService;
         private readonly IRecipesClient recipesClient;
 
-        public RecipeDetailModel Item { get; set; }
+        public RecipeDetailModel Item { get; set; } = null!;
 
         public ICommand SaveCommand { get; set; }
 

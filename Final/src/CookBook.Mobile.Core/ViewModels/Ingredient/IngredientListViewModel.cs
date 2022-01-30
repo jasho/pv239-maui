@@ -16,6 +16,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         public ICollection<IngredientListModel> Items { get; set; }
 
         public ICommand NavigateToDetailViewCommand { get; set; }
+        public ICommand NavigateToCreateViewCommand { get; set; }
 
         public IngredientListViewModel(
             INavigationService navigationService,
@@ -26,6 +27,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
             this.ingredientsClient = ingredientsClient;
 
             NavigateToDetailViewCommand = commandFactory.CreateCommand<Guid>(NavigateToDetailViewAsync);
+            NavigateToCreateViewCommand = commandFactory.CreateCommand(NavigateToCreateViewAsync);
         }
 
         public override async Task OnAppearingAsync()
@@ -38,6 +40,11 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         private async Task NavigateToDetailViewAsync(Guid id)
         {
             await navigationService.PushAsync<IngredientDetailViewModel, Guid>(id);
+        }
+
+        private async Task NavigateToCreateViewAsync()
+        {
+            await navigationService.PushAsync<IngredientEditViewModel, Guid?>();
         }
     }
 }

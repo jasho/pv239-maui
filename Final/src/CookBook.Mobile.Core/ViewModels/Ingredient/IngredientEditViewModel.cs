@@ -1,19 +1,19 @@
 ﻿using CookBook.Common.Models;
+using CookBook.Mobile.Core.Api;
 using CookBook.Mobile.Core.Factories;
 using CookBook.Mobile.Core.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using CookBook.Mobile.Core.Api;
 
 namespace CookBook.Mobile.Core.ViewModels.Ingredient
 {
-    public class IngredientEditViewModel : ViewModelBase<Guid>
+    public class IngredientEditViewModel : ViewModelBase<Guid?>
     {
         private readonly INavigationService navigationService;
         private readonly IIngredientsClient ingredientsClient;
 
-        public IngredientDetailModel Item { get; set; }
+        public IngredientDetailModel Item { get; set; } = null!;
 
         public ICommand SaveCommand { get; set; }
 
@@ -32,12 +32,22 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         {
             await base.OnAppearingAsync();
 
-            Item = await ingredientsClient.GetIngredientByIdAsync(ViewModelParameter);
+            Item = ViewModelParameter is null
+                ? new IngredientDetailModel(null, string.Empty, string.Empty, null)
+                : await ingredientsClient.GetIngredientByIdAsync(ViewModelParameter.Value);
         }
 
         private async Task SaveAsync()
         {
-            await ingredientsClient.UpdateIngredientAsync(Item);
+            if (ViewModelParameter is null)
+            {
+                await ingredientsClient.CreateIngredientAsync(Item);
+            }
+            else
+            {
+                await ingredientsClient.UpdateIngredientAsync(Item);
+            }
+
             await navigationService.PopAsync();
         }
     }

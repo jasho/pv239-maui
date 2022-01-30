@@ -1,10 +1,10 @@
 ﻿using CookBook.Common.Models;
+using CookBook.Mobile.Core.Api;
 using CookBook.Mobile.Core.Factories;
 using CookBook.Mobile.Core.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using CookBook.Mobile.Core.Api;
 
 namespace CookBook.Mobile.Core.ViewModels.Ingredient
 {
@@ -13,7 +13,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         private readonly INavigationService navigationService;
         private readonly IIngredientsClient ingredientsClient;
 
-        public IngredientDetailModel Item { get; set; }
+        public IngredientDetailModel Item { get; set; } = null!;
 
         public ICommand NavigateToEditViewCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
@@ -39,7 +39,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
 
         private async Task NavigateToEditViewAsync()
         {
-            await navigationService.PushAsync<IngredientEditViewModel, Guid>(ViewModelParameter);
+            await navigationService.PushAsync<IngredientEditViewModel, Guid?>(ViewModelParameter);
         }
 
         private async Task DeleteAsync()
