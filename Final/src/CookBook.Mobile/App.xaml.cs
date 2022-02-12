@@ -1,4 +1,5 @@
-﻿using CookBook.Mobile.Core.Installers;
+﻿using CookBook.Mobile.Core;
+using CookBook.Mobile.Core.Installers;
 using CookBook.Mobile.Core.Services;
 using CookBook.Mobile.Core.Services.Interfaces;
 using CookBook.Mobile.Core.ViewModels;
@@ -23,13 +24,21 @@ namespace CookBook.Mobile
 
             InstallDependencies(dependencyInjectionService, navigationPage.Navigation, this, installers);
 
-            CultureInfo.CurrentCulture = new CultureInfo("cs");
-            CultureInfo.CurrentUICulture = new CultureInfo("cs");
+            var preferencesService = dependencyInjectionService.Resolve<IPreferencesService>();
+            ApplyLanguagePreferences(preferencesService);
 
             var navigationService = dependencyInjectionService.Resolve<INavigationService>();
             navigationService.PushAsync<MainViewModel>();
 
             MainPage = navigationPage;
+        }
+
+        private void ApplyLanguagePreferences(IPreferencesService preferencesService)
+        {
+            var language = preferencesService.Get(PreferencesKeys.LanguageKey, "cs");
+
+            CultureInfo.CurrentCulture = new CultureInfo(language);
+            CultureInfo.CurrentUICulture = new CultureInfo(language);
         }
 
         protected override void OnStart()

@@ -15,14 +15,15 @@
         <Label Grid.Row="1" Grid.Column="0"
                VerticalOptions="Center"
                Text="{x:Static texts:SettingsViewTexts.Language_Label_Text}"/>
+
         <Picker x:Name="LanguagePicker"
                 Grid.Row="1" Grid.Column="1"
                 ItemsSource="{Binding Languages}"
+                SelectedItem="{Binding SelectedLanguage}"
                 ItemDisplayBinding="{Binding Converter={StaticResource SettingsLanguageToStringConverter}}">
             <Picker.Behaviors>
                 <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged"
-                                                  Command="{Binding SelectLanguageCommand}"
-                                                  CommandParameter="{Binding Source={x:Reference LanguagePicker}, Path=SelectedItem}"/>
+                                                  Command="{Binding SelectLanguageCommand}"/>
             </Picker.Behaviors>
         </Picker>
     </Grid>

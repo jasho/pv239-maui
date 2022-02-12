@@ -1,4 +1,5 @@
 ﻿using CookBook.Mobile.Core.Factories;
+using CookBook.Mobile.Core.Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -7,22 +8,34 @@ namespace CookBook.Mobile.Core.ViewModels
 {
     public class SettingsViewModel : ViewModelBase
     {
+        private readonly IPreferencesService preferencesService;
+
         public ICollection<string> Languages { get; set; } = new List<string>
         {
             "cs", "en"
         };
 
+        public string SelectedLanguage { get; set; }
         public ICommand SelectLanguageCommand { get; set; }
-
+        
         public SettingsViewModel(
-            ICommandFactory commandFactory)
+            ICommandFactory commandFactory,
+            IPreferencesService preferencesService)
         {
-            SelectLanguageCommand = commandFactory.CreateCommand<string>(SelectLanguageAsync);
+            this.preferencesService = preferencesService;
+            SelectLanguageCommand = commandFactory.CreateCommand(SelectLanguageAsync);
         }
 
-        private async Task SelectLanguageAsync(string language)
+        public override async Task OnAppearingAsync()
         {
-            // TODO: add functionality
+            await base.OnAppearingAsync();
+
+            SelectedLanguage = preferencesService.Get(PreferencesKeys.LanguageKey, "cs");
+        }
+
+        private async Task SelectLanguageAsync()
+        {
+            preferencesService.Set(PreferencesKeys.LanguageKey, SelectedLanguage);
         }
     }
 }
