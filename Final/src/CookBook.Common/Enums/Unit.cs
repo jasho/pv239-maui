@@ -8,6 +8,6 @@
         Ml = 3,
         G = 4,
         Pieces = 5,
-        Spoon = 6
+        Spoons = 6
     }
 }

@@ -4,6 +4,7 @@
                        xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
                        xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common.Models"
                        xmlns:recipe="clr-namespace:CookBook.Mobile.Core.ViewModels.Recipe;assembly=CookBook.Mobile.Core"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
                        x:Class="CookBook.Mobile.Views.Recipe.RecipeDetailView"
                        x:DataType="recipe:RecipeDetailViewModel"
                        x:Name="Root"
@@ -17,36 +18,41 @@
                  BackgroundColor="White"/>
         <ScrollView Grid.Row="1">
             <StackLayout Spacing="10">
-                <Label Text="Food Type:"
+                <Label Text="{x:Static texts:RecipeDetailViewTexts.FoodType_Label_Text}"
+                       VerticalOptions="Center"
                        FontSize="Title"/>
                 <Label Text="{Binding Item.FoodType}"/>
 
-                <Label Text="Duration:"
+                <Label Text="{x:Static texts:RecipeDetailViewTexts.Duration_Label_Text}"
+                       VerticalOptions="Center"
                        FontSize="Title"/>
                 <Label Text="{Binding Item.Duration}"/>
 
-                <Label Text="Description:"
+                <Label Text="{x:Static texts:RecipeDetailViewTexts.Description_Label_Text}"
+                       VerticalOptions="Start"
                        FontSize="Title"/>
                 <Label HorizontalOptions="Start" VerticalOptions="Start"
                        FontSize="Body"
                        Text="{Binding Item.Description}"/>
 
-                <Label Text="Ingredients:"
+                <Label Text="{x:Static texts:RecipeDetailViewTexts.Ingredients_Label_Text}"
+                       VerticalOptions="Center"
                        FontSize="Title"/>
                 <CollectionView ItemsSource="{Binding Item.IngredientAmounts}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:RecipeDetailIngredientModel">
-                            <Grid ColumnDefinitions="Auto, Auto, *"
-                                  ColumnSpacing="5">
-                                <Label Grid.Column="0"
-                                       Text="{Binding Amount}"/>
-
-                                <Label Grid.Column="1"
-                                       Text="{Binding Unit}"/>
-
-                                <Label Grid.Column="2"
-                                       Text="{Binding Ingredient.Name}"/>
-                            </Grid>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="- "/>
+                                        <Span Text="{Binding Amount}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding Unit, Converter={StaticResource UnitToStringConverter}}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding Ingredient.Name}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -57,11 +63,11 @@
               ColumnDefinitions="*, *"
               Padding="10">
             <Button Grid.Column="0"
-                    Text="Delete"
+                    Text="{x:Static texts:RecipeDetailViewTexts.Delete_Button_Text}"
                     Command="{Binding DeleteCommand}"
                     Style="{StaticResource ErrorButtonStyle}" />
             <Button Grid.Column="1"
-                    Text="Edit"
+                    Text="{x:Static texts:RecipeDetailViewTexts.Edit_Button_Text}"
                     Command="{Binding NavigateToEditViewCommand}"
                     Style="{StaticResource PrimaryButtonStyle}" />
         </Grid>

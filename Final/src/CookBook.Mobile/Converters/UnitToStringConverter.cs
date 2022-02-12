@@ -5,10 +5,10 @@ using Xamarin.Forms;
 
 namespace CookBook.Mobile.Converters
 {
-    public class FoodTypeToStringConverter : IValueConverter
+    public class UnitToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-            => FoodTypeTexts.ResourceManager.GetString(value.ToString()) 
+            => UnitTexts.ResourceManager.GetString(value.ToString())
                ?? string.Empty;
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
