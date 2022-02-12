@@ -41,7 +41,7 @@
                         <Label HorizontalOptions="End" VerticalOptions="End"
                                Margin="10" Padding="5"
                                FontSize="Small"
-                               Text="{Binding FoodType}"
+                               Text="{Binding FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
                                BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}"/>
                     </Grid>
                 </DataTemplate>
