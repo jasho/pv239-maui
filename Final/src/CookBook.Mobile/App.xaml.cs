@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using CookBook.Mobile.Core.Installers;
+﻿using CookBook.Mobile.Core.Installers;
 using CookBook.Mobile.Core.Services;
 using CookBook.Mobile.Core.Services.Interfaces;
 using CookBook.Mobile.Core.ViewModels;
 using CookBook.Mobile.Installers;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using System.Globalization;
 using Xamarin.Forms;
 
 namespace CookBook.Mobile
@@ -12,7 +13,6 @@ namespace CookBook.Mobile
     public partial class App
     {
         private readonly IDependencyInjectionService dependencyInjectionService;
-
 
         public App(IEnumerable<IInstaller> installers)
         {
@@ -23,6 +23,9 @@ namespace CookBook.Mobile
 
             InstallDependencies(dependencyInjectionService, navigationPage.Navigation, this, installers);
 
+            CultureInfo.CurrentCulture = new CultureInfo("cs");
+            CultureInfo.CurrentUICulture = new CultureInfo("cs");
+
             var navigationService = dependencyInjectionService.Resolve<INavigationService>();
             navigationService.PushAsync<MainViewModel>();
 
@@ -31,6 +34,7 @@ namespace CookBook.Mobile
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()
