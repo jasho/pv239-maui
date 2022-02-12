@@ -3,29 +3,33 @@
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
                        xmlns:ingredient="clr-namespace:CookBook.Mobile.Core.ViewModels.Ingredient;assembly=CookBook.Mobile.Core"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
                        x:Class="CookBook.Mobile.Views.Ingredient.IngredientEditView"
                        x:DataType="ingredient:IngredientEditViewModel"
                        Title="{Binding Item.Name}">
     <Grid RowDefinitions="Auto, Auto, *, 80" ColumnDefinitions="Auto, *">
         <Label Grid.Row="0" Grid.Column="0"
-               Text="Name:" />
+               VerticalOptions="Center"
+               Text="{x:Static texts:IngredientEditViewTexts.Name_Label_Text}" />
         <Entry Grid.Row="0" Grid.Column="1"
                Text="{Binding Item.Name}" />
 
         <Label Grid.Row="1" Grid.Column="0"
-               Text="Image URL:"/>
+               VerticalOptions="Center"
+               Text="{x:Static texts:IngredientEditViewTexts.ImageUrl_Label_Text}" />
         <Entry Grid.Row="1" Grid.Column="1"
                Text="{Binding Item.ImageUrl}" />
 
         <Label Grid.Row="2" Grid.Column="0"
-               Text="Description:"/>
+               VerticalOptions="Start"
+               Text="{x:Static texts:IngredientEditViewTexts.Description_Label_Text}" />
         <Editor Grid.Row="2" Grid.Column="1"
                 Text="{Binding Item.Description}"/>
 
         <Button Grid.Row="3"
                 Grid.Column="0" Grid.ColumnSpan="2"
                 Margin="10"
-                Text="Save"
+                Text="{x:Static texts:IngredientEditViewTexts.Save_Button_Text}"
                 Command="{Binding SaveCommand}"
                 Style="{StaticResource PrimaryButtonStyle}" />
     </Grid>
