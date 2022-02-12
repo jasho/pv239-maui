@@ -9,7 +9,7 @@ namespace CookBook.Mobile.Core.ViewModels
     {
         public ICollection<string> Languages { get; set; } = new List<string>
         {
-            "CZ", "EN"
+            "cs", "en"
         };
 
         public ICommand SelectLanguageCommand { get; set; }

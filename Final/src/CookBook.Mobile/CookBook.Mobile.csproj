@@ -73,6 +73,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>RecipeListViewTexts.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Texts\SettingsViewTexts.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SettingsViewTexts.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\ErrorView.xaml.cs">
       <DependentUpon>ErrorView.xaml</DependentUpon>
     </Compile>
@@ -134,6 +139,10 @@
     <EmbeddedResource Update="Resources\Texts\RecipeListViewTexts.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecipeListViewTexts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Texts\SettingsViewTexts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SettingsViewTexts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Base\ContentPageBase.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
