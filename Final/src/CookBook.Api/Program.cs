@@ -132,8 +132,10 @@ app.MapGet("/api/recipes", () =>
     {
         return new List<RecipeListModel>
         {
-            new(Guid.NewGuid(), "Míchaná vajíčka", new TimeSpan(0, 30, 0), FoodType.MainDish, "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Scrambled_eggs-01.jpg/320px-Scrambled_eggs-01.jpg"),
-            new(Guid.NewGuid(), "Vykostěné kuře s citronem a bylinkami", new TimeSpan(1, 0, 0), FoodType.MainDish, "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Gt/2021/04/07/19090/web_Chicken-and-Artichokes.jpg"),
+            new(Guid.NewGuid(), "Míchaná vajíčka", FoodType.MainDish, "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Scrambled_eggs-01.jpg/320px-Scrambled_eggs-01.jpg"),
+            new(Guid.NewGuid(), "Vykostěné kuře s citronem a bylinkami", FoodType.MainDish, "https://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/Gt/2021/04/07/19090/web_Chicken-and-Artichokes.jpg"),
+            new(Guid.NewGuid(), "Rajčatová polévka", FoodType.Soup, "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Cream_of_tomato_soup.jpg/800px-Cream_of_tomato_soup.jpg"),
+            new(Guid.NewGuid(), "Muffin", FoodType.Dessert, "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Muffin_NIH.jpg/733px-Muffin_NIH.jpg")
         };
     })
     .WithTags(RecipesTag)

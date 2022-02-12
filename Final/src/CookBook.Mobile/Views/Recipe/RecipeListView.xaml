@@ -31,10 +31,17 @@
                         <BoxView BackgroundColor="Black"
                                  Opacity="0.5" />
 
-                        <Label HorizontalOptions="Center" VerticalOptions="Center"
+                        <Label HorizontalOptions="Center" VerticalOptions="Start"
                                HorizontalTextAlignment="Center"
+                               Margin="10"
                                FontSize="Title"
                                Text="{Binding Name}" />
+
+                        <Label HorizontalOptions="End" VerticalOptions="End"
+                               Margin="10" Padding="5"
+                               FontSize="Small"
+                               Text="{Binding FoodType}"
+                               BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
