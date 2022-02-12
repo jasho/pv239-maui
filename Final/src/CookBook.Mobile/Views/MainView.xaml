@@ -6,6 +6,10 @@
                        x:Class="CookBook.Mobile.Views.MainView"
                        x:DataType="viewModels:MainViewModel"
                        Title="CookBook">
+    <views:ContentPageBase.ToolbarItems>
+        <ToolbarItem Text="Settings"
+                     Command="{Binding NavigateToSettingsViewCommand}"/>
+    </views:ContentPageBase.ToolbarItems>
 
     <StackLayout Margin="10"
                  Spacing="10"

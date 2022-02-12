@@ -11,6 +11,7 @@ namespace CookBook.Mobile.Core.ViewModels
     {
         private readonly INavigationService navigationService;
 
+        public ICommand NavigateToSettingsViewCommand { get; set; }
         public ICommand NavigateToIngredientListViewCommand { get; set; }
         public ICommand NavigateToRecipeListViewCommand { get; set; }
 
@@ -20,8 +21,14 @@ namespace CookBook.Mobile.Core.ViewModels
         {
             this.navigationService = navigationService;
 
+            NavigateToSettingsViewCommand = commandFactory.CreateCommand(NavigateToSettingsViewAsync);
             NavigateToIngredientListViewCommand = commandFactory.CreateCommand(NavigateToIngredientListAsync);
             NavigateToRecipeListViewCommand = commandFactory.CreateCommand(NavigateToRecipeListViewAsync);
+        }
+
+        private async Task NavigateToSettingsViewAsync()
+        {
+            await navigationService.PushAsync<SettingsViewModel>();
         }
 
         private async Task NavigateToIngredientListAsync()
