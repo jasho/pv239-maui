@@ -4,10 +4,11 @@
                        xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
                        xmlns:ingredient="clr-namespace:CookBook.Mobile.Core.ViewModels.Ingredient;assembly=CookBook.Mobile.Core"
                        xmlns:models="clr-namespace:CookBook.Common.Models;assembly=CookBook.Common.Models"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
                        x:Class="CookBook.Mobile.Views.Ingredient.IngredientListView"
                        x:DataType="ingredient:IngredientListViewModel"
                        x:Name="Root"
-                       Title="Ingredients">
+                       Title="{x:Static texts:IngredientListViewTexts.Page_Title}">
     <Grid RowDefinitions="*, 80">
         <CollectionView Grid.Row="0"
                         ItemsSource="{Binding Items}"
@@ -44,7 +45,7 @@
         </CollectionView>
 
         <Button Grid.Row="1"
-                Text="Add New"
+                Text="{x:Static texts:IngredientListViewTexts.AddNew_Button_Text}"
                 Margin="10"
                 Command="{Binding NavigateToCreateViewCommand}"
                 Style="{StaticResource PrimaryButtonStyle}" />

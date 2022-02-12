@@ -6,7 +6,7 @@
                        xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
                        x:Class="CookBook.Mobile.Views.MainView"
                        x:DataType="viewModels:MainViewModel"
-                       Title="CookBook">
+                       Title="{x:Static texts:MainViewTexts.Page_Title}">
     <views:ContentPageBase.ToolbarItems>
         <ToolbarItem Text="{x:Static texts:MainViewTexts.Settings_ToolbarItem_Text}"
                      Command="{Binding NavigateToSettingsViewCommand}"/>
