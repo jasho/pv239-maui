@@ -3,6 +3,7 @@
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
                        xmlns:ingredient="clr-namespace:CookBook.Mobile.Core.ViewModels.Ingredient;assembly=CookBook.Mobile.Core"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
                        x:Class="CookBook.Mobile.Views.Ingredient.IngredientDetailView"
                        x:DataType="ingredient:IngredientDetailViewModel"
                        Title="{Binding Item.Name}">
@@ -23,12 +24,12 @@
               Padding="10"
               ColumnSpacing="10">
             <Button Grid.Column="0"
-                    Text="Delete"
+                    Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text}"
                     Command="{Binding DeleteCommand}"
                     Style="{StaticResource ErrorButtonStyle}" />
 
             <Button Grid.Column="1"
-                    Text="Edit"
+                    Text="{x:Static texts:IngredientDetailViewTexts.Edit_Button_Text}"
                     Command="{Binding NavigateToEditViewCommand}"
                     Style="{StaticResource PrimaryButtonStyle}" />
         </Grid>
