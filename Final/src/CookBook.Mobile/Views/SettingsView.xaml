@@ -16,8 +16,7 @@
                VerticalOptions="Center"
                Text="{x:Static texts:SettingsViewTexts.Language_Label_Text}"/>
 
-        <Picker x:Name="LanguagePicker"
-                Grid.Row="1" Grid.Column="1"
+        <Picker Grid.Row="1" Grid.Column="1"
                 ItemsSource="{Binding Languages}"
                 SelectedItem="{Binding SelectedLanguage}"
                 ItemDisplayBinding="{Binding Converter={StaticResource SettingsLanguageToStringConverter}}">

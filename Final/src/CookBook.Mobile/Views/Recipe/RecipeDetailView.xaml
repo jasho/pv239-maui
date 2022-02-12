@@ -38,7 +38,26 @@
                 <Label Text="{x:Static texts:RecipeDetailViewTexts.Ingredients_Label_Text}"
                        VerticalOptions="Center"
                        FontSize="Title"/>
-                <CollectionView ItemsSource="{Binding Item.IngredientAmounts}">
+                <StackLayout Orientation="Vertical"
+                             BindableLayout.ItemsSource="{Binding Item.IngredientAmounts}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:RecipeDetailIngredientModel">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="- "/>
+                                        <Span Text="{Binding Amount}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding Unit, Converter={StaticResource UnitToStringConverter}}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="{Binding Ingredient.Name}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+                <!--<CollectionView ItemsSource="{Binding Item.IngredientAmounts}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:RecipeDetailIngredientModel">
                             <Label>
@@ -55,7 +74,7 @@
                             </Label>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                </CollectionView>
+                </CollectionView>-->
             </StackLayout>
         </ScrollView>
 
