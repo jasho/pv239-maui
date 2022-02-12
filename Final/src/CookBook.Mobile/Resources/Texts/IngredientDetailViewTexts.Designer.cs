@@ -22,7 +22,7 @@ namespace CookBook.Mobile.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class IngredientDetailViewTexts {
+    public class IngredientDetailViewTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace CookBook.Mobile.Resources.Texts {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Mobile.Resources.Texts.IngredientDetailViewTexts", typeof(IngredientDetailViewTexts).Assembly);
@@ -51,7 +51,7 @@ namespace CookBook.Mobile.Resources.Texts {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Delete_Button_Text {
+        public static string Delete_Button_Text {
             get {
                 return ResourceManager.GetString("Delete_Button_Text", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string Edit_Button_Text {
+        public static string Edit_Button_Text {
             get {
                 return ResourceManager.GetString("Edit_Button_Text", resourceCulture);
             }

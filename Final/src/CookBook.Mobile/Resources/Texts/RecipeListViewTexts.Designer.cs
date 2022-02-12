@@ -22,14 +22,14 @@ namespace CookBook.Mobile.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class IngredientEditViewTexts {
+    public class RecipeListViewTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal IngredientEditViewTexts() {
+        internal RecipeListViewTexts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CookBook.Mobile.Resources.Texts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Mobile.Resources.Texts.IngredientEditViewTexts", typeof(IngredientEditViewTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Mobile.Resources.Texts.RecipeListViewTexts", typeof(RecipeListViewTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,36 +63,18 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Description_Label_Text {
+        public static string AddNew_Button_Text {
             get {
-                return ResourceManager.GetString("Description_Label_Text", resourceCulture);
+                return ResourceManager.GetString("AddNew_Button_Text", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string ImageUrl_Label_Text {
+        public static string Page_Title {
             get {
-                return ResourceManager.GetString("ImageUrl_Label_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Name_Label_Text {
-            get {
-                return ResourceManager.GetString("Name_Label_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Save_Button_Text {
-            get {
-                return ResourceManager.GetString("Save_Button_Text", resourceCulture);
+                return ResourceManager.GetString("Page_Title", resourceCulture);
             }
         }
     }

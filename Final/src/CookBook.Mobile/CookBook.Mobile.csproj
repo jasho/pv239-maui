@@ -53,6 +53,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>MainViewTexts.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Texts\RecipeListViewTexts.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RecipeListViewTexts.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\ErrorView.xaml.cs">
       <DependentUpon>ErrorView.xaml</DependentUpon>
     </Compile>
@@ -80,21 +85,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Texts\IngredientDetailViewTexts.cs.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Texts\IngredientDetailViewTexts.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>IngredientDetailViewTexts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Texts\IngredientEditViewTexts.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>IngredientEditViewTexts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Texts\IngredientListViewTexts.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>IngredientListViewTexts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Texts\MainViewTexts.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainViewTexts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Texts\RecipeListViewTexts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecipeListViewTexts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Base\ContentPageBase.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
