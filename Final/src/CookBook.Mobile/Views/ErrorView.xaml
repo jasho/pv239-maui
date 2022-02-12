@@ -3,9 +3,11 @@
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
                        xmlns:viewModels="clr-namespace:CookBook.Mobile.Core.ViewModels;assembly=CookBook.Mobile.Core"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
                        x:Class="CookBook.Mobile.Views.ErrorView"
-                       x:DataType="viewModels:ErrorViewModel">
-    <Label Text="Something went wrong!"
+                       x:DataType="viewModels:ErrorViewModel"
+                       Title="{x:Static texts:ErrorViewTexts.Page_Title}">
+    <Label Text="{x:Static texts:ErrorViewTexts.Error_Label_Text}"
            HorizontalOptions="Center"
            VerticalOptions="Center"/>
 </views:ContentPageBase>

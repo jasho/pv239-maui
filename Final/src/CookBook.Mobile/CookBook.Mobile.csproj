@@ -33,6 +33,11 @@
     <Compile Update="Resources\Styles\Colors.xaml.cs">
       <DependentUpon>Colors.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Texts\ErrorViewTexts.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ErrorViewTexts.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Texts\IngredientDetailViewTexts.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -95,6 +100,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Texts\ErrorViewTexts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorViewTexts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Texts\IngredientDetailViewTexts.cs.resx">
       <Generator></Generator>
     </EmbeddedResource>
