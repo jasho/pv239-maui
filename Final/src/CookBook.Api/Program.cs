@@ -1,4 +1,8 @@
-﻿using CookBook.Common.Enums;
+﻿using AutoMapper;
+using CookBook.Api;
+using CookBook.Api.Facades;
+using CookBook.Api.Repositories;
+using CookBook.Common.Enums;
 using CookBook.Common.Models;
 using NSwag.AspNetCore;
 
@@ -11,7 +15,15 @@ builder.Services.AddOpenApiDocument(document =>
     document.DocumentName = "cookbook-api";
 });
 
+builder.Services.AddSingleton<IStorage, Storage>();
+builder.Services.AddSingleton<IIngredientRepository, IngredientRepository>();
+builder.Services.AddSingleton<IIngredientFacade, IngredientFacade>();
+builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
+
+var mapper = app.Services.GetRequiredService<IMapper>();
+mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
 app.UseOpenApi();
 app.UseSwaggerUi3(settings =>
@@ -21,112 +33,32 @@ app.UseSwaggerUi3(settings =>
 });
 app.UseHttpsRedirection();
 
+const string IngredientsBasePath = "/api/ingredients";
 const string IngredientBaseName = "Ingredient";
 var IngredientsTag = $"{IngredientBaseName}s";
 
-const string RecipeBaseName = "Recipe";
-var RecipesTag = $"{RecipeBaseName}s";
-
-app.MapGet("/api/ingredients", () =>
-{
-    return new List<IngredientListModel>
-    {
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-        new(Guid.NewGuid(), "Vejce",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"),
-        new(Guid.NewGuid(), "Cibule",
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"),
-    };
-})
+app.MapGet($"{IngredientsBasePath}", (IIngredientFacade ingredientFacade) => ingredientFacade.GetAll())
     .WithTags(IngredientsTag)
     .WithName($"Get{IngredientBaseName}sAll");
 
-app.MapGet("/api/ingredients/{id:guid}", (Guid id) =>
-{
-    return new IngredientDetailModel(id, "Vejce", "Prostě vejce", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg");
-})
+app.MapGet($"{IngredientsBasePath}/{{id:guid}}", (Guid id, IIngredientFacade ingredientFacade) => ingredientFacade.GetById(id))
     .WithTags(IngredientsTag)
     .WithName($"Get{IngredientBaseName}ById");
 
-app.MapPost("/api/ingredients", (IngredientDetailModel ingredient) =>
-{
-    return Guid.NewGuid();
-})
+app.MapPost($"{IngredientsBasePath}", (IngredientDetailModel ingredient, IIngredientFacade ingredientFacade) => ingredientFacade.Create(ingredient))
     .WithTags(IngredientsTag)
     .WithName($"Create{IngredientBaseName}");
 
-app.MapPut("/api/ingredients", (IngredientDetailModel ingredient) =>
-    {
-        return Results.Ok();
-    })
+app.MapPut($"{IngredientsBasePath}", (IngredientDetailModel ingredient, IIngredientFacade ingredientFacade) => ingredientFacade.Update(ingredient))
     .WithTags(IngredientsTag)
     .WithName($"Update{IngredientBaseName}");
 
-app.MapDelete("/api/ingredients/{id:guid}", (Guid id) =>
-    {
-        return Results.Ok();
-    })
+app.MapDelete($"{IngredientsBasePath}/{{id:guid}}", (Guid id, IIngredientFacade ingredientFacade) => ingredientFacade.Delete(id))
     .WithTags(IngredientsTag)
     .WithName($"Delete{IngredientBaseName}");
+
+const string RecipeBaseName = "Recipe";
+var RecipesTag = $"{RecipeBaseName}s";
 
 app.MapGet("/api/recipes", () =>
     {
@@ -174,5 +106,7 @@ app.MapDelete("/api/recipes/{id:guid}", (Guid id) =>
     })
     .WithTags(RecipesTag)
     .WithName($"Delete{RecipeBaseName}");
+
+app.MapGet("/", async http => http.Response.Redirect("/swagger", false));
 
 app.Run();
