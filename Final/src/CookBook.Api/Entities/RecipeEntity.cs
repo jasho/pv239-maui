@@ -9,5 +9,7 @@ namespace CookBook.Api.Entities
         public TimeSpan Duration { get; set; }
         public FoodType FoodType { get; set; }
         public string? ImageUrl { get; set; }
+
+        public ICollection<IngredientAmountEntity> IngredientAmounts { get; set; } = new List<IngredientAmountEntity>();
     }
 }
