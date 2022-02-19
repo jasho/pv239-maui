@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
+             x:Class="CookBook.Mobile.Views.MainView">
+    <StackLayout Spacing="10"
+                 HorizontalOptions="Center" VerticalOptions="Center">
+        <Button Text="{x:Static texts:MainViewTexts.Ingredients_Button_Text}"
+                Clicked="IngredientsButton_OnClicked"
+                Style="{StaticResource PrimaryButtonStyle}" />
+
+        <Button Text="{x:Static texts:MainViewTexts.Recipes_Button_Text}"
+                Style="{StaticResource PrimaryButtonStyle}" />
+    </StackLayout>
+</ContentPage>
