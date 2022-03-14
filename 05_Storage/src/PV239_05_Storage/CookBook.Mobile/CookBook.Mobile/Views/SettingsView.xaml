@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase x:Class="CookBook.Mobile.Views.SettingsView"
+                       xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit" xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile"
+                       xmlns:viewModels="clr-namespace:CookBook.Mobile.Core.ViewModels;assembly=CookBook.Mobile.Core" xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
+                       Title="{x:Static texts:SettingsViewTexts.Page_Title}"
+                       x:DataType="viewModels:SettingsViewModel">
+    <Grid Margin="10"
+          ColumnDefinitions="Auto, *" RowDefinitions="*, Auto, *"
+          RowSpacing="10">
+        <Label Grid.Row="1" Grid.Column="0"
+               Text="{x:Static texts:SettingsViewTexts.Language_Label_Text}"
+               VerticalOptions="Center" />
+
+        <Picker Grid.Row="1" Grid.Column="1"
+                ItemDisplayBinding="{Binding Converter={StaticResource SettingsLanguageToStringConverter}}"
+                ItemsSource="{Binding Languages}"
+                SelectedItem="{Binding SelectedLanguage}">
+            <Picker.Behaviors>
+                <behaviors:EventToCommandBehavior Command="{Binding SelectLanguageCommand}" EventName="SelectedIndexChanged" />
+            </Picker.Behaviors>
+        </Picker>
+    </Grid>
+</views:ContentPageBase>

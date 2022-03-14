@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase x:Class="CookBook.Mobile.Views.MainView"
+                       xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:texts="clr-namespace:CookBook.Mobile.Resources.Texts;assembly=CookBook.Mobile" xmlns:viewModels="clr-namespace:CookBook.Mobile.Core.ViewModels;assembly=CookBook.Mobile.Core"
+                       xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
+                       x:DataType="viewModels:MainViewModel">
+    <views:ContentPageBase.ToolbarItems>
+        <ToolbarItem Command="{Binding NavigateToSettingsViewCommand}" Text="{x:Static texts:MainViewTexts.Settings_ToolbarItem_Text}" />
+    </views:ContentPageBase.ToolbarItems>
+
+    <StackLayout HorizontalOptions="Center" Spacing="10"
+                 VerticalOptions="Center">
+        <Button Command="{Binding NavigateToIngredientListViewCommand}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static texts:MainViewTexts.Ingredients_Button_Text}" />
+
+        <Button Style="{StaticResource PrimaryButtonStyle}" Text="{x:Static texts:MainViewTexts.Recipes_Button_Text}" />
+    </StackLayout>
+</views:ContentPageBase>
