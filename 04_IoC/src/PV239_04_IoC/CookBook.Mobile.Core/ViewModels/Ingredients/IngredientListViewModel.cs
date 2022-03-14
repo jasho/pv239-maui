@@ -10,6 +10,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredients
     public class IngredientListViewModel : ViewModelBase
     {
         private readonly IIngredientRepository ingredientRepository;
+        private readonly INavigationService navigationService;
 
         public ObservableCollection<IngredientListModel> Items { get; set; }
 
