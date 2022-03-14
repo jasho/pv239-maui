@@ -1,33 +1,37 @@
-﻿using CookBook.Mobile.Core.Models.Ingredient;
+﻿using AutoMapper;
+using CookBook.Mobile.Core.Entities;
+using CookBook.Mobile.Core.Models.Ingredient;
+using CookBook.Mobile.Core.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace CookBook.Mobile.Core.Repositories
 {
     public class IngredientRepository : IIngredientRepository
     {
-        public ObservableCollection<IngredientListModel> GetAll()
+        private readonly IDatabaseService databaseService;
+        private readonly IMapper mapper;
+
+        public IngredientRepository(
+            IDatabaseService databaseService,
+            IMapper mapper)
         {
-            return new ObservableCollection<IngredientListModel>
-            {
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Vejce",
-                    ImageUrl =
-                        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"
-                },
-                new()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Cibule",
-                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"
-                }
-            };
+            this.databaseService = databaseService;
+            this.mapper = mapper;
         }
 
-        //public IngredientDetailModel GetDetail()
-        //{
-        //}
+        public async Task<ObservableCollection<IngredientListModel>> GetAllAsync()
+        {
+            var ingredientEntities = await databaseService.GetAllAsync<IngredientEntity>();
+
+            return mapper.Map<ObservableCollection<IngredientListModel>>(ingredientEntities);
+        }
+
+        public async Task<IngredientDetailModel> GetByIdAsync(Guid id)
+        {
+            var ingredientEntity = await databaseService.GetByIdAsync<IngredientEntity>(id);
+            return mapper.Map<IngredientDetailModel>(ingredientEntity);
+        }
     }
 }

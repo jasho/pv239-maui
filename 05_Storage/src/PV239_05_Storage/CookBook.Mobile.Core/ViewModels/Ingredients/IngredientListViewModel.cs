@@ -2,6 +2,7 @@
 using CookBook.Mobile.Core.Models.Ingredient;
 using CookBook.Mobile.Core.Repositories;
 using CookBook.Mobile.Core.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -33,7 +34,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredients
         {
             await base.OnAppearingAsync();
 
-            Items = ingredientRepository.GetAll();
+            Items = await ingredientRepository.GetAllAsync();
         }
 
         private async Task NavigateToDetailAsync()

@@ -1,14 +1,11 @@
 ﻿using CookBook.Mobile.Core;
-using CookBook.Mobile.Core.Factories;
+using CookBook.Mobile.Core.Entities;
 using CookBook.Mobile.Core.Installers;
-using CookBook.Mobile.Core.Repositories;
 using CookBook.Mobile.Core.Services;
 using CookBook.Mobile.Core.ViewModels;
-using CookBook.Mobile.Core.ViewModels.Ingredients;
 using CookBook.Mobile.Installers;
-using CookBook.Mobile.Services;
-using CookBook.Mobile.Views.Ingredients;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Globalization;
 using Xamarin.Forms;
 
@@ -30,6 +27,9 @@ namespace CookBook.Mobile
             var preferencesService = dependencyInjectionService.Resolve<IPreferencesService>();
             ApplyLanguagePreferences(preferencesService);
 
+            var databaseService = dependencyInjectionService.Resolve<IDatabaseService>();
+            SetupDatabase(databaseService);
+
             var navigationService = dependencyInjectionService.Resolve<INavigationService>();
             navigationService.PushAsync<MainViewModel>();
 
@@ -42,6 +42,27 @@ namespace CookBook.Mobile
 
             CultureInfo.CurrentCulture = new CultureInfo(language);
             CultureInfo.CurrentUICulture = new CultureInfo(language);
+        }
+
+        private void SetupDatabase(IDatabaseService databaseService)
+        {
+            databaseService.CreateTableAsync<IngredientEntity>();
+
+            databaseService.SetAsync(new IngredientEntity
+            {
+                Id = Guid.Empty,
+                Name = "Vejce",
+                Description = "Popis vajec",
+                ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg"
+            });
+
+            databaseService.SetAsync(new IngredientEntity
+            {
+                Id = Guid.Empty,
+                Name = "Cibule",
+                Description = "Popis cibule",
+                ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Onion_on_White.JPG/480px-Onion_on_White.JPG"
+            });
         }
 
         private void InstallDependencies(IDependencyInjectionService dependencyInjectionService, App application, INavigation navigation)
