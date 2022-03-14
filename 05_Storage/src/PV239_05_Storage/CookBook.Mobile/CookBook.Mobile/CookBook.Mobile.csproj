@@ -89,7 +89,6 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Converters\" />
     <Folder Include="Services\Interfaces\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
