@@ -27,7 +27,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredients
             this.ingredientRepository = ingredientRepository;
             this.navigationService = navigationService;
 
-            NavigateToDetailViewCommand = commandFactory.CreateCommand(NavigateToDetailAsync);
+            NavigateToDetailViewCommand = commandFactory.CreateCommand<Guid>(NavigateToDetailAsync);
         }
 
         public override async Task OnAppearingAsync()
@@ -37,8 +37,9 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredients
             Items = await ingredientRepository.GetAllAsync();
         }
 
-        private async Task NavigateToDetailAsync()
+        private async Task NavigateToDetailAsync(Guid id)
         {
+            await navigationService.PushAsync<IngredientDetailViewModel, Guid>(viewModelParameter: id);
         }
 
         private async Task NavigateToCreateViewAsync()
