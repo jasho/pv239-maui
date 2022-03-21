@@ -43,16 +43,20 @@ namespace CookBook.Mobile.Core.Services
             return result;
         }
 
-        public async Task<int> SetAsync<T>(T entity)
+        public async Task SetAsync<T>(T entity)
             where T : EntityBase, new()
         {
             var connection = new SQLiteAsyncConnection(databasePath);
-            var resultId = entity.Id == Guid.Empty
-                ? await connection.InsertAsync(entity)
-                : await connection.UpdateAsync(entity);
-
+            if (entity.Id == Guid.Empty)
+            {
+                entity.Id = Guid.NewGuid();
+                await connection.InsertAsync(entity);
+            }
+            else
+            {
+                await connection.UpdateAsync(entity);
+            }
             await connection.CloseAsync();
-            return resultId;
         }
     }
 }

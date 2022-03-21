@@ -14,7 +14,7 @@ namespace CookBook.Mobile.Core.Services
         Task<T> GetByIdAsync<T>(Guid id)
             where T : EntityBase, new();
 
-        Task<int> SetAsync<T>(T entity)
+        Task SetAsync<T>(T entity)
             where T : EntityBase, new();
 
         Task<CreateTableResult> CreateTableAsync<T>()
