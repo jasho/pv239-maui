@@ -18,7 +18,6 @@
     <Folder Include="Installers\" />
     <Folder Include="Entities\" />
     <Folder Include="MapperProfiles\" />
-    <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="ViewModels\Interfaces\" />
   </ItemGroup>

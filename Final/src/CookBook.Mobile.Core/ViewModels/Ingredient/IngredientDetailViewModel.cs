@@ -1,6 +1,7 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Mobile.Core.Api;
 using CookBook.Mobile.Core.Factories;
+using CookBook.Mobile.Core.Repositories.Interfaces;
 using CookBook.Mobile.Core.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
     public class IngredientDetailViewModel : ViewModelBase<Guid>
     {
         private readonly INavigationService navigationService;
-        private readonly IIngredientsClient ingredientsClient;
+        private readonly IIngredientRepository ingredientRepository;
 
         public IngredientDetailModel Item { get; set; } = null!;
 
@@ -21,11 +22,10 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         public IngredientDetailViewModel(
             INavigationService navigationService,
             ICommandFactory commandFactory,
-            IIngredientsClient ingredientsClient)
+            IIngredientRepository ingredientRepository)
         {
             this.navigationService = navigationService;
-            this.ingredientsClient = ingredientsClient;
-
+            this.ingredientRepository = ingredientRepository;
             NavigateToEditViewCommand = commandFactory.CreateCommand(NavigateToEditViewAsync);
             DeleteCommand = commandFactory.CreateCommand(DeleteAsync);
         }
@@ -34,7 +34,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         {
             await base.OnAppearingAsync();
 
-            Item = await ingredientsClient.GetIngredientByIdAsync(ViewModelParameter);
+            Item = await ingredientRepository.GetByIdAsync(ViewModelParameter);
         }
 
         private async Task NavigateToEditViewAsync()
@@ -44,7 +44,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
 
         private async Task DeleteAsync()
         {
-            await ingredientsClient.DeleteIngredientAsync(ViewModelParameter);
+            await ingredientRepository.DeleteAsync(ViewModelParameter);
             await navigationService.PopAsync();
         }
     }

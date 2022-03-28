@@ -1,6 +1,6 @@
 ﻿using CookBook.Common.Models;
-using CookBook.Mobile.Core.Api;
 using CookBook.Mobile.Core.Factories;
+using CookBook.Mobile.Core.Repositories.Interfaces;
 using CookBook.Mobile.Core.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
@@ -11,7 +11,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
     public class IngredientEditViewModel : ViewModelBase<Guid?>
     {
         private readonly INavigationService navigationService;
-        private readonly IIngredientsClient ingredientsClient;
+        private readonly IIngredientRepository ingredientRepository;
 
         public IngredientDetailModel Item { get; set; } = null!;
 
@@ -20,10 +20,10 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         public IngredientEditViewModel(
             INavigationService navigationService,
             ICommandFactory commandFactory,
-            IIngredientsClient ingredientsClient)
+            IIngredientRepository ingredientRepository)
         {
             this.navigationService = navigationService;
-            this.ingredientsClient = ingredientsClient;
+            this.ingredientRepository = ingredientRepository;
 
             SaveCommand = commandFactory.CreateCommand(SaveAsync);
         }
@@ -34,18 +34,18 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
 
             Item = ViewModelParameter is null
                 ? new IngredientDetailModel(null, string.Empty, string.Empty, null)
-                : await ingredientsClient.GetIngredientByIdAsync(ViewModelParameter.Value);
+                : await ingredientRepository.GetByIdAsync(ViewModelParameter.Value);
         }
 
         private async Task SaveAsync()
         {
             if (ViewModelParameter is null)
             {
-                await ingredientsClient.CreateIngredientAsync(Item);
+                await ingredientRepository.CreateAsync(Item);
             }
             else
             {
-                await ingredientsClient.UpdateIngredientAsync(Item);
+                await ingredientRepository.UpdateAsync(Item);
             }
 
             await navigationService.PopAsync();

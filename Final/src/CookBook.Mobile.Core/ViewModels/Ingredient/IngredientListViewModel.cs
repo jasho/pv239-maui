@@ -1,9 +1,9 @@
 ﻿using CookBook.Common.Models;
-using CookBook.Mobile.Core.Api;
 using CookBook.Mobile.Core.Factories;
+using CookBook.Mobile.Core.Repositories.Interfaces;
 using CookBook.Mobile.Core.Services.Interfaces;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -12,8 +12,9 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
     public class IngredientListViewModel : ViewModelBase
     {
         private readonly INavigationService navigationService;
-        private readonly IIngredientsClient ingredientsClient;
-        public ICollection<IngredientListModel> Items { get; set; }
+        private readonly IIngredientRepository ingredientRepository;
+
+        public ObservableCollection<IngredientListModel> Items { get; set; }
 
         public ICommand NavigateToDetailViewCommand { get; set; }
         public ICommand NavigateToCreateViewCommand { get; set; }
@@ -21,11 +22,10 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         public IngredientListViewModel(
             INavigationService navigationService,
             ICommandFactory commandFactory,
-            IIngredientsClient ingredientsClient)
+            IIngredientRepository ingredientRepository)
         {
             this.navigationService = navigationService;
-            this.ingredientsClient = ingredientsClient;
-
+            this.ingredientRepository = ingredientRepository;
             NavigateToDetailViewCommand = commandFactory.CreateCommand<Guid>(NavigateToDetailViewAsync);
             NavigateToCreateViewCommand = commandFactory.CreateCommand(NavigateToCreateViewAsync);
         }
@@ -34,7 +34,7 @@ namespace CookBook.Mobile.Core.ViewModels.Ingredient
         {
             await base.OnAppearingAsync();
 
-            Items = await ingredientsClient.GetIngredientsAllAsync();
+            Items = await ingredientRepository.GetAllAsync();
         }
 
         private async Task NavigateToDetailViewAsync(Guid id)

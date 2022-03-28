@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Commands\" />
     <Folder Include="Installers\" />
-    <Folder Include="Api\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="ViewModels\Interfaces\" />
     <Folder Include="ViewModels\Recipe\" />
