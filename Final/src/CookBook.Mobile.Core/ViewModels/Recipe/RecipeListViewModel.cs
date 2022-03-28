@@ -1,9 +1,11 @@
 ﻿using CookBook.Common.Models;
 using CookBook.Mobile.Core.Api;
+using CookBook.Mobile.Core.Enums;
 using CookBook.Mobile.Core.Factories;
 using CookBook.Mobile.Core.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -31,12 +33,22 @@ namespace CookBook.Mobile.Core.ViewModels.Recipe
             NavigateToCreateViewCommand = commandFactory.CreateCommand(NavigateToCreateViewAsync);
         }
 
-
         public override async Task OnAppearingAsync()
         {
-            await base.OnAppearingAsync();
+            State = AppState.Loading;
+            
+            // TODO: demo purpose only
+            await Task.Delay(2000);
 
+            await base.OnAppearingAsync();
             Items = await recipesClient.GetRecipesAllAsync();
+            
+            // TODO: demo - Empty
+            //Items.Clear();
+
+            State = Items.Any() 
+                ? AppState.None
+                : AppState.Empty;
         }
 
         private async Task NavigateToDetailViewAsync(Guid id)
