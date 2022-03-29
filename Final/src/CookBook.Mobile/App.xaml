@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Resources/Styles/NavigationPageStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
+            <converters:AppStateToCommunityToolkitLayoutStateConverter x:Key="AppStateToCommunityToolkitLayoutStateConverter"/>
             <converters:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter"/>
             <converters:FoodTypeToStringConverter x:Key="FoodTypeToStringConverter"/>
             <converters:SettingsLanguageToStringConverter x:Key="SettingsLanguageToStringConverter"/>
