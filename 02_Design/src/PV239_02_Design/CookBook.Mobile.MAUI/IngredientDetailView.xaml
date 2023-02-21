@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:texts="clr-namespace:CookBook.Mobile.MAUI.Resources.Texts;assembly=CookBook.Mobile.MAUI"
+             x:Class="CookBook.Mobile.MAUI.Views.IngredientDetailView"
+             Title="Vejce">
+    <Grid RowDefinitions="2*, 3*, 80">
+        <Image Grid.Row="0"
+               Aspect="AspectFit"
+               BackgroundColor="Gray"
+               Source="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chicken_egg_2009-06-04.jpg/428px-Chicken_egg_2009-06-04.jpg" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout>
+                <Label Text="Popis:"
+                       Margin="8, 8, 8, 0"
+                       FontAttributes="Bold"/>
+                <Label FontSize="Body"
+                       Text="Základní význam vajec domácí drůbeže je v první řadě biologický, tj. zajistit reprodukci daného druhu. Protože k vývoji nového jedince dochází mimo tělo matky, obsahuje vejce všechny důležité výživné složky nezbytné pro vývoj nového organismu. Zatímco vejce krůt, kachen a hus jsou produkována hlavně pro účely reprodukční, tj. slouží jako vejce násadová, slepičí vejce slouží také jako vejce konzumní a mohou být součástí lidské výživy. Vejce mají vysoký obsah plnohodnotných bílkovin (obsahují všechny aminokyseliny pro člověka nezbytné a to v poměru, který je nejpříznivější ze všech běžných potravin). Vejce dále obsahují tuky, vitamíny a minerální látky. Avšak obsahují i vysoké množství cholesterolu, takže konzumace 3 a více vajec denně prokazatelně zvyšuje riziko onemocnění a smrti.[1]" 
+                       Margin="16"
+                       TextType="Html"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*, *, *"
+              Padding="10"
+              ColumnSpacing="10">
+            <Button Grid.Column="0"
+                    Text="{x:Static texts:IngredientDetailViewTexts.Delete_Button_Text}"
+                    Style="{StaticResource ErrorButtonStyle}" />
+
+            <Button Grid.Column="2"
+                    Text="{x:Static texts:IngredientDetailViewTexts.Edit_Button_Text}"
+                    Style="{StaticResource PrimaryButtonStyle}" />
+        </Grid>
+    </Grid>
+</ContentPage>
