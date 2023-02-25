@@ -9,6 +9,7 @@
              x:Class="CookBook.Mobile.Views.Ingredient.IngredientListView"
              x:DataType="vm:IngredientListViewModel"
              Title="{x:Static t:IngredientListViewTexts.Page_Title}"
+             Style="{StaticResource ContentPageStyle}"
              x:Name="Root">
     <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto, *"
           RowSpacing="20">
@@ -41,7 +42,7 @@
                        CornerRadius="5" HeightRequest="34"
                        IsClippedToBounds="True" VerticalOptions="Center">
                     <Image Aspect="AspectFill"
-                           HeightRequest="34" WidthRequest="34"
+                           WidthRequest="34"
                            Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}" />
                 </Frame>
 
