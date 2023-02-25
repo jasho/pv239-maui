@@ -340,3 +340,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/03_MVVM/src/PV239_03_MVVM_old

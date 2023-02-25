@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fonts="clr-namespace:CookBook.Mobile.Resources.Fonts"
+             xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels.Ingredient"
+             xmlns:t="clr-namespace:CookBook.Mobile.Resources.Texts"
+             xmlns:m="clr-namespace:CookBook.Mobile.Models"
+             x:Class="CookBook.Mobile.Views.Ingredient.IngredientListView"
+             x:DataType="vm:IngredientListViewModel"
+             Title="{x:Static t:IngredientListViewTexts.Page_Title}"
+             x:Name="Root">
+    <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto, *"
+          RowSpacing="20">
+        <Label Grid.Row="0"
+               FontSize="24"
+               Style="{StaticResource BoldLabelStyle}"
+               Text="{x:Static t:IngredientListViewTexts.Title_Label}" />
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Items}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="8"
+                                   Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:IngredientListModel">
+                    <Grid BackgroundColor="Transparent" ColumnDefinitions="34, *, Auto"
+                  ColumnSpacing="20" HeightRequest="40">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
+                                          CommandParameter="{Binding Id}" />
+                </Grid.GestureRecognizers>
+                <BoxView Grid.Column="0" Grid.ColumnSpan="3"
+                         CornerRadius="5" HorizontalOptions="Fill"
+                         VerticalOptions="Fill"
+                         Color="{DynamicResource ListItemBackgroundColor}" />
+
+                <Frame Grid.Column="0"
+                       Margin="4, 0, 0, 0" Padding="0"
+                       CornerRadius="5" HeightRequest="34"
+                       IsClippedToBounds="True" VerticalOptions="Center">
+                    <Image Aspect="AspectFill"
+                           HeightRequest="34" WidthRequest="34"
+                           Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}" />
+                </Frame>
+
+                <Label Grid.Column="1"
+                       HorizontalOptions="Start"
+                       Style="{StaticResource MediumLabelStyle}"
+                       Text="{Binding Name}"
+                       VerticalOptions="Center" />
+
+                <Label Grid.Column="2"
+                       HorizontalOptions="End" VerticalOptions="Center"
+                       Margin="0, 0, 12, 0"
+                       Text="{x:Static fonts:FontAwesomeIcons.Pen}"
+                       FontSize="20"
+                       TextColor="{StaticResource PrimaryColor}"
+                       FontFamily="{x:Static fonts:Fonts.FontAwesome}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
+                                              CommandParameter="{Binding Id}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="1"
+                Margin="0, 0, 14, 9" Padding="0"
+                HorizontalOptions="End" VerticalOptions="End"
+                Text="{x:Static t:IngredientListViewTexts.Add_Button_Text}"
+                Command="{Binding GoToCreateCommand}"
+                CornerRadius="60" FontFamily="MontserratRegular"
+                FontSize="50" 
+                Style="{StaticResource PrimaryButtonStyle}"
+                WidthRequest="65" />
+    </Grid>
+</ContentPage>
