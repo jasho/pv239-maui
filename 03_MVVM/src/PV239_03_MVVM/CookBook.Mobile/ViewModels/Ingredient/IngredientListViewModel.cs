@@ -43,6 +43,7 @@ public partial class IngredientListViewModel : ViewModelBase
     [RelayCommand]
     private void GoToDetail(Guid id)
     {
+        Shell.Current.GoToAsync("detail");
     }
 
     [RelayCommand]

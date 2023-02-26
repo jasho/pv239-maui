@@ -61,6 +61,15 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description:.
+        /// </summary>
+        internal static string Description_Label {
+            get {
+                return ResourceManager.GetString("Description_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ingredient.
         /// </summary>
         internal static string Page_Title {

@@ -1,4 +1,5 @@
 ﻿using CookBook.Mobile.Resources.Fonts;
+using CookBook.Mobile.Views.Ingredient;
 using Microsoft.Extensions.Logging;
 
 namespace CookBook.Mobile;
@@ -18,8 +19,11 @@ public static class MauiProgram
                 fonts.AddFont("Montserrat-Regular.ttf", Fonts.Regular);
 			});
 
+        builder.Services.AddTransient<IngredientDetailView>();
+        Routing.RegisterRoute("ingredients/detail", typeof(IngredientDetailView));
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();

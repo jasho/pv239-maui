@@ -11,15 +11,8 @@
              Title="{x:Static t:IngredientListViewTexts.Page_Title}"
              Style="{StaticResource ContentPageStyle}"
              x:Name="Root">
-    <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto, *"
-          RowSpacing="20">
-        <Label Grid.Row="0"
-               FontSize="24"
-               Style="{StaticResource BoldLabelStyle}"
-               Text="{x:Static t:IngredientListViewTexts.Title_Label}" />
-
-        <CollectionView Grid.Row="1"
-                        ItemsSource="{Binding Items}">
+    <Grid>
+        <CollectionView ItemsSource="{Binding Items}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="8"
                                    Orientation="Vertical" />
@@ -69,8 +62,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button Grid.Row="1"
-                Margin="0, 0, 14, 9" Padding="0"
+        <Button Margin="0, 0, 14, 9" Padding="0"
                 HorizontalOptions="End" VerticalOptions="End"
                 Text="{x:Static t:IngredientListViewTexts.Add_Button_Text}"
                 Command="{Binding GoToCreateCommand}"

@@ -70,20 +70,11 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CookBook.
+        ///   Looks up a localized string similar to Ingredients.
         /// </summary>
         internal static string Page_Title {
             get {
                 return ResourceManager.GetString("Page_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ingredients.
-        /// </summary>
-        internal static string Title_Label {
-            get {
-                return ResourceManager.GetString("Title_Label", resourceCulture);
             }
         }
     }
