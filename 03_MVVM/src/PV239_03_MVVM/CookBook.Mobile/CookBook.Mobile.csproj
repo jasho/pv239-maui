@@ -66,14 +66,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="4.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Models\" />
-	  <Folder Include="ViewModels\Ingredient\" />
-	  <Folder Include="Views\Recipe\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -81,6 +76,11 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>AppShellTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Texts\FoodTypeTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>FoodTypeTexts.resx</DependentUpon>
 	  </Compile>
 	  <Compile Update="Resources\Texts\IngredientDetailViewTexts.Designer.cs">
 	    <DesignTime>True</DesignTime>
@@ -91,6 +91,11 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>IngredientListViewTexts.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Texts\RecipeListViewTexts.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>RecipeListViewTexts.resx</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\Ingredient\IngredientDetailView.xaml.cs">
 	    <DependentUpon>IngredientDetailView.xaml</DependentUpon>
@@ -111,6 +116,10 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>AppShellTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\FoodTypeTexts.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>FoodTypeTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Resources\Texts\IngredientDetailViewTexts.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>IngredientDetailViewTexts.Designer.cs</LastGenOutput>
@@ -118,6 +127,10 @@
 	  <EmbeddedResource Update="Resources\Texts\IngredientListViewTexts.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>IngredientListViewTexts.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\RecipeListViewTexts.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>RecipeListViewTexts.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
 

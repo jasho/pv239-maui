@@ -1,4 +1,5 @@
-﻿using CookBook.Mobile.Resources.Fonts;
+﻿using CommunityToolkit.Maui;
+using CookBook.Mobile.Resources.Fonts;
 using CookBook.Mobile.Views.Ingredient;
 using Microsoft.Extensions.Logging;
 
@@ -11,6 +12,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
                 fonts.AddFont("FontAwesome-Solid.ttf", Fonts.FontAwesome);
