@@ -12,6 +12,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<Nullable>enable</Nullable>
+		<NoWarn>CS1591</NoWarn>
+		<WarningsAsErrors>MVVMTK0034</WarningsAsErrors>
 
 		<!-- Display name -->
 		<ApplicationTitle>CookBook.Mobile</ApplicationTitle>

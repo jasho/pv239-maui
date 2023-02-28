@@ -1,9 +1,17 @@
-﻿namespace CookBook.Mobile.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-public record IngredientDetailModel
+namespace CookBook.Mobile.Models;
+
+public partial class IngredientDetailModel : ModelBase
 {
     public required Guid Id { get; set; }
-    public required string Name { get; set; }
-    public required string Description { get; set; }
-    public string? ImageUrl { get; set; } = null;
+
+    [ObservableProperty]
+    private string name = string.Empty;
+
+    [ObservableProperty]
+    private string description = string.Empty;
+
+    [ObservableProperty]
+    private string? imageUrl = null;
 }
