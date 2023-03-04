@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:f="clr-namespace:CookBook.Mobile.Resources.Fonts">
+    <Style TargetType="Label" ApplyToDerivedTypes="True">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryLabelTextColor}"/>
+    </Style>
+
+    <Style x:Key="RegularLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static f:Fonts.Regular}" />
+    </Style>
+
+    <Style x:Key="MediumLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static f:Fonts.Medium}" />
+    </Style>
+
+    <Style x:Key="BoldLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static f:Fonts.Bold}" />
+    </Style>
+</ResourceDictionary>
