@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:t="clr-namespace:CookBook.Mobile.Resources.Texts"
+                       xmlns:f="clr-namespace:CookBook.Mobile.Resources.Fonts"
+                       xmlns:m="clr-namespace:CookBook.Mobile.Models"
+                       xmlns:vm="clr-namespace:CookBook.Mobile.ViewModels.Recipe"
+                       xmlns:views="clr-namespace:CookBook.Mobile.Views"
+                       x:Class="CookBook.Mobile.Views.Recipe.RecipeListView"
+                       Title="{x:Static t:RecipeListViewTexts.Page_Title}"
+                       Style="{StaticResource ContentPageStyle}"
+                       x:DataType="vm:RecipeListViewModel">
+    <Grid>
+        <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:RecipeListModel">
+                        <Frame Padding="0"
+                               CornerRadius="10"
+                               HeightRequest="200"
+                               IsClippedToBounds="True">
+                            <Grid RowDefinitions="35, *"
+                                  ColumnDefinitions="135, *">
+                                <Image Grid.Row="0" Grid.RowSpan="2"
+                                       Grid.Column="0" Grid.ColumnSpan="2"
+                                       HorizontalOptions="Fill" VerticalOptions="Fill"
+                                       Aspect="AspectFill"
+                                       Source="{Binding ImageUrl, TargetNullValue='/Images/recipe_placeholder.jpg'}" />
+
+                                <BoxView Grid.Row="0" Grid.RowSpan="2"
+                                         Grid.Column="0" Grid.ColumnSpan="2"
+                                         Opacity="0.25"
+                                         HorizontalOptions="Fill" VerticalOptions="Fill"
+                                         Color="Black" />
+
+                                <Frame Grid.Row="0"
+                                       Grid.Column="0"
+                                       Padding="8, 2"
+                                       Margin="8, 8, 0, 0"
+                                       BackgroundColor="{Binding FoodType, Converter={StaticResource FoodTypeToColorConverter}}"
+                                       CornerRadius="5">
+                                    <HorizontalStackLayout Spacing="8">
+                                        <Label VerticalOptions="Center"
+                                               FontFamily="{x:Static f:Fonts.FontAwesome}"
+                                               Text="{Binding FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
+                                               TextColor="White" />
+                                        <Label VerticalOptions="Center"
+                                               Text="{Binding FoodType, Converter={StaticResource FoodTypeToStringConverter}}"
+                                               Style="{StaticResource BoldLabelStyle}"
+                                               TextColor="White"
+                                               FontSize="11"/>
+                                    </HorizontalStackLayout>
+                                </Frame>
+
+                                <Label Grid.Row="1"
+                                       Grid.Column="0" Grid.ColumnSpan="2"
+                                       Margin="22,12"
+                                       FontSize="20" LineBreakMode="WordWrap"
+                                       Style="{StaticResource BoldLabelStyle}"
+                                       Text="{Binding Name}"
+                                       TextColor="White" VerticalOptions="End" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        <Button Margin="0,0,14,9" Padding="-15"
+                HorizontalOptions="End" VerticalOptions="End"
+                Command="{Binding GoToCreateCommand}"
+                CornerRadius="60" FontFamily="MontserratRegular"
+                FontSize="50"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static t:RecipeListViewTexts.Add_Button_Text}"
+                WidthRequest="65" HeightRequest="65" />
+    </Grid>
+</views:ContentPageBase>
