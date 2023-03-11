@@ -13,6 +13,8 @@ namespace CookBook.Mobile;
 
 public static class MauiProgram
 {
+    private const string FirstRunKey = "FirstRun";
+
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
@@ -86,12 +88,20 @@ public static class MauiProgram
 
     private static async Task SetupDatabaseAsync(MauiApp app)
     {
-        var databaseService = app.Services.GetRequiredService<IDatabaseService>();
-        await databaseService.CreateTableAsync<IngredientEntity>();
-        await databaseService.CreateTableAsync<RecipeEntity>();
+        var secureStorage = app.Services.GetRequiredService<ISecureStorage>();
+        var isFirstRun = await secureStorage.GetAsync(FirstRunKey);
+        
+        if (string.IsNullOrEmpty(isFirstRun))
+        {
+            var databaseService = app.Services.GetRequiredService<IDatabaseService>();
+            await databaseService.CreateTableAsync<RecipeEntity>();
+            await databaseService.CreateTableAsync<IngredientEntity>();
 
-        await SeedIngredientsAsync(databaseService);
-        await SeedRecipesAsync(databaseService);
+            await SeedIngredientsAsync(databaseService);
+            await SeedRecipesAsync(databaseService);
+
+            await secureStorage.SetAsync(FirstRunKey, "false");
+        }
     }
 
     private static async Task SeedIngredientsAsync(IDatabaseService databaseService)
