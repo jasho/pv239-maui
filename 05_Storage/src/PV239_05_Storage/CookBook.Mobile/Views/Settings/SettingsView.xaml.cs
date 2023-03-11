@@ -1,12 +1,10 @@
-﻿using CookBook.Mobile.ViewModels.Settings;
+﻿using CookBook.Mobile.ViewModels;
 
-namespace CookBook.Mobile.Views.Settings;
+namespace CookBook.Mobile.Views;
 
-public partial class SettingsView
-{
-    public SettingsView(SettingsViewModel settingsViewModel)
-        : base(settingsViewModel)
-    {
-        InitializeComponent();
-    }
+public partial class SettingsView {
+	public SettingsView(SettingsViewModel viewModel)
+		: base(viewModel) {
+		InitializeComponent();
+	}
 }

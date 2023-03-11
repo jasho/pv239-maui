@@ -2,17 +2,18 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:CookBook.Mobile.Converters"
+             xmlns:styles="clr-namespace:CookBook.Mobile.Resources.Styles" 
              x:Class="CookBook.Mobile.App">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/DarkTheme.xaml" />
-
-                <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/ContentPageStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/LabelStyle.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <styles:ButtonStyle />
+                <styles:PickerStyle />
+                <styles:ContentPageStyle />
+                <styles:EditorStyle />
+                <styles:EntryStyle />
+                <styles:LabelStyle />
+                <styles:DarkTheme />
             </ResourceDictionary.MergedDictionaries>
 
             <c:FoodTypeToColorConverter x:Key="FoodTypeToColorConverter" />

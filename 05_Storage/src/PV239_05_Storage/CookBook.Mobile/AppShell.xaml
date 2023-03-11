@@ -5,7 +5,7 @@
        xmlns:f="clr-namespace:CookBook.Mobile.Resources.Fonts"
        xmlns:vr="clr-namespace:CookBook.Mobile.Views.Recipe"
        xmlns:t="clr-namespace:CookBook.Mobile.Resources.Texts"
-       xmlns:vs="clr-namespace:CookBook.Mobile.Views.Settings"
+       xmlns:vs="clr-namespace:CookBook.Mobile.Views"
        BackgroundColor="{DynamicResource NavigationBarBackgroudColor}"
        Shell.TabBarTitleColor="{DynamicResource PrimaryColor}"
        Shell.UnselectedColor="{DynamicResource UnselectedColor}"

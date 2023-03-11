@@ -22,7 +22,7 @@ namespace CookBook.Mobile.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppShellTexts {
+    public class AppShellTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace CookBook.Mobile.Resources.Texts {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Mobile.Resources.Texts.AppShellTexts", typeof(AppShellTexts).Assembly);
@@ -51,7 +51,7 @@ namespace CookBook.Mobile.Resources.Texts {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
-        internal static string Exit_MenuFlyoutItem_Title {
+        public static string Exit_MenuFlyoutItem_Title {
             get {
                 return ResourceManager.GetString("Exit_MenuFlyoutItem_Title", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
-        internal static string File_MenuItem_Title {
+        public static string File_MenuItem_Title {
             get {
                 return ResourceManager.GetString("File_MenuItem_Title", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
-        internal static string Home_FlyoutItem_Title {
+        public static string Home_FlyoutItem_Title {
             get {
                 return ResourceManager.GetString("Home_FlyoutItem_Title", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to Ingredients.
         /// </summary>
-        internal static string Ingredients_Tab_Title {
+        public static string Ingredients_Tab_Title {
             get {
                 return ResourceManager.GetString("Ingredients_Tab_Title", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to Recipes.
         /// </summary>
-        internal static string Recipes_Tab_Title {
+        public static string Recipes_Tab_Title {
             get {
                 return ResourceManager.GetString("Recipes_Tab_Title", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace CookBook.Mobile.Resources.Texts {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        internal static string Settings_FlyoutItem_Title {
+        public static string Settings_FlyoutItem_Title {
             get {
                 return ResourceManager.GetString("Settings_FlyoutItem_Title", resourceCulture);
             }

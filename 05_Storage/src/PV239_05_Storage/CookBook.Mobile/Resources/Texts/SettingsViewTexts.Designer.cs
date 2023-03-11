@@ -22,14 +22,14 @@ namespace CookBook.Mobile.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class IngredientListViewTexts {
+    public class SettingsViewTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal IngredientListViewTexts() {
+        internal SettingsViewTexts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CookBook.Mobile.Resources.Texts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Mobile.Resources.Texts.IngredientListViewTexts", typeof(IngredientListViewTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Mobile.Resources.Texts.SettingsViewTexts", typeof(SettingsViewTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,56 @@ namespace CookBook.Mobile.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to +.
+        ///   Looks up a localized string similar to Apply.
         /// </summary>
-        public static string Add_Button_Text {
+        public static string Apply_Button_Text {
             get {
-                return ResourceManager.GetString("Add_Button_Text", resourceCulture);
+                return ResourceManager.GetString("Apply_Button_Text", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ingredients.
+        ///   Looks up a localized string similar to Change the localization of the application from the available options..
+        /// </summary>
+        public static string Localization_Label_Text {
+            get {
+                return ResourceManager.GetString("Localization_Label_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Localization_Title {
+            get {
+                return ResourceManager.GetString("Localization_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Page_Title {
             get {
                 return ResourceManager.GetString("Page_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the appearance of the application, with System Theme respecting the system wide theme..
+        /// </summary>
+        public static string Theme_Label_Text {
+            get {
+                return ResourceManager.GetString("Theme_Label_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        public static string Theme_Title {
+            get {
+                return ResourceManager.GetString("Theme_Title", resourceCulture);
             }
         }
     }

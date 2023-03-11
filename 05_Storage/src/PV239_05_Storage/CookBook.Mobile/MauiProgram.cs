@@ -56,7 +56,10 @@ public static class MauiProgram
     private static void ConfigureServices(IServiceCollection services)
     {
         services.AddSingleton<IDatabaseService, DatabaseService>();
-    }
+
+		services.AddSingleton(_ => SecureStorage.Default);
+		services.AddSingleton(_ => Preferences.Default);
+	}
 
     private static void ConfigureViewModels(IServiceCollection services)
     {
