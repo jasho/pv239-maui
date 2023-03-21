@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:ContentPageBase x:Class="CookBook.Mobile.Views.Ingredients.IngredientDetailView"
-                       xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       xmlns:ingredients="clr-namespace:CookBook.Mobile.Core.ViewModels.Ingredients;assembly=CookBook.Mobile.Core" xmlns:views="clr-namespace:CookBook.Mobile.Views;assembly=CookBook.Mobile"
-                       x:DataType="ingredients:IngredientDetailViewModel">
-    <Grid>
-        <Label Text="{Binding Ingredient.Name}" />
-    </Grid>
-</views:ContentPageBase>
