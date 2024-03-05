@@ -4,6 +4,7 @@
                     x:Class="CookBook.Mobile.MAUI.Resources.Styles.ButtonStyle">
     <Style x:Key="PrimaryButtonStyle" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}"/>
+        <Setter Property="BorderColor" Value="Green" />
     </Style>
 
     <Style x:Key="ErrorButtonStyle" TargetType="Button">

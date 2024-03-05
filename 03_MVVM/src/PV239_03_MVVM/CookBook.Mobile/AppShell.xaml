@@ -31,7 +31,7 @@
 
                 <Label Grid.Column="1" Text="{Binding Title}"
                        VerticalOptions="Center"
-                       TextColor="{DynamicResource BackgroundColor}"/>
+                       TextColor="{DynamicResource FlyoutItemTextColor}"/>
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>

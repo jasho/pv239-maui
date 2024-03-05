@@ -4,6 +4,11 @@
              xmlns:texts="clr-namespace:CookBook.Mobile.MAUI.Resources.Texts;assembly=CookBook.Mobile.MAUI"
              x:Class="CookBook.Mobile.MAUI.Views.IngredientDetailView"
              Title="Vejce">
+    <ContentPage.Resources>
+        <Style x:Key="MySpecialButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Green"/>
+        </Style>
+    </ContentPage.Resources>
     <Grid RowDefinitions="2*, 3*, 80">
         <Image Grid.Row="0"
                Aspect="AspectFit"
@@ -32,7 +37,8 @@
 
             <Button Grid.Column="2"
                     Text="{x:Static texts:IngredientDetailViewTexts.Edit_Button_Text}"
-                    Style="{StaticResource PrimaryButtonStyle}" />
+                    Style="{StaticResource MySpecialButtonStyle}"
+                    BorderWidth="10"/>
         </Grid>
     </Grid>
 </ContentPage>
