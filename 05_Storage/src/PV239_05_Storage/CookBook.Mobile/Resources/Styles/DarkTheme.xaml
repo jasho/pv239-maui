@@ -28,4 +28,6 @@
     <Color x:Key="FormEntryBorderColor">#E4E4E4</Color>
 
     <Color x:Key="ErrorColor">#FF0000</Color>
+
+    <Color x:Key="FlyoutItemTextColor">#FFFFFF</Color>
 </ResourceDictionary>
