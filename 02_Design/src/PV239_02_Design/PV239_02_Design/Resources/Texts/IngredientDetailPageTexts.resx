@@ -120,6 +120,9 @@
   <data name="Delete_Button_Text" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Description_Label_Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="Edit_Button_Text" xml:space="preserve">
     <value>Edit</value>
   </data>

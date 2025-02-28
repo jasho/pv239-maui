@@ -70,6 +70,15 @@ namespace PV239_02_Design.Resources.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string Description_Label_Text {
+            get {
+                return ResourceManager.GetString("Description_Label_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         internal static string Edit_Button_Text {

@@ -120,7 +120,10 @@
   <data name="Delete_Button_Text" xml:space="preserve">
     <value>Smazat</value>
   </data>
+  <data name="Description_Label_Text" xml:space="preserve">
+    <value>Popis</value>
+  </data>
   <data name="Edit_Button_Text" xml:space="preserve">
-    <value />
+    <value>Upravit</value>
   </data>
 </root>

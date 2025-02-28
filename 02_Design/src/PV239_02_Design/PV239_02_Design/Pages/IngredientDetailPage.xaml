@@ -21,7 +21,7 @@
             <VerticalStackLayout>
                 <Label Margin="8,8,8,0"
                        FontAttributes="Bold"
-                       Text="Popis:"/>
+                       Text="{x:Static texts:IngredientDetailPageTexts.Description_Label_Text}"/>
                 <Label Margin="16"
                        FontSize="Body"
                        LineBreakMode="WordWrap"
