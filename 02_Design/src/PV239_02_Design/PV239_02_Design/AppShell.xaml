@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="PV239_02_Design.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="using:PV239_02_Design.Pages"
+       xmlns:texts="clr-namespace:PV239_02_Design.Resources.Texts"
+       Title="PV239_02_Design"
+       Shell.FlyoutBehavior="Flyout">
+    <ShellContent Title="{x:Static texts:AppShellTexts.MainPage_Title}"
+                  ContentTemplate="{DataTemplate pages:MainPage}"
+                  Route="main"/>
+
+    <ShellContent Title="{x:Static texts:AppShellTexts.IngredientDetailPage_Title}"
+                  ContentTemplate="{DataTemplate pages:IngredientDetailPage}"
+                  Route="ingredient-detail"/>
+</Shell>
