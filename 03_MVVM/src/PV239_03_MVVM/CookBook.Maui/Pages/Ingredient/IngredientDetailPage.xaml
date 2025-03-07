@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage x:Class="CookBook.Maui.Pages.IngredientDetailPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+             Title="Vejce">
+    <ContentPage.Resources>
+        <Style x:Key="MySpecialButtonStyle"
+               TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Green"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="2*, 3*, 80">
+        <Image Grid.Row="0"
+               Aspect="AspectFit"
+               BackgroundColor="Gray"
+               Source="https://i.ibb.co/d7mZWGN/image.jpg"/>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout>
+                <Label Margin="8,8,8,0"
+                       FontAttributes="Bold"
+                       Text="{x:Static texts:IngredientDetailPageTexts.Description_Label_Text}"/>
+                <Label Margin="16"
+                       FontSize="Body"
+                       LineBreakMode="WordWrap"
+                       Text="Základní význam vajec domácí drůbeže je v první řadě biologický, tj. zajistit reprodukci daného druhu. Protože k vývoji nového jedince dochází mimo tělo matky, obsahuje vejce všechny důležité výživné složky nezbytné pro vývoj nového organismu. Zatímco vejce krůt, kachen a hus jsou produkována hlavně pro účely reprodukční, tj. slouží jako vejce násadová, slepičí vejce slouží také jako vejce konzumní a mohou být součástí lidské výživy. Vejce mají vysoký obsah plnohodnotných bílkovin (obsahují všechny aminokyseliny pro člověka nezbytné a to v poměru, který je nejpříznivější ze všech běžných potravin). Vejce dále obsahují tuky, vitamíny a minerální látky. Avšak obsahují i vysoké množství cholesterolu, takže konzumace 3 a více vajec denně prokazatelně zvyšuje riziko onemocnění a smrti.[1] &#10;Kromě přímé spotřeby vajec jako potraviny se vejce (vaječná hmota, bílek, žloutek) využívají jako surovina v různých odvětvích potravinářského (pekařství, cukrářství, výroba trvanlivého pečiva, těstovin, masných výrobků aj.) i nepotravinářského průmyslu (farmaceutický, kožedělný, textilní, chemický, fotografický, sklářský aj.). Neméně významné je využití vajec v humánní i veterinární medicíně (výroba očkovacích látek, ředidlo semene při inseminaci apod.)."/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="2"
+              Padding="10"
+              ColumnDefinitions="*, *, *"
+              ColumnSpacing="10">
+            <Button Grid.Column="0"
+                    Style="{StaticResource ErrorButtonStyle}"
+                    Text="{x:Static texts:IngredientDetailPageTexts.Delete_Button_Text}"/>
+
+            <Button Grid.Column="2"
+                    BorderWidth="10"
+                    Style="{StaticResource MySpecialButtonStyle}"
+                    Text="{x:Static texts:IngredientDetailPageTexts.Edit_Button_Text}"/>
+        </Grid>
+    </Grid>
+</ContentPage>

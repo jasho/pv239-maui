@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="CookBook.Maui.Pages.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:texts="using:CookBook.Maui.Resources.Texts"
+             Title="{x:Static texts:MainPageTexts.Page_Title}">
+    <VerticalStackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Spacing="10">
+        <Button Clicked="IngredientsButton_OnClicked"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static texts:MainPageTexts.Ingredients_Button_Text}"/>
+
+        <Button Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static texts:MainPageTexts.Recipes_Button_Text}"/>
+    </VerticalStackLayout>
+</ContentPage>
