@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
+             x:Class="CookBook.Maui.Pages.Ingredient.IngredientEditPage"
+             Title="IngredientEditPage">
+    <ContentPage.BindingContext>
+        <viewModels:IngredientEditViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout>
+        <Label Text="{Binding Ingredient.Name, Mode=Default}" />
+        <Label Text="{Binding Ingredient.Name, Mode=OneTime}" />
+        <Label Text="{Binding Source={x:Reference EntryName}, Path=Text, Mode=OneWay}" />
+        
+        <Entry x:Name="EntryName"
+               Text="{Binding Ingredient.Name, Mode=TwoWay}" />
+        
+        <Button Text="Update person" Command="{Binding UpdatePersonCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>
