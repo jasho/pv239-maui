@@ -1,13 +1,9 @@
-using CookBook.Maui.ViewModels;
-
 namespace CookBook.Maui.Pages;
 
-public partial class IngredientListPage : ContentPage
+public partial class IngredientListPage
 {
 	public IngredientListPage()
 	{
-        BindingContext = new IngredientListViewModel();
-
 		InitializeComponent();
     }
 }

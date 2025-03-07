@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using CookBook.Maui.Models;
 
 namespace CookBook.Maui.ViewModels;
@@ -38,4 +39,17 @@ public partial class IngredientListViewModel : ViewModelBase
             ImageUrl = "https://i.ibb.co/BB3gVxr/ingredient-2.jpg"
         }
     ];
+
+    [RelayCommand]
+    public async Task GoToDetailAsync(Guid id)
+    {
+        await Shell.Current.GoToAsync("./detail");
+    }
+
+    [RelayCommand]
+    public async Task GoToCreateAsync()
+    {
+        // TODO add navigation to ingredient edit page
+        //await Shell.Current.GoToAsync("");
+    }
 }
