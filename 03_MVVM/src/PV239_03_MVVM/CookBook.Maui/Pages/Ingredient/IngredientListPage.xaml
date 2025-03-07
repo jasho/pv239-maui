@@ -12,28 +12,6 @@
         <vm:IngredientListViewModel/>
     </ContentPage.BindingContext>
     <Grid>
-        <!--<CollectionView ItemsSource="{Binding Items}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="8"
-                                   Orientation="Vertical"/>
-            </CollectionView.ItemsLayout>
-
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid HeightRequest="40"
-                          BackgroundColor="Transparent"
-                          ColumnDefinitions="34, *, Auto"
-                          ColumnSpacing="20">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
-                                                  CommandParameter="{Binding Id}"/>
-                        </Grid.GestureRecognizers>
-
-                        <Label Text="{Binding Name}"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>-->
         <CollectionView ItemsSource="{Binding Items}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="8"
