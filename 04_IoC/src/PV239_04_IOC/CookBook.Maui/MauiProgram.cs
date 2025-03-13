@@ -2,6 +2,7 @@
 using CookBook.Maui.Clients;
 using CookBook.Maui.Clients.Interfaces;
 using CookBook.Maui.Pages;
+using CookBook.Maui.Pages.Recipe;
 using CookBook.Maui.ViewModels;
 using CookBook.Maui.ViewModels.Ingredient;
 using Microsoft.Extensions.Logging;
@@ -57,5 +58,6 @@ public static class MauiProgram
     private static void RegisterRoutes()
     {
         Routing.RegisterRoute("ingredients/detail", typeof(IngredientDetailPage));
+        Routing.RegisterRoute("recipes/detail", typeof(RecipeDetailPage));
     }
 }

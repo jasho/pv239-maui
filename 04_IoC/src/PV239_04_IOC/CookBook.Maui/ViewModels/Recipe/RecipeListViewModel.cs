@@ -43,5 +43,6 @@ public partial class RecipeListViewModel : ViewModelBase
     [RelayCommand]
     private async Task GoToDetailAsync(Guid id)
     {
+        await Shell.Current.GoToAsync("./detail");
     }
 }
