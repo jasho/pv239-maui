@@ -5,6 +5,7 @@
        xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
        xmlns:pages="clr-namespace:CookBook.Maui.Pages"
        xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+       xmlns:recipe="clr-namespace:CookBook.Maui.Pages.Recipe"
        Title="CookBook.Maui"
        Shell.FlyoutBehavior="Flyout">
     <Shell.FlyoutHeader>
@@ -37,9 +38,9 @@
                              Glyph="{x:Static fonts:FontAwesomeIcons.House}"/>
         </FlyoutItem.Icon>
 
-        <!--<Tab Title="{x:Static t:AppShellTexts.Recipes_Tab_Title}">
-            <ShellContent ContentTemplate="{DataTemplate vr:RecipeListView}" Route="recipes" />
-        </Tab>-->
+        <Tab Title="{x:Static texts:AppShellTexts.Recipes_Tab_Title}">
+            <ShellContent ContentTemplate="{DataTemplate recipe:RecipeListPage}" Route="recipes" />
+        </Tab>
 
         <Tab Title="{x:Static texts:AppShellTexts.Ingredients_Tab_Title}">
             <ShellContent ContentTemplate="{DataTemplate pages:IngredientListPage}"

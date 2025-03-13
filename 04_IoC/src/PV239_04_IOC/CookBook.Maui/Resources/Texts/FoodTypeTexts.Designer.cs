@@ -22,14 +22,14 @@ namespace CookBook.Maui.Resources.Texts {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class IngredientListPageTexts {
+    public class FoodTypeTexts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal IngredientListPageTexts() {
+        internal FoodTypeTexts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CookBook.Maui.Resources.Texts {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Maui.Resources.Texts.IngredientListPageTexts", typeof(IngredientListPageTexts).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CookBook.Maui.Resources.Texts.FoodTypeTexts", typeof(FoodTypeTexts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,38 @@ namespace CookBook.Maui.Resources.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to +.
+        ///   Looks up a localized string similar to dessert.
         /// </summary>
-        public static string Add_Button_Text {
+        public static string Dessert {
             get {
-                return ResourceManager.GetString("Add_Button_Text", resourceCulture);
+                return ResourceManager.GetString("Dessert", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ingredients.
+        ///   Looks up a localized string similar to main dish.
         /// </summary>
-        public static string Page_Title {
+        public static string MainDish {
             get {
-                return ResourceManager.GetString("Page_Title", resourceCulture);
+                return ResourceManager.GetString("MainDish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to soup.
+        /// </summary>
+        public static string Soup {
+            get {
+                return ResourceManager.GetString("Soup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to unknown.
+        /// </summary>
+        public static string Unknown {
+            get {
+                return ResourceManager.GetString("Unknown", resourceCulture);
             }
         }
     }
