@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<pages:ContentPageBase x:Class="CookBook.Maui.Pages.IngredientDetailPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ingredient="clr-namespace:CookBook.Maui.ViewModels.Ingredient"
+             xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
+             xmlns:pages="clr-namespace:CookBook.Maui.Pages"
+             x:DataType="{x:Type ingredient:IngredientDetailViewModel}"
+             Title="{Binding Ingredient.Name}">
+    <pages:ContentPageBase.Resources>
+        <Style x:Key="MySpecialButtonStyle"
+               TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Green"/>
+        </Style>
+    </pages:ContentPageBase.Resources>
+
+    <Grid RowDefinitions="2*, 3*, 80">
+        <Image Grid.Row="0"
+               Aspect="AspectFit"
+               BackgroundColor="Gray"
+               Source="{Binding Ingredient.ImageUrl}"/>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout>
+                <Label Margin="8,8,8,0"
+                       FontAttributes="Bold"
+                       Text="{x:Static texts:IngredientDetailPageTexts.Description_Label_Text}"/>
+                <Label Margin="16"
+                       FontSize="Body"
+                       LineBreakMode="WordWrap"
+                       Text="{Binding Ingredient.Description}"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="2"
+              Padding="10"
+              ColumnDefinitions="*, *, *"
+              ColumnSpacing="10">
+            <Button Grid.Column="0"
+                    Style="{StaticResource ErrorButtonStyle}"
+                    Text="{x:Static texts:IngredientDetailPageTexts.Delete_Button_Text}"/>
+
+            <Button Grid.Column="2"
+                    BorderWidth="10"
+                    Style="{StaticResource MySpecialButtonStyle}"
+                    Text="{x:Static texts:IngredientDetailPageTexts.Edit_Button_Text}"/>
+        </Grid>
+    </Grid>
+</pages:ContentPageBase>

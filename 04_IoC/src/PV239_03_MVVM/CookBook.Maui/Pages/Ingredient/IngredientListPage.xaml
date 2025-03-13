@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:ContentPageBase x:Class="CookBook.Maui.Pages.IngredientListPage"
+                       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
+                       xmlns:m="clr-namespace:CookBook.Maui.Models"
+                       xmlns:t="clr-namespace:CookBook.Maui.Resources.Texts"
+                       xmlns:vm="clr-namespace:CookBook.Maui.ViewModels"
+                       xmlns:pages="clr-namespace:CookBook.Maui.Pages"
+                       x:Name="Root"
+                       x:DataType="{x:Type vm:IngredientListViewModel}"
+                       Title="IngredientListPage">
+    <Grid>
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="8"
+                                   Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:IngredientListModel">
+                    <Grid HeightRequest="40"
+                          BackgroundColor="Transparent"
+                          ColumnDefinitions="34, *, Auto"
+                          ColumnSpacing="20">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
+                                                  CommandParameter="{Binding Id}"/>
+                        </Grid.GestureRecognizers>
+                        <BoxView Grid.Column="0"
+                                 Grid.ColumnSpan="3"
+                                 HorizontalOptions="Fill"
+                                 VerticalOptions="Fill"
+                                 CornerRadius="5"
+                                 Color="{DynamicResource ListItemBackgroundColor}"/>
+
+                        <Border Grid.Column="0"
+                                HeightRequest="34"
+                                VerticalOptions="Center"
+                                Margin="4,0,0,0"
+                                Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5"/>
+                            </Border.StrokeShape>
+                            <Image WidthRequest="34"
+                                   Aspect="AspectFill"
+                                   Source="{Binding ImageUrl, TargetNullValue='/Images/ingredient_placeholder.jpg'}"/>
+                        </Border>
+
+                        <Label Grid.Column="1"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Style="{StaticResource MediumLabelStyle}"
+                               Text="{Binding Name}"/>
+
+                        <Label Grid.Column="2"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center"
+                               Margin="0,0,12,0"
+                               FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                               FontSize="20"
+                               Text="{x:Static fonts:FontAwesomeIcons.Pen}"
+                               TextColor="{StaticResource PrimaryColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToEditCommand}"
+                                                      CommandParameter="{Binding Id}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button WidthRequest="65"
+                HeightRequest="65"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="0,0,14,9"
+                Padding="-15"
+                Command="{Binding GoToCreateCommand}"
+                CornerRadius="60"
+                FontFamily="MontserratRegular"
+                FontSize="50"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static t:IngredientListPageTexts.Add_Button_Text}"/>
+    </Grid>
+</pages:ContentPageBase>
