@@ -40,15 +40,23 @@ public class RecipesClient : IRecipesClient
     ];
 
     public async Task<ICollection<RecipeListModel>> GetRecipesAllAsync()
-        => items.Select(recipe => new RecipeListModel
+    {
+        await Task.Delay(1000);
+
+        return items.Select(recipe => new RecipeListModel
         {
             Id = recipe.Id ?? Guid.Empty,
             Name = recipe.Name,
             FoodType = recipe.FoodType,
             ImageUrl = recipe.ImageUrl
         })
-        .ToList();
+            .ToList();
+    }
 
     public async Task<RecipeDetailModel?> GetRecipeByIdAsync(Guid id)
-        => items.FirstOrDefault(recipe => recipe.Id == id);
+    {
+        await Task.Delay(1000);
+
+        return items.FirstOrDefault(recipe => recipe.Id == id);
+    }
 }

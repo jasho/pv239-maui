@@ -45,15 +45,23 @@ public class IngredientsClient : IIngredientsClient
     ];
 
     public async Task<ICollection<IngredientListModel>> GetIngredientsAllAsync()
-        => items
-        .Select(ingredient => new IngredientListModel
-        {
-            Id = ingredient.Id,
-            Name = ingredient.Name,
-            ImageUrl = ingredient.ImageUrl
-        })
-        .ToList();
+    {
+        await Task.Delay(1000);
+
+        return items
+            .Select(ingredient => new IngredientListModel
+            {
+                Id = ingredient.Id,
+                Name = ingredient.Name,
+                ImageUrl = ingredient.ImageUrl
+            })
+            .ToList();
+    }
 
     public async Task<IngredientDetailModel?> GetIngredientByIdAsync(Guid id)
-        => items.FirstOrDefault(ingredient => ingredient.Id == id);
+    {
+        await Task.Delay(1000);
+
+        return items.FirstOrDefault(ingredient => ingredient.Id == id);
+    }
 }

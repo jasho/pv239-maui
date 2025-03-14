@@ -12,9 +12,9 @@ public partial class IngredientListViewModel(IIngredientsClient ingredientsClien
     [ObservableProperty]
     public partial ICollection<IngredientListModel> Items { get; set; }
 
-    public override async Task OnAppearingAsync()
+    protected override async Task LoadDataAsync()
     {
-        await base.OnAppearingAsync();
+        await base.LoadDataAsync();
 
         Items = await ingredientsClient.GetIngredientsAllAsync();
     }

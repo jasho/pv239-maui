@@ -13,9 +13,9 @@ public partial class IngredientDetailViewModel(IIngredientsClient ingredientsCli
     [ObservableProperty]
     public partial IngredientDetailModel? Ingredient { get; set; }
 
-    public override async Task OnAppearingAsync()
+    protected override async Task LoadDataAsync()
     {
-        await base.OnAppearingAsync();
+        await base.LoadDataAsync();
 
         Ingredient = await ingredientsClient.GetIngredientByIdAsync(Id);
     }
