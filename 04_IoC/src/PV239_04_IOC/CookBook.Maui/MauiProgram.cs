@@ -48,6 +48,7 @@ public static class MauiProgram
         services.AddTransient<IngredientListViewModel>();
         services.AddTransient<IngredientDetailViewModel>();
         services.AddTransient<RecipeListViewModel>();
+        services.AddTransient<RecipeDetailViewModel>();
         services.AddTransient<SettingsViewModel>();
     }
 
@@ -56,6 +57,7 @@ public static class MauiProgram
         services.AddTransient<IngredientListPage>();
         services.AddTransient<IngredientDetailPage>();
         services.AddTransient<RecipeListPage>();
+        services.AddTransient<RecipeDetailPage>();
         services.AddTransient<SettingsPage>();
     }
 
