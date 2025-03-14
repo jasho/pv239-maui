@@ -5,6 +5,7 @@ using CookBook.Maui.Pages;
 using CookBook.Maui.Pages.Recipe;
 using CookBook.Maui.ViewModels;
 using CookBook.Maui.ViewModels.Ingredient;
+using CookBook.Maui.ViewModels.Recipe;
 using Microsoft.Extensions.Logging;
 
 namespace CookBook.Maui;
@@ -39,12 +40,14 @@ public static class MauiProgram
     private static void ConfigureClients(IServiceCollection services)
     {
         services.AddSingleton<IIngredientsClient, IngredientsClient>();
+        services.AddSingleton<IRecipesClient, RecipesClient>();
     }
 
     private static void ConfigureViewModels(IServiceCollection services)
     {
         services.AddTransient<IngredientListViewModel>();
         services.AddTransient<IngredientDetailViewModel>();
+        services.AddTransient<RecipeListViewModel>();
         services.AddTransient<SettingsViewModel>();
     }
 
@@ -52,6 +55,7 @@ public static class MauiProgram
     {
         services.AddTransient<IngredientListPage>();
         services.AddTransient<IngredientDetailPage>();
+        services.AddTransient<RecipeListPage>();
         services.AddTransient<SettingsPage>();
     }
 

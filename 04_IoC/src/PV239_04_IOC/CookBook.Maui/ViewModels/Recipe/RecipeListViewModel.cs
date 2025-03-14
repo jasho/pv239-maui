@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CookBook.Maui.Clients;
+using CookBook.Maui.Clients.Interfaces;
 using CookBook.Maui.Models;
 using CookBook.Mobile.Enums;
 using System.Collections.ObjectModel;
@@ -8,37 +10,22 @@ namespace CookBook.Maui.ViewModels.Recipe;
 
 public partial class RecipeListViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    public partial ICollection<RecipeListModel> Items { get; set; } = new ObservableCollection<RecipeListModel>
+    private IRecipesClient recipesClient;
+
+    public RecipeListViewModel(IRecipesClient recipesClient)
     {
-        new()
-        {
-            Id = Guid.NewGuid(),
-            Name = "Míchaná vejce",
-            FoodType = FoodType.MainDish,
-            ImageUrl = "https://i.ibb.co/mJgrX6B/Scrambled-eggs-01.jpg"
-        },
-        new()
-        {
-            Id = Guid.NewGuid(),
-            Name = "Miso polévka",
-            FoodType = FoodType.Soup,
-            ImageUrl = "https://i.ibb.co/RY1XKmL/recipe-2.jpg",
-        },
-        new()
-        {
-            Id = Guid.NewGuid(),
-            Name = "Vykoštěné kuře s citronem a bylinkami",
-            FoodType = FoodType.MainDish,
-            ImageUrl = "https://i.ibb.co/QJF2ZxX/recipe-1.jpg",
-        },
-        new()
-        {
-            Id = Guid.NewGuid(),
-            Name = "Sorbet",
-            FoodType = FoodType.Dessert,
-        },
-    };
+        this.recipesClient = recipesClient;
+
+        LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        Items = await recipesClient.GetRecipesAllAsync();
+    }
+
+    [ObservableProperty]
+    public partial ICollection<RecipeListModel> Items { get; set; } = [];
 
     [RelayCommand]
     private async Task GoToDetailAsync(Guid id)

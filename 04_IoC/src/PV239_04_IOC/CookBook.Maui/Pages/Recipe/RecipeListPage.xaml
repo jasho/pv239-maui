@@ -8,10 +8,6 @@
              x:Class="CookBook.Maui.Pages.Recipe.RecipeListPage"
              x:Name="Root"
              Title="RecipeListPage">
-    <ContentPage.BindingContext>
-        <vm:RecipeListViewModel/>
-    </ContentPage.BindingContext>
-
     <Grid>
         <Grid HorizontalOptions="Fill"
               Margin="{OnIdiom Phone='10, 0'}"
@@ -43,8 +39,6 @@
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
                       CommandParameter="{Binding Id}"/>
                             </Border.GestureRecognizers>
-
-                            <!--<Label Text="{Binding Name}"/>-->
 
                             <Grid Padding="0"
                                   ColumnDefinitions="200, *"
