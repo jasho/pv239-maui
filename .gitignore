@@ -342,3 +342,6 @@ ASALocalRun/
 healthchecksdb
 /03_MVVM/src/PV239_03_MVVM_old
 04_IoC/David-Ortinau-PV239.mp4
+
+# MacOS Files
+.DS_Store
