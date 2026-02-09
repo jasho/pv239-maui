@@ -34,7 +34,7 @@ jobs:
           npx @marp-team/marp-cli@latest --allow-local-files --html -o build/slides "??_*/*.md"
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           path: build/slides
 
