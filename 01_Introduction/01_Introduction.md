@@ -27,36 +27,62 @@ marp: true
         color: rgb(132, 168, 196)
 }
 
+    /* Layout table variables */
+    section.layout-table,
+    section.layout-table-wrapped-header {
+        --layout-table-spacing: 20px;
+        --layout-table-header-font-size: 1.2em;
+        --layout-table-header-padding: 15px 20px;
+        --layout-table-cell-padding: 20px;
+        --layout-table-img-width: 85%;
+    }
+
     /* Shared table styling for layout slides */
-    section.layout-table table {
+    section.layout-table table,
+    section.layout-table-wrapped-header table {
         width: 100%;
         border: none;
         border-collapse: separate;
-        border-spacing: 20px 0;
+        border-spacing: var(--layout-table-spacing) 0;
         background: transparent;
     }
-    section.layout-table tbody {
+    section.layout-table tbody,
+    section.layout-table-wrapped-header tbody {
         background: transparent;
     }
-    section.layout-table tr {
+    section.layout-table tr,
+    section.layout-table-wrapped-header tr {
         background: transparent;
     }
-    section.layout-table th {
+    section.layout-table th,
+    section.layout-table-wrapped-header th {
         text-align: center;
-        font-size: 1.2em;
+        font-size: var(--layout-table-header-font-size);
         font-weight: bold;
-        padding: 10px 20px;
+        padding: var(--layout-table-header-padding);
+        white-space: normal;
+        word-wrap: break-word;
     }
-    section.layout-table td {
+    section.layout-table td,
+    section.layout-table-wrapped-header td {
         text-align: center;
         border: none;
         vertical-align: top;
-        padding: 20px;
+        padding: var(--layout-table-cell-padding);
         background: transparent !important;
     }
+
+    /* Default: single-line headers */
     section.layout-table td img {
-        width: 85%;
+        width: var(--layout-table-img-width);
         height: 400px;
+        object-fit: contain;
+    }
+
+    /* Variant: wrapped headers need shorter images */
+    section.layout-table-wrapped-header td img {
+        width: var(--layout-table-img-width);
+        height: 350px;
         object-fit: contain;
     }
 </style>
@@ -295,10 +321,6 @@ section {
 
 ---
 
-<!--
-header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; **Layouts** &nbsp;&nbsp; Controls'
--->
-
 ## Layouts
 <!-- _class: layout-table -->
 
@@ -318,8 +340,11 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; **L
 ---
 
 ## Layouts - StackLayout
+<!-- _class: layout-table-wrapped-header -->
 
-![h:500 center](img/layouts_03.png)
+| **StackLayout** | **VerticalStackLayout** | **Horizontal<br>StackLayout** |
+|:------------------:|:------------------:|:--------------:|
+| ![](img/layouts_stack-layout.png) | ![](img/layouts_vertical-stack-layout.png) | ![](img/layouts_horizontal-stack-layout.png) |
 
 ---
 
