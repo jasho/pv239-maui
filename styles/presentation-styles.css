@@ -101,3 +101,42 @@ section.content-grid td img {
     height: var(--content-grid-img-height);
     object-fit: contain;
 }
+/* Controls grid - text boxes in 5 columns */
+section.controls-grid {
+    --controls-grid-spacing: 12px;
+    --controls-box-bg: #4a90a4;
+    --controls-box-text: white;
+}
+
+section.controls-grid table {
+    width: 100%;
+    border: none !important;
+    border-collapse: separate !important;
+    border-spacing: var(--controls-grid-spacing) var(--controls-grid-spacing) !important;
+    background: transparent !important;
+}
+section.controls-grid thead {
+    display: none !important;
+}
+section.controls-grid tbody {
+    background: transparent !important;
+    border: none !important;
+}
+section.controls-grid tr {
+    background: transparent !important;
+    border: none !important;
+}
+section.controls-grid td {
+    text-align: center;
+    border: none !important;
+    vertical-align: middle;
+    padding: 18px 10px !important;
+    background: var(--controls-box-bg) !important;
+    color: var(--controls-box-text) !important;
+    font-size: 0.9em;
+    font-weight: normal;
+    width: 20%;
+}
+section.controls-grid th {
+    display: none !important;
+}

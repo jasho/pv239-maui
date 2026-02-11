@@ -327,8 +327,15 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; Lay
 -->
 
 ## Controls
+<!-- _class: controls-grid -->
 
-![h:450 center](img/controls.png)
+| | | | | |
+|:--:|:--:|:--:|:--:|:--:|
+| ActivityIndicator | BoxView | Button | DatePicker | Editor |
+| Entry | Image | Label | TimePicker | Slider |
+| OpenGLView | Picker | ProgressBar | SearchBar | Stepper |
+| WebView | TableView | ListView | TextCell | EntryCell |
+| ImageCell | SwitchCell | ViewCell | Map | ... |
 
 ---
 
