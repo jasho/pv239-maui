@@ -7,6 +7,8 @@ marp: true
 ---
 
 <style>
+    @import url('../styles/presentation-styles.css');
+
     .container {
         display: flex;
     }
@@ -26,104 +28,6 @@ marp: true
         font-size: 80px;
         color: rgb(132, 168, 196)
 }
-
-    /* Layout table variables */
-    section.layout-table,
-    section.layout-table-wrapped-header {
-        --layout-table-spacing: 20px;
-        --layout-table-header-font-size: 1.2em;
-        --layout-table-header-padding: 15px 20px;
-        --layout-table-cell-padding: 20px;
-        --layout-table-img-width: 85%;
-    }
-
-    /* Shared table styling for layout slides */
-    section.layout-table table,
-    section.layout-table-wrapped-header table {
-        width: 100%;
-        border: none;
-        border-collapse: separate;
-        border-spacing: var(--layout-table-spacing) 0;
-        background: transparent;
-    }
-    section.layout-table tbody,
-    section.layout-table-wrapped-header tbody {
-        background: transparent;
-    }
-    section.layout-table tr,
-    section.layout-table-wrapped-header tr {
-        background: transparent;
-    }
-    section.layout-table th,
-    section.layout-table-wrapped-header th {
-        text-align: center;
-        font-size: var(--layout-table-header-font-size);
-        font-weight: bold;
-        padding: var(--layout-table-header-padding);
-        white-space: normal;
-        word-wrap: break-word;
-    }
-    section.layout-table td,
-    section.layout-table-wrapped-header td {
-        text-align: center;
-        border: none;
-        vertical-align: top;
-        padding: var(--layout-table-cell-padding);
-        background: transparent !important;
-    }
-
-    /* Default: single-line headers */
-    section.layout-table td img {
-        width: var(--layout-table-img-width);
-        height: 400px;
-        object-fit: contain;
-    }
-
-    /* Variant: wrapped headers need shorter images */
-    section.layout-table-wrapped-header td img {
-        width: var(--layout-table-img-width);
-        height: 350px;
-        object-fit: contain;
-    }
-
-    /* Layout grid for content presentation - 3 columns x 2 rows without headers */
-    section.content-grid {
-        --content-grid-spacing: 20px;
-        --content-grid-img-height: 240px;
-    }
-
-    section.content-grid table {
-        width: 100%;
-        border: none;
-        border-collapse: separate;
-        border-spacing: var(--content-grid-spacing);
-        background: transparent;
-    }
-    section.content-grid thead {
-        display: none;
-    }
-    section.content-grid tbody {
-        background: transparent;
-    }
-    section.content-grid tr {
-        background: transparent;
-    }
-    section.content-grid tr:last-child td {
-        padding-bottom: 20px;
-    }
-    section.content-grid td {
-        text-align: center;
-        border: none;
-        vertical-align: middle;
-        padding: 0;
-        background: transparent !important;
-        width: 33.33%;
-    }
-    section.content-grid td img {
-        width: 100%;
-        height: var(--content-grid-img-height);
-        object-fit: contain;
-    }
 </style>
 
 # PV239 – 01 Introduction
