@@ -26,6 +26,39 @@ marp: true
         font-size: 80px;
         color: rgb(132, 168, 196)
 }
+
+    /* Shared table styling for layout slides */
+    section.layout-table table {
+        width: 100%;
+        border: none;
+        border-collapse: separate;
+        border-spacing: 20px 0;
+        background: transparent;
+    }
+    section.layout-table tbody {
+        background: transparent;
+    }
+    section.layout-table tr {
+        background: transparent;
+    }
+    section.layout-table th {
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: bold;
+        padding: 10px 20px;
+    }
+    section.layout-table td {
+        text-align: center;
+        border: none;
+        vertical-align: top;
+        padding: 20px;
+        background: transparent !important;
+    }
+    section.layout-table td img {
+        width: 85%;
+        height: 400px;
+        object-fit: contain;
+    }
 </style>
 
 # PV239 – 01 Introduction
@@ -267,14 +300,20 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; **L
 -->
 
 ## Layouts
+<!-- _class: layout-table -->
 
-![h:500 center](img/layouts_01.png)
+| **AbsoluteLayout** | **RelativeLayout** | **FlexLayout** |
+|:------------------:|:------------------:|:--------------:|
+| ![](img/layouts_absolute-layout.png) | ![](img/layouts_relative-layout.png) | ![](img/layouts_flex-layout.png) |
 
 ---
 
 ## Layouts
+<!-- _class: layout-table -->
 
-![h:500 center](img/layouts_02.png)
+| **Grid** | **StackLayout** |
+|:--------:|:---------------:|
+| ![](img/layouts_grid.png) | ![](img/layouts_stack-layout.png) |
 
 ---
 
