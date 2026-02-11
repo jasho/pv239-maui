@@ -85,6 +85,45 @@ marp: true
         height: 350px;
         object-fit: contain;
     }
+
+    /* Layout grid for content presentation - 3 columns x 2 rows without headers */
+    section.content-grid {
+        --content-grid-spacing: 20px;
+        --content-grid-img-height: 240px;
+    }
+
+    section.content-grid table {
+        width: 100%;
+        border: none;
+        border-collapse: separate;
+        border-spacing: var(--content-grid-spacing);
+        background: transparent;
+    }
+    section.content-grid thead {
+        display: none;
+    }
+    section.content-grid tbody {
+        background: transparent;
+    }
+    section.content-grid tr {
+        background: transparent;
+    }
+    section.content-grid tr:last-child td {
+        padding-bottom: 20px;
+    }
+    section.content-grid td {
+        text-align: center;
+        border: none;
+        vertical-align: middle;
+        padding: 0;
+        background: transparent !important;
+        width: 33.33%;
+    }
+    section.content-grid td img {
+        width: 100%;
+        height: var(--content-grid-img-height);
+        object-fit: contain;
+    }
 </style>
 
 # PV239 – 01 Introduction
@@ -390,8 +429,12 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; Lay
 ---
 
 ## Content Presentation
+<!-- _class: content-grid -->
 
-![h:500 center](img/presentation_controls.png)
+| | | |
+|:--:|:--:|:--:|
+| ![](img/content_presentation-label.png) | ![](img/content_presentation-image.png) | ![](img/content_presentation-box-view.png) |
+| ![](img/content_presentation-web-view.png) | ![](img/content_presentation-map.png) |
 
 ---
 
