@@ -1,0 +1,44 @@
+name: Build PDFs for PR
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '[0-9][0-9]_*/**/*.md'
+      - 'Index.md'
+  workflow_dispatch: {}
+
+jobs:
+  build-pdfs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build PDFs from markdown files
+        run: |
+          for dir in [0-9][0-9]_*/; do
+            for md_file in "$dir"*.md; do
+              if [ -f "$md_file" ]; then
+                # Convert markdown to PDF in the same directory
+                npx @marp-team/marp-cli@latest --allow-local-files --html --pdf "$md_file" -o "${md_file%.md}.pdf"
+              fi
+            done
+          done
+
+      - name: Commit PDFs
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        with:
+          commit_message: "Build PDF files for lectures"
+          file_pattern: '[0-9][0-9]_*/*.pdf'
