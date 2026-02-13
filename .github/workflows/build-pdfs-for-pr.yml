@@ -28,12 +28,6 @@ jobs:
 
       - name: Build PDFs from markdown files
         run: |
-          # Build root-level Index.md as PDF if it exists
-          if [ -f "Index.md" ]; then
-            npx @marp-team/marp-cli@latest --allow-local-files --html --pdf "Index.md" -o "Index.pdf"
-          fi
-          
-          # Build all slides in numbered directories as PDFs
           for dir in [0-9][0-9]_*/; do
             for md_file in "$dir"*.md; do
               if [ -f "$md_file" ]; then
@@ -47,4 +41,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5.0.1
         with:
           commit_message: "Build PDF files for lectures"
-          file_pattern: '*.pdf [0-9][0-9]_*/*.pdf'
+          file_pattern: '[0-9][0-9]_*/*.pdf'
