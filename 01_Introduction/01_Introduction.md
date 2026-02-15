@@ -82,7 +82,7 @@ header: '**Introduction** &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp;
 
 <div class='col'>
 
-- [Discord](https://discord.gg/HWs8rmT4bh)
+- [Discord](https://discord.gg/eQGf3SBWY2)
 ![QR code with Discord server invite link](img/discord_invite_qr.png)
 
 </div>
