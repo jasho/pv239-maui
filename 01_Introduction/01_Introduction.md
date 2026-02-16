@@ -415,6 +415,20 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; Lay
 
 ---
 
+## Additional content suggestions
+
+- Useful tools - scrcpy, QuickTime/Mirror on Mac, adb uninstall, Appium Inspector, Android Studio, etc.
+- Using AI in .NET MAUI development
+- Application configuration
+- Working with Bluetooth
+- Media picker/file picker
+- Realtime communication (chat app)
+- Aspire, diagnostics, application metrics
+- UI Testing
+- Accessibility
+
+---
+
 ## Today's Goals
 
 - People introduction
