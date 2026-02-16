@@ -140,3 +140,36 @@ section.controls-grid td {
 section.controls-grid th {
     display: none !important;
 }
+
+/* Two-column layout: image on left, text on right */
+section.two-column table {
+    width: 100%;
+    border: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    margin-top: 20px;
+}
+section.two-column td {
+    border: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    vertical-align: middle;
+    padding: 0;
+}
+section.two-column tr {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+section.two-column td:first-child {
+    width: 50%;
+    text-align: center;
+}
+section.two-column td:last-child {
+    width: 50%;
+    font-size: 1.1em;
+    line-height: 1.7;
+    padding-left: 40px;
+}
+section.two-column td:last-child p {
+    margin: 0.6em 0;
+}

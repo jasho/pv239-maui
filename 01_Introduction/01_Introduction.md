@@ -76,7 +76,7 @@ header: '**Introduction** &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp;
 - Materials & Resources
     - [Materials repository](https://github.com/jasho/pv239-maui)
     - [Sample app repository](https://github.com/jasho/cookbook-maui)
-- Stream/recordings – [Youtube](https://www.youtube.com/playlist?list=PLMD3_JXajX1iWN-KFRie7esaE9NP7eBlf)
+- Stream/recordings – [Youtube](https://www.youtube.com/playlist?list=PLMD3_JXajX1gmOuLSET9xefBqFDxNK398)
 - Optional homeworks
 - Project
 
@@ -113,10 +113,28 @@ header: 'Introduction &nbsp;&nbsp; **.NET MAUI** &nbsp;&nbsp; Setup &nbsp;&nbsp;
 ![h:400 center](img/native_development.png)
 
 ---
+<!-- _class: two-column -->
 
 ## .NET Multi-platform App UI
 
-![h:500 center](img/maui_overview.png)
+<table>
+<tr>
+<td>
+
+![h:350](img/maui_overview.png)
+
+</td>
+<td>
+
+<p><strong>Cross-platform, native UI</strong></p>
+
+<p><strong>Single project system, single codebase</strong></p>
+
+<p><strong>Deploy to multiple devices, mobile & desktop</strong></p>
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -221,19 +239,7 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; **Setup** &nbsp;&nbsp;
 
 ## Create a New Project
 
-![h:500 center](img/new_project_01.png)
-
----
-
-## Create a New Project
-
-![h:500 center](img/new_project_02.png)
-
----
-
-## Create a New Project
-
-![h:500 center](img/new_project_03.png)
+![h:500 center](img/new_project.png)
 
 ---
 
@@ -246,7 +252,7 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; **Setup** &nbsp;&nbsp;
 
 ## Project Structure
 <style scoped>
-section {
+section ul, section li, section p {
     font-size: 30px;
 }
 </style>
@@ -264,14 +270,10 @@ section {
 
 ---
 
-## Layouts
-<!-- _class: layout-table -->
 
-| **AbsoluteLayout** | **RelativeLayout** | **FlexLayout** |
-|:------------------:|:------------------:|:--------------:|
-| ![](img/layouts_absolute-layout.png) | ![](img/layouts_relative-layout.png) | ![](img/layouts_flex-layout.png) |
-
----
+<!--
+header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; **Layouts &nbsp;&nbsp;** Controls'
+-->
 
 ## Layouts
 <!-- _class: layout-table -->
@@ -279,15 +281,6 @@ section {
 | **Grid** | **StackLayout** |
 |:--------:|:---------------:|
 | ![](img/layouts_grid.png) | ![](img/layouts_stack-layout.png) |
-
----
-
-## Layouts - StackLayout
-<!-- _class: layout-table-wrapped-header -->
-
-| **StackLayout** | **VerticalStackLayout** | **Horizontal<br>StackLayout** |
-|:------------------:|:------------------:|:--------------:|
-| ![](img/layouts_stack-layout.png) | ![](img/layouts_vertical-stack-layout.png) | ![](img/layouts_horizontal-stack-layout.png) |
 
 ---
 
@@ -302,6 +295,15 @@ section {
 
 ---
 
+## Layouts - StackLayout
+<!-- _class: layout-table -->
+
+| **VerticalStackLayout** | **HorizontalStackLayout** |
+|:------------------:|:--------------:|
+| ![](img/layouts_vertical-stack-layout.png) | ![](img/layouts_horizontal-stack-layout.png) |
+
+---
+
 ## StackLayout...
 
 - HorizontalStackLayout, VerticalStackLayout
@@ -312,6 +314,15 @@ section {
     - Wraps HorizontalStackLayout and VerticalStackLayout
     - Has Orientation
     - Useful for adaptive layouts
+
+---
+
+## Layouts
+<!-- _class: layout-table -->
+
+| **AbsoluteLayout** | **FlexLayout** |
+|:------------------:|:--------------:|
+| ![](img/layouts_absolute-layout.png) | ![](img/layouts_flex-layout.png) |
 
 ---
 
@@ -350,63 +361,57 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; Lay
 ---
 
 ## Actionable Controls
-
-![h:500 center](img/actionable_controls.png)
+<!-- _class: content-grid -->
+| | | |
+|:--:|:--:|:--:|
+| ![](img/actionable_controls-button.png) | ![](img/actionable_controls-image-button.png) | ![](img/actionable_controls-refresh-view.png) |
+| ![](img/actionable_controls-search-bar.png) | ![](img/actionable_controls-swipe-view.png) |
 
 ---
 
 ## Setting Values
+<!-- _class: content-grid -->
 
-![h:500 center](img/value_setting_controls.png)
-
----
-
-## Editing Text
-
-![h:300 center](img/text_editing_controls.png)
+| | | |
+|:--:|:--:|:--:|
+| ![](img/setting_values-slider.png) | ![](img/setting_values-stepper.png) | ![](img/setting_values-switch.png) |
+| ![](img/setting_values-date-picker.png) | ![](img/setting_values-time-picker.png) | ![](img/setting_values-check-box.png) |
 
 ---
 
-## Activity Indication
+## Editing Text & Activity Indication
+<!-- _class: content-grid -->
 
-![h:300 center](img/activity_indication_controls.png)
+| | |
+|:--:|:--:|
+| ![](img/editing_text-entry.png) | ![](img/activity_indication-activity-indicator.png) |
+| ![](img/editing_text-editor.png) | ![](img/activity_indication-progress-bar.png) |
 
 ---
 
 ## Collections
+<!-- _class: content-grid -->
 
-![h:500 center](img/collection_controls.png)
+| | | |
+|:--:|:--:|:--:|
+| ![](img/collections-list-view.png) | ![](img/collections-collection-view.png) | ![](img/collections-picker.png) |
+| ![](img/collections-carousel-view.png) | ![](img/collections-indicator-view.png) |
 
 ---
 
 ## Pop-ups
 
-![h:300 center](img/popup_controls.png)
+<!-- _class: layout-table -->
+
+| | |
+|:--:|:--:|
+| ![](img/pop_ups-alert.png) | ![](img/pop_ups-action-sheet.png) |
 
 ---
 
 ## Commercial components
 
 ![h:350 center invert](img/commercial_components.png)
-
----
-
-## Bonus - Pages
-
-![h:500 center](img/pages_01.png)
-
----
-
-## Bonus - Pages
-
-![h:500 center](img/pages_02.png)
-
----
-
-## Bonus - Pages
-
-- First displayed page is in App.xaml.cs
-    - Default - MainPage
 
 ---
 
