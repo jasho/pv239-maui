@@ -7,6 +7,8 @@ marp: true
 ---
 
 <style>
+    @import url('../styles/presentation-styles.css');
+
     .container {
         display: flex;
     }
@@ -74,7 +76,7 @@ header: '**Introduction** &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp;
 - Materials & Resources
     - [Materials repository](https://github.com/jasho/pv239-maui)
     - [Sample app repository](https://github.com/jasho/cookbook-maui)
-- Stream/recordings – [Youtube](https://www.youtube.com/playlist?list=PLMD3_JXajX1iWN-KFRie7esaE9NP7eBlf)
+- Stream/recordings – [Youtube](https://www.youtube.com/playlist?list=PLMD3_JXajX1gmOuLSET9xefBqFDxNK398)
 - Optional homeworks
 - Project
 
@@ -111,10 +113,28 @@ header: 'Introduction &nbsp;&nbsp; **.NET MAUI** &nbsp;&nbsp; Setup &nbsp;&nbsp;
 ![h:400 center](img/native_development.png)
 
 ---
+<!-- _class: two-column -->
 
 ## .NET Multi-platform App UI
 
-![h:500 center](img/maui_overview.png)
+<table>
+<tr>
+<td>
+
+![h:350](img/maui_overview.png)
+
+</td>
+<td>
+
+<p><strong>Cross-platform, native UI</strong></p>
+
+<p><strong>Single project system, single codebase</strong></p>
+
+<p><strong>Deploy to multiple devices, mobile & desktop</strong></p>
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -219,19 +239,7 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; **Setup** &nbsp;&nbsp;
 
 ## Create a New Project
 
-![h:500 center](img/new_project_01.png)
-
----
-
-## Create a New Project
-
-![h:500 center](img/new_project_02.png)
-
----
-
-## Create a New Project
-
-![h:500 center](img/new_project_03.png)
+![h:500 center](img/new_project.png)
 
 ---
 
@@ -244,7 +252,7 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; **Setup** &nbsp;&nbsp;
 
 ## Project Structure
 <style scoped>
-section {
+section ul, section li, section p {
     font-size: 30px;
 }
 </style>
@@ -262,25 +270,17 @@ section {
 
 ---
 
+
 <!--
-header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; **Layouts** &nbsp;&nbsp; Controls'
+header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; **Layouts &nbsp;&nbsp;** Controls'
 -->
 
 ## Layouts
+<!-- _class: layout-table -->
 
-![h:500 center](img/layouts_01.png)
-
----
-
-## Layouts
-
-![h:500 center](img/layouts_02.png)
-
----
-
-## Layouts - StackLayout
-
-![h:500 center](img/layouts_03.png)
+| **Grid** | **StackLayout** |
+|:--------:|:---------------:|
+| ![](img/layouts_grid.png) | ![](img/layouts_stack-layout.png) |
 
 ---
 
@@ -292,6 +292,15 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; **L
 - Grid.Row, Grid.Column – placement of control in the Grid
 - Grid.RowSpan, Grid.ColumnSpan – control can span over multiple “cells”
 - HorizontalSpacing, VerticalSpacing – empty space between “cells”
+
+---
+
+## Layouts - StackLayout
+<!-- _class: layout-table -->
+
+| **VerticalStackLayout** | **HorizontalStackLayout** |
+|:------------------:|:--------------:|
+| ![](img/layouts_vertical-stack-layout.png) | ![](img/layouts_horizontal-stack-layout.png) |
 
 ---
 
@@ -309,6 +318,15 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; **L
 ---
 
 ## Layouts
+<!-- _class: layout-table -->
+
+| **AbsoluteLayout** | **FlexLayout** |
+|:------------------:|:--------------:|
+| ![](img/layouts_absolute-layout.png) | ![](img/layouts_flex-layout.png) |
+
+---
+
+## Layouts
 <!-- _class: demo -->
 
 # DEMO
@@ -320,75 +338,80 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; Lay
 -->
 
 ## Controls
+<!-- _class: controls-grid -->
 
-![h:450 center](img/controls.png)
+| | | | | |
+|:--:|:--:|:--:|:--:|:--:|
+| ActivityIndicator | BoxView | Button | DatePicker | Editor |
+| Entry | Image | Label | TimePicker | Slider |
+| OpenGLView | Picker | ProgressBar | SearchBar | Stepper |
+| WebView | TableView | ListView | TextCell | EntryCell |
+| ImageCell | SwitchCell | ViewCell | Map | ... |
 
 ---
 
 ## Content Presentation
+<!-- _class: content-grid -->
 
-![h:500 center](img/presentation_controls.png)
+| | | |
+|:--:|:--:|:--:|
+| ![](img/content_presentation-label.png) | ![](img/content_presentation-image.png) | ![](img/content_presentation-box-view.png) |
+| ![](img/content_presentation-web-view.png) | ![](img/content_presentation-map.png) |
 
 ---
 
 ## Actionable Controls
-
-![h:500 center](img/actionable_controls.png)
+<!-- _class: content-grid -->
+| | | |
+|:--:|:--:|:--:|
+| ![](img/actionable_controls-button.png) | ![](img/actionable_controls-image-button.png) | ![](img/actionable_controls-refresh-view.png) |
+| ![](img/actionable_controls-search-bar.png) | ![](img/actionable_controls-swipe-view.png) |
 
 ---
 
 ## Setting Values
+<!-- _class: content-grid -->
 
-![h:500 center](img/value_setting_controls.png)
-
----
-
-## Editing Text
-
-![h:300 center](img/text_editing_controls.png)
+| | | |
+|:--:|:--:|:--:|
+| ![](img/setting_values-slider.png) | ![](img/setting_values-stepper.png) | ![](img/setting_values-switch.png) |
+| ![](img/setting_values-date-picker.png) | ![](img/setting_values-time-picker.png) | ![](img/setting_values-check-box.png) |
 
 ---
 
-## Activity Indication
+## Editing Text & Activity Indication
+<!-- _class: content-grid -->
 
-![h:300 center](img/activity_indication_controls.png)
+| | |
+|:--:|:--:|
+| ![](img/editing_text-entry.png) | ![](img/activity_indication-activity-indicator.png) |
+| ![](img/editing_text-editor.png) | ![](img/activity_indication-progress-bar.png) |
 
 ---
 
 ## Collections
+<!-- _class: content-grid -->
 
-![h:500 center](img/collection_controls.png)
+| | | |
+|:--:|:--:|:--:|
+| ![](img/collections-list-view.png) | ![](img/collections-collection-view.png) | ![](img/collections-picker.png) |
+| ![](img/collections-carousel-view.png) | ![](img/collections-indicator-view.png) |
 
 ---
 
 ## Pop-ups
 
-![h:300 center](img/popup_controls.png)
+<!-- _class: layout-table -->
+
+| | |
+|:--:|:--:|
+| ![](img/pop_ups-alert.png) | ![](img/pop_ups-action-sheet.png) |
 
 ---
 
 ## Commercial components
 
 ![h:350 center invert](img/commercial_components.png)
-
----
-
-## Bonus - Pages
-
-![h:500 center](img/pages_01.png)
-
----
-
-## Bonus - Pages
-
-![h:500 center](img/pages_02.png)
-
----
-
-## Bonus - Pages
-
-- First displayed page is in App.xaml.cs
-    - Default - MainPage
 
 ---
 
