@@ -43,13 +43,18 @@ public partial class IngredientListViewModel : ViewModelBase
     [RelayCommand]
     public async Task GoToDetailAsync(Guid id)
     {
-        await Shell.Current.GoToAsync("./detail");
+        await Shell.Current.GoToAsync("detail");
+    }
+
+    [RelayCommand]
+    public async Task GoToEditAsync(Guid id)
+    {
+        await Shell.Current.GoToAsync("edit");
     }
 
     [RelayCommand]
     public async Task GoToCreateAsync()
     {
-        // TODO add navigation to ingredient edit page
-        //await Shell.Current.GoToAsync("");
+        await Shell.Current.GoToAsync("edit");
     }
 }

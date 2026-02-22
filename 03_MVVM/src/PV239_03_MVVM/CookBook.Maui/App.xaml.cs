@@ -11,7 +11,7 @@ namespace CookBook.Maui
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new IngredientEditPage());
+            return new Window(new AppShell());
         }
     }
 }

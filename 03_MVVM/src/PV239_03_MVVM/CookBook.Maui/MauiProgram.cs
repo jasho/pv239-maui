@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using CookBook.Maui.Pages;
+using CookBook.Maui.Pages.Ingredient;
 
 namespace CookBook.Maui;
 
@@ -22,6 +23,7 @@ public static class MauiProgram
 #endif
 
         Routing.RegisterRoute("ingredients/detail", typeof(IngredientDetailPage));
+        Routing.RegisterRoute("ingredients/edit", typeof(IngredientEditPage));
         return builder.Build();
     }
 }
