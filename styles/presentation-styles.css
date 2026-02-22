@@ -142,18 +142,31 @@ section.controls-grid th {
 }
 
 /* Two-column layout: image on left, text on right */
+section.two-column {
+    --col1-width: 65%;
+    --col2-width: 35%;
+    --col1-align: center;
+    --col2-align: left;
+    --col1-valign: top;
+    --col2-valign: middle;
+}
 section.two-column table {
     width: 100%;
     border: none !important;
     background: transparent !important;
     background-color: transparent !important;
     margin-top: 20px;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+section.two-column thead {
+    display: none;
 }
 section.two-column td {
     border: none !important;
     background: transparent !important;
     background-color: transparent !important;
-    vertical-align: middle;
     padding: 0;
 }
 section.two-column tr {
@@ -161,14 +174,27 @@ section.two-column tr {
     background-color: transparent !important;
 }
 section.two-column td:first-child {
-    width: 50%;
-    text-align: center;
+    width: var(--col1-width) !important;
+    text-align: var(--col1-align) !important;
+    vertical-align: var(--col1-valign) !important;
+}
+section.two-column td:first-child ul {
+    text-align: left;
+    margin: 0;
+    padding-left: 20px;
 }
 section.two-column td:last-child {
-    width: 50%;
+    width: var(--col2-width) !important;
     font-size: 1.1em;
     line-height: 1.7;
     padding-left: 40px;
+    padding-right: 0;
+    text-align: var(--col2-align) !important;
+    vertical-align: var(--col2-valign) !important;
+}
+section.two-column td:last-child img {
+    max-width: 100%;
+    margin: 0;
 }
 section.two-column td:last-child p {
     margin: 0.6em 0;
