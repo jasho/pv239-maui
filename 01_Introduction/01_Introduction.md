@@ -401,7 +401,7 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; Lay
 
 ## Pop-ups
 
-<!-- _class: layout-table -->
+<!-- _class: two-column -->
 
 | | |
 |:--:|:--:|
