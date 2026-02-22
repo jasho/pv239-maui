@@ -46,7 +46,8 @@
             <Button Grid.Column="2"
                     BorderWidth="10"
                     Style="{StaticResource MySpecialButtonStyle}"
-                    Text="{x:Static texts:IngredientDetailPageTexts.Edit_Button_Text}"/>
+                    Text="{x:Static texts:IngredientDetailPageTexts.Edit_Button_Text}"
+                    Command="{Binding GoToEditCommand}" />
         </Grid>
     </Grid>
 </ContentPage>
