@@ -38,6 +38,10 @@ jobs:
             fi
           done
 
+      - name: Copy styles directory
+        run: |
+          if [ -d styles ]; then cp -R styles build/slides/styles; fi
+
       - name: Build Marp slides
         run: |
           # Build root-level Index.md as index.html (GitHub Pages default)
