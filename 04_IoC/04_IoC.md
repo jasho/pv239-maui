@@ -35,7 +35,7 @@ marp: true
 ---
 
 ## Voting on bonus topics
-- Closing - end of today's exercise
+- Closing - end of exercise **today**
 
 ---
 
@@ -75,9 +75,9 @@ header: '**Dependency Injection** &nbsp;&nbsp; Inversion of Control &nbsp;&nbsp;
 - Filling dependencies “from the outside”
 - Only declares what external dependencies it needs
 - Dependencies are created outside of the class and have their own lifecycle
-- Sample – class IngredientListViewModel
-    - Needs to navigate to other pages – IRoutingService
-    - Needs to load data - IIngredientsClient
+- Sample – class `IngredientListViewModel`
+    - Needs to navigate to other pages – `IRoutingService`
+    - Needs to load data - `IIngredientsClient`
 
 ---
 
@@ -104,8 +104,8 @@ header: 'Dependency Injection &nbsp;&nbsp; **Inversion of Control** &nbsp;&nbsp;
 ---
 
 ## IoC/DI in C#
-- Class ServiceCollection + interface IServiceCollection
-- Nuget package Microsoft.Extensions.DependencyInjection
+- Class `ServiceCollection` + interface `IServiceCollection`
+- Nuget package `Microsoft.Extensions.DependencyInjection`
 - Container, where everything gets registered and from where it gets resolved
 
 ---
@@ -133,15 +133,15 @@ header: 'Dependency Injection &nbsp;&nbsp; **Inversion of Control** &nbsp;&nbsp;
 header: 'Dependency Injection &nbsp;&nbsp; Inversion of Control &nbsp;&nbsp; **Shell Arguments**'
 -->
 
-- Send parameters using the Shell.Current.GoToAsync() method
-    - Can be part of Uri: $"detail?id={id}" - like HTTP request
-    - Or passed as 2nd parameter: new Dictionary<string, object> { ["id"] = id }
+- Send parameters using the `Shell.Current.GoToAsync()` method
+    - Can be part of Uri: `$"detail?id={id}"` - like HTTP request
+    - Or passed as 2nd parameter: `new Dictionary<string, object> { ["id"] = id }`
 
 - On the receiving end
     - Add property to ViewModel
-        - public Guid Id { get; set; }
+        - `public Guid Id { get; set; }`
     - Add class attribute to ViewModel
-        - [QueryProperty(nameof(Id), nameof(Id))]
+        - `[QueryProperty(nameof(Id), nameof(Id))]`
 
 ---
 
@@ -166,4 +166,4 @@ header: 'Dependency Injection &nbsp;&nbsp; Inversion of Control &nbsp;&nbsp; **S
 ---
 
 ## Voting on bonus topics
-- Closing - end of today's exercise
+- Closing - end of exercise **today**
