@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:CookBook.Maui.ViewModels.Recipe"
-             xmlns:texts="clr-namespace:CookBook.Maui.Resources.Texts"
-             xmlns:fonts="clr-namespace:CookBook.Maui.Resources.Fonts"
-             xmlns:models="clr-namespace:CookBook.Maui.Models"
              x:Class="CookBook.Maui.Pages.Recipe.RecipeListPage"
              x:Name="Root"
              Title="RecipeListPage">
@@ -16,7 +12,7 @@
             <Label Grid.Row="0"
                    FontSize="24"
                    Style="{StaticResource BoldLabelStyle}"
-                   Text="{x:Static texts:RecipeListPageTexts.Title_Label}"/>
+                   Text="{x:Static RecipeListPageTexts.Title_Label}"/>
 
             <CollectionView Grid.Row="1"
                             VerticalOptions="Fill"
@@ -27,7 +23,7 @@
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type models:RecipeListModel}">
+                    <DataTemplate x:DataType="{x:Type RecipeListModel}">
                         <Border WidthRequest="300"
                                 HeightRequest="200"
                                 Padding="0">
@@ -37,7 +33,7 @@
 
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Root}, Path=BindingContext.GoToDetailCommand}"
-                      CommandParameter="{Binding Id}"/>
+                                                      CommandParameter="{Binding Id}" />
                             </Border.GestureRecognizers>
 
                             <Grid Padding="0"
@@ -80,7 +76,7 @@
                                                            Padding="0"
                                                            Spacing="8">
                                         <Label VerticalOptions="Center"
-                                               FontFamily="{x:Static fonts:Fonts.FontAwesome}"
+                                               FontFamily="{x:Static Fonts.FontAwesome}"
                                                Text="{Binding FoodType, Converter={StaticResource FoodTypeToIconConverter}}"
                                                TextColor="White"/>
 
@@ -118,7 +114,7 @@
                 IsVisible="{OnIdiom Phone=False,
                                     Desktop=True}"
                 Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static texts:RecipeListPageTexts.Add_Button_Text}"/>
+                Text="{x:Static RecipeListPageTexts.Add_Button_Text}"/>
 
         <Button WidthRequest="65"
                 HorizontalOptions="End"

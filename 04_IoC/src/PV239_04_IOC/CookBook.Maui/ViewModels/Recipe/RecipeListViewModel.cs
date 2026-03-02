@@ -1,10 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CookBook.Maui.Clients;
 using CookBook.Maui.Clients.Interfaces;
 using CookBook.Maui.Models;
-using CookBook.Mobile.Enums;
-using System.Collections.ObjectModel;
 
 namespace CookBook.Maui.ViewModels.Recipe;
 
