@@ -51,8 +51,10 @@ marp: true
 - Sending messages between different application parts
 
 ---
-
 ## Preferences
+<!--
+header: '**Preferences** &nbsp;&nbsp; Secure Storage &nbsp;&nbsp; Database &nbsp;&nbsp; Converters'
+-->
 
 - For storing small amounts of values
 - Limit for size of individual records
@@ -86,6 +88,10 @@ marp: true
 ---
 
 ## Secure Storage
+<!--
+header: 'Preferences &nbsp;&nbsp; **Secure Storage** &nbsp;&nbsp; Database &nbsp;&nbsp; Converters'
+-->
+
 - Useful for storing small amounts of data securely (i.e. authentication token)
 - Supports only strings
 - Asynchronous API
@@ -111,6 +117,10 @@ marp: true
 ---
 
 ## SQLite
+<!--
+header: 'Preferences &nbsp;&nbsp; Secure Storage &nbsp;&nbsp; **Database** &nbsp;&nbsp; Converters'
+-->
+
 - Nuget package sqlite-net-pcl from author „Frank A. Krueger“
 - We need to set a path to the database file
 - Basic ORM
@@ -149,11 +159,14 @@ marp: true
 ---
 
 ## Converters
+<!--
+header: 'Preferences &nbsp;&nbsp; Secure Storage &nbsp;&nbsp; Database &nbsp;&nbsp; **Converters**'
+-->
 
 - Convert value of 1 type to another type
 - Interface **IValueConverter**
 - CommunityToolkit.Mvvm - **BaseConverterOneWay**
-- **MultiValueConverter**
+- **IMultiValueConverter**
 
 ---
 
