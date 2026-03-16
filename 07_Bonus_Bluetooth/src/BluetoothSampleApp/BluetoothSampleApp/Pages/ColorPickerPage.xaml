@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:BluetoothSampleApp.Pages"
+             xmlns:viewModels="clr-namespace:BluetoothSampleApp.ViewModels"
+             x:Class="BluetoothSampleApp.Pages.ColorPickerPage"
+             Title="RGB Color Picker"
+             x:DataType="viewModels:ColorPickerViewModel">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="RGB LED Control"
+                   Style="{StaticResource Headline}"
+                   HorizontalOptions="Center" />
+
+            <!-- Color preview box -->
+            <Border StrokeShape="RoundRectangle 12"
+                    HeightRequest="140"
+                    BackgroundColor="{Binding PreviewColor}" />
+
+            <!-- Red slider -->
+            <Grid ColumnDefinitions="60,*,40" RowDefinitions="Auto">
+                <Label Grid.Column="0"
+                       Text="Red"
+                       VerticalOptions="Center"
+                       TextColor="Red" />
+                <Slider Grid.Column="1"
+                        Value="{Binding Red}"
+                        Minimum="0"
+                        Maximum="255"
+                        VerticalOptions="Center" />
+                <Label Grid.Column="2"
+                       Text="{Binding Red, StringFormat='{0:F0}'}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End" />
+            </Grid>
+
+            <!-- Green slider -->
+            <Grid ColumnDefinitions="60,*,40" RowDefinitions="Auto">
+                <Label Grid.Column="0"
+                       Text="Green"
+                       VerticalOptions="Center"
+                       TextColor="Green" />
+                <Slider Grid.Column="1"
+                        Value="{Binding Green}"
+                        Minimum="0"
+                        Maximum="255"
+                        VerticalOptions="Center" />
+                <Label Grid.Column="2"
+                       Text="{Binding Green, StringFormat='{0:F0}'}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End" />
+            </Grid>
+
+            <!-- Blue slider -->
+            <Grid ColumnDefinitions="60,*,40" RowDefinitions="Auto">
+                <Label Grid.Column="0"
+                       Text="Blue"
+                       VerticalOptions="Center"
+                       TextColor="Blue" />
+                <Slider Grid.Column="1"
+                        Value="{Binding Blue}"
+                        Minimum="0"
+                        Maximum="255"
+                        VerticalOptions="Center" />
+                <Label Grid.Column="2"
+                       Text="{Binding Blue, StringFormat='{0:F0}'}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End" />
+            </Grid>
+
+            <!-- Brightness slider -->
+            <Grid ColumnDefinitions="60,*,40" RowDefinitions="Auto">
+                <Label Grid.Column="0"
+                       Text="Brightness"
+                       VerticalOptions="Center" />
+                <Slider Grid.Column="1"
+                        Value="{Binding Brightness}"
+                        Minimum="0"
+                        Maximum="1"
+                        VerticalOptions="Center" />
+                <Label Grid.Column="2"
+                       Text="{Binding Brightness, StringFormat='{0:P0}'}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="End" />
+            </Grid>
+            
+            <!-- Apply button -->
+            <Button Text="Apply"
+                    Command="{Binding SendColorCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</pages:PageBase>

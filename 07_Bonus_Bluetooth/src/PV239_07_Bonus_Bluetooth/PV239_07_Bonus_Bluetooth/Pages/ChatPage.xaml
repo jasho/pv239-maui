@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<pages:PageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:PV239_07_Bonus_Bluetooth.Pages"
+             xmlns:viewModels="clr-namespace:PV239_07_Bonus_Bluetooth.ViewModels"
+             x:Class="PV239_07_Bonus_Bluetooth.Pages.ChatPage"
+             x:DataType="viewModels:ChatViewModel">
+    <pages:PageBase.Content>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Label FontSize="Large"
+                   HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Last received message: " />
+                        <Span Text="{Binding LastMessage}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            
+            <Entry x:Name="MessageToSend" />
+            <Button Text="Send Message"
+                    Command="{Binding SendMessageCommand}"
+                    CommandParameter="{Binding Text, Source={x:Reference MessageToSend}}" />
+        </VerticalStackLayout>
+    </pages:PageBase.Content>
+</pages:PageBase>

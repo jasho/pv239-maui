@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:BluetoothSampleApp.Pages"
+             xmlns:viewModels="clr-namespace:BluetoothSampleApp.ViewModels"
+             xmlns:models="clr-namespace:BluetoothSampleApp.Models"
+             x:Class="BluetoothSampleApp.Pages.DeviceSelectionPage"
+             Title="Select Device"
+             x:DataType="viewModels:DeviceSelectionViewModel">
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="16">
+                <Label Text="Select a Bluetooth Device"
+                       Style="{StaticResource Headline}"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Choose a device from the list below to control its RGB LED."
+                       Style="{StaticResource SubHeadline}"
+                       HorizontalOptions="Center" />
+
+                <Button Text="Scan for Devices"
+                        Command="{Binding ScanCommand}"
+                        IsEnabled="{Binding IsScanning, Converter={StaticResource InvertedBoolConverter}}"
+                        HorizontalOptions="Center" />
+
+                <!-- Scanning spinner -->
+                <VerticalStackLayout Spacing="8"
+                                     IsVisible="{Binding IsScanning}"
+                                     HorizontalOptions="Center">
+                    <ActivityIndicator IsRunning="{Binding IsScanning}"
+                                       HeightRequest="40"
+                                       WidthRequest="40"
+                                       HorizontalOptions="Center" />
+                    <Label Text="Scanning for nearby devices…"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource Gray500}" />
+                </VerticalStackLayout>
+
+                <!-- Empty state placeholder -->
+                <VerticalStackLayout Spacing="8"
+                                     IsVisible="{Binding ShowEmptyState}"
+                                     HorizontalOptions="Center"
+                                     Padding="0,24">
+                    <Label Text="📡"
+                           FontSize="48"
+                           HorizontalOptions="Center" />
+                    <Label Text="No devices found"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    <Label Text="Make sure your MyBluetoothLight device is powered on and nearby, then try scanning again."
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource Gray500}" />
+                </VerticalStackLayout>
+
+                <CollectionView x:Name="DevicesCollectionView"
+                                ItemsSource="{Binding Devices}"
+                                SelectionMode="None"
+                                IsVisible="{Binding IsScanning, Converter={StaticResource InvertedBoolConverter}}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:BluetoothDevice">
+                            <Border Margin="0,4"
+                                    Padding="16"
+                                    StrokeShape="RoundRectangle 8">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                        <Label Text="{Binding Name}"
+                                               FontSize="16"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding Address}"
+                                               FontSize="12"
+                                               TextColor="{StaticResource Gray500}" />
+                                    </VerticalStackLayout>
+                                    <Label Grid.Column="1"
+                                           Text="{Binding SignalStrength, StringFormat='{0} dBm'}"
+                                           VerticalOptions="Center"
+                                           FontSize="12"
+                                           TextColor="{StaticResource Gray500}" />
+                                </Grid>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type pages:PageBase}}, Path=BindingContext.SelectDeviceCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Connecting overlay -->
+        <Grid IsVisible="{Binding IsConnecting}"
+              BackgroundColor="#80000000"
+              InputTransparent="False">
+            <VerticalStackLayout Spacing="12"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                <ActivityIndicator IsRunning="{Binding IsConnecting}"
+                                   HeightRequest="48"
+                                   WidthRequest="48"
+                                   Color="White"
+                                   HorizontalOptions="Center" />
+                <Label Text="Connecting…"
+                       FontSize="16"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</pages:PageBase>
