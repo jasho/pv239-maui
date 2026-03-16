@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<pages:PageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:PV239_07_Bonus_Bluetooth.Pages"
+             xmlns:viewModels="clr-namespace:PV239_07_Bonus_Bluetooth.ViewModels"
+             xmlns:models="clr-namespace:PV239_07_Bonus_Bluetooth.Models"
+             x:Class="PV239_07_Bonus_Bluetooth.Pages.DeviceSelectionPage"
+             x:DataType="viewModels:DeviceSelectionViewModel">
+    <pages:PageBase.ToolbarItems>
+        <ToolbarItem Text="Scan nearby devices"
+                     Command="{Binding ScanDevicesCommand}" />
+    </pages:PageBase.ToolbarItems>
+    <pages:PageBase.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="16">
+                <Label Text="Select a Bluetooth Device"
+                       Style="{StaticResource Headline}"
+                       HorizontalOptions="Center" />
+                <CollectionView ItemsSource="{Binding Devices}"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:DeviceModel">
+                            <Border Margin="0,4"
+                                    Padding="16"
+                                    StrokeShape="RoundRectangle 8">
+                                    <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                        <Label Text="{Binding Name}"
+                                               FontSize="16"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding Id}"
+                                               FontSize="12"
+                                               TextColor="{StaticResource Gray500}" />
+                                    </VerticalStackLayout>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type pages:PageBase}}, Path=BindingContext.SelectDeviceCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </pages:PageBase.Content>
+</pages:PageBase>
