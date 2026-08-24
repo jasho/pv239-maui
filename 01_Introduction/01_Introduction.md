@@ -429,6 +429,24 @@ header: 'Introduction &nbsp;&nbsp; .NET MAUI &nbsp;&nbsp; Setup &nbsp;&nbsp; Lay
 
 ---
 
+## Projects from previous years
+
+- Vocalbuary learning app - scan page from book, OCR
+- Trackers, managers
+    - workout, calories, skiing, steps (with gambling)
+    - chores, plants, DnD inventory, finance, properties
+    - band playlists, movies, books, car parking
+    - FIDO tokens, NFC business cards
+- BeReal + GeoGuesser clone
+- Social/sport activity sharing
+- Bluetooth chat app
+- Game with geolocation (aka Pokemon Go)
+- Private camera app (no cloud upload)
+- Městská šifrovačka
+- Tutoring app - courses, sharing materials, quizzes
+
+---
+
 ## Today's Goals
 
 - People introduction
